@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coming Soon · RealityForge</title>
+  <meta name="description" content="Weitere Informationen zu den Leistungen von RealityForge folgen.">
+  <meta name="theme-color" content="#09090d">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://realityforge.eu/coming-soon/">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <script>
+    (() => {
+      const key = 'realityforge-theme';
+      let theme = 'dark';
+      try {
+        theme = localStorage.getItem(key) || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      } catch (_) {
+        theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script defer src="/assets/theme.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="RealityForge Startseite">
+      <span class="brand-mark" aria-hidden="true">RF</span>
+      <span class="brand-name">RealityForge</span>
+    </a>
+    <div class="header-tools">
+      <nav class="desktop-nav" aria-label="Hauptnavigation">
+        <a href="/#leistungen">Leistungen</a>
+        <a href="/#erfahrung">Über uns</a>
+        <a href="/#kontakt">Kontakt</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Light Mode aktivieren">
+        <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+        <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+      </button>
+      <details class="mobile-nav">
+        <summary aria-label="Navigation öffnen"><span></span><span></span></summary>
+        <nav aria-label="Mobile Navigation">
+          <a href="/#leistungen">Leistungen</a>
+          <a href="/#erfahrung">Über uns</a>
+          <a href="/#kontakt">Kontakt</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main class="placeholder-shell" id="main">
+    <section class="placeholder-card" aria-labelledby="placeholder-title">
+      <p class="eyebrow"><span></span> RealityForge</p>
+      <h1 id="placeholder-title">Coming <em>Soon.</em></h1>
+      <p>Weitere Informationen folgen.</p>
+      <a class="button button-primary" href="/#leistungen">Zurück zu den Leistungen</a>
+    </section>
+  </main>
+</body>
+</html>
