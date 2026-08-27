@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Softwareentwicklung · RealityForge</title>
+  <meta name="description" content="RealityForge entwickelt individuelle Software, Anwendungen und technische Systeme von der Architektur bis zur Integration.">
+  <meta name="theme-color" content="#09090d">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="RealityForge">
+  <meta property="og:title" content="Softwareentwicklung · RealityForge">
+  <meta property="og:description" content="Individuelle Software, Anwendungen, Schnittstellen und technische Integration.">
+  <meta property="og:url" content="https://realityforge.eu/softwareentwicklung/">
+  <meta property="og:image" content="https://realityforge.eu/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://realityforge.eu/softwareentwicklung/">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <script>
+    (() => {
+      const key = 'realityforge-theme';
+      let theme = 'dark';
+      try { theme = localStorage.getItem(key) || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'); }
+      catch (_) { theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script defer src="/assets/theme.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="RealityForge Startseite"><span class="brand-mark" aria-hidden="true">RF</span><span class="brand-name">RealityForge</span></a>
+    <div class="header-tools">
+      <nav class="desktop-nav" aria-label="Hauptnavigation"><a href="/ki/">KI</a><a href="/softwareentwicklung/" aria-current="page">Software</a><a href="https://foerderungen.realityforge.eu/">Fördermittel</a><a href="/#erfahrung">Über uns</a><a href="/#kontakt">Kontakt</a></nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Light Mode aktivieren"><span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span><span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span></button>
+      <details class="mobile-nav"><summary aria-label="Navigation öffnen"><span></span><span></span></summary><nav aria-label="Mobile Navigation"><a href="/ki/">KI</a><a href="/softwareentwicklung/" aria-current="page">Software</a><a href="https://foerderungen.realityforge.eu/">Fördermittel</a><a href="/#erfahrung">Über uns</a><a href="/#kontakt">Kontakt</a></nav></details>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero detail-hero" aria-labelledby="hero-title">
+      <p class="eyebrow"><span></span> Softwareentwicklung</p>
+      <h1 id="hero-title">Software für Produkte und Prozesse.</h1>
+      <p class="hero-intro">Wir entwickeln individuelle Anwendungen, erweitern bestehende Systeme und verbinden Software mit technischen Produkten.</p>
+      <a class="button button-primary" href="mailto:realityforgeeu@gmail.com?subject=Softwareprojekt%20mit%20RealityForge">Softwareprojekt besprechen</a>
+    </section>
+
+    <section class="detail-section" aria-labelledby="capabilities-title">
+      <div class="detail-heading"><div><p class="eyebrow"><span></span> Leistungen</p><h2 id="capabilities-title">Technische Entwicklung aus einer Hand.</h2></div><p>Wir unterstützen bei neuen Produkten, internen Anwendungen und der Weiterentwicklung vorhandener Software. Architektur, Bedienbarkeit, Sicherheit und Wartbarkeit fließen gemeinsam in die Umsetzung ein.</p></div>
+      <div class="capability-grid">
+        <article class="capability-card"><span class="card-index">01</span><h3>Technische Konzeption</h3><p>Wir strukturieren Anforderungen, Systemgrenzen, Datenflüsse und Schnittstellen zu einer tragfähigen Architektur.</p></article>
+        <article class="capability-card"><span class="card-index">02</span><h3>Web & Backend</h3><p>Wir entwickeln Webanwendungen, Backend-Dienste, Datenverarbeitung und verlässliche APIs für interne und externe Systeme.</p></article>
+        <article class="capability-card"><span class="card-index">03</span><h3>Apps & Bedienoberflächen</h3><p>Wir setzen Anwendungen mit klaren Abläufen, responsiven Oberflächen und robustem Verhalten auf unterschiedlichen Geräten um.</p></article>
+        <article class="capability-card"><span class="card-index">04</span><h3>Systemintegration</h3><p>Wir verbinden bestehende Software, Datenquellen, Geräte und externe Dienste über sauber definierte Schnittstellen.</p></article>
+        <article class="capability-card"><span class="card-index">05</span><h3>Embedded & technische Systeme</h3><p>Unsere Erfahrung mit Elektronik, Embedded Systems und Hardware-Schnittstellen unterstützt interdisziplinäre Produktentwicklung.</p></article>
+        <article class="capability-card"><span class="card-index">06</span><h3>Computer Vision & AR</h3><p>Wir entwickeln bildverarbeitende Funktionen und Augmented-Reality-Anwendungen für technische Produkte und räumliche Interaktion.</p></article>
+      </div>
+    </section>
+
+    <section class="detail-section" aria-labelledby="process-title">
+      <div class="detail-heading"><div><p class="eyebrow"><span></span> Zusammenarbeit</p><h2 id="process-title">Strukturiert zur Anwendung.</h2></div><p>Kurze technische Zyklen schaffen früh sichtbare Ergebnisse und eine verlässliche Grundlage für die weitere Entwicklung.</p></div>
+      <ol class="process-row">
+        <li><span>01</span>Konzeption<small>Ziele, Nutzer, Anforderungen und Systemumfeld erfassen.</small></li>
+        <li><span>02</span>Prototyp<small>Kernfunktionen und technische Annahmen praktisch prüfen.</small></li>
+        <li><span>03</span>Entwicklung<small>Software, Schnittstellen und Oberflächen verlässlich umsetzen.</small></li>
+        <li><span>04</span>Integration<small>Tests, Betrieb und Weiterentwicklung im Zielsystem absichern.</small></li>
+      </ol>
+    </section>
+
+    <section class="detail-section" aria-labelledby="background-title">
+      <div class="detail-heading"><div><p class="eyebrow"><span></span> Hintergrund</p><h2 id="background-title">Erfahrung über Softwaregrenzen hinweg.</h2></div><p>RealityForge verbindet Softwareentwicklung mit Elektronik, Embedded Systems, Computer Vision, Augmented Reality und technischer Produktentwicklung.</p></div>
+      <div class="option-grid">
+        <article><p class="architecture-kicker">Neue Produkte</p><h3>Von der Idee zur ersten Version</h3><p>Wir übersetzen Produktziele in technische Anforderungen, bauen funktionsfähige Prototypen und entwickeln daraus wartbare Anwendungen.</p></article>
+        <article><p class="architecture-kicker">Bestehende Systeme</p><h3>Erweitern und integrieren</h3><p>Wir analysieren vorhandene Software, ergänzen Funktionen und verbessern Schnittstellen, Sicherheit und Bedienbarkeit.</p></article>
+      </div>
+    </section>
+
+    <section class="detail-section detail-cta" aria-labelledby="contact-title">
+      <h2 id="contact-title">Softwareprojekt besprechen</h2>
+      <div><p>Schildern Sie uns kurz die Anwendung, das technische Umfeld und den aktuellen Stand.</p><a class="contact-link" href="mailto:realityforgeeu@gmail.com?subject=Softwareprojekt%20mit%20RealityForge"><span>realityforgeeu@gmail.com</span><b aria-hidden="true">↗</b></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">RF</span><span class="brand-name">RealityForge</span></a><p>Engineering & Technology Consulting<br>RealityForge GbR · Berlin</p></div>
+    <div class="footer-links"><div><p>Leistungen</p><a href="/ki/">KI-Systeme</a><a href="/softwareentwicklung/">Softwareentwicklung</a><a href="https://foerderungen.realityforge.eu/">Fördermittel</a></div><div><p>Kontakt</p><a href="mailto:realityforgeeu@gmail.com">E-Mail schreiben</a></div><div><p>Rechtliches</p><a href="/legal-notice/">Legal Notice</a><a href="/privacy-policy/braingames/">Privacy Policy Braingames</a><a href="/privacy-policy/flappy-dragon/">Privacy Policy Flappy Dragon</a></div></div>
+    <div class="footer-bottom"><span>© 2026 RealityForge GbR</span><a href="#main">Nach oben ↑</a></div>
+  </footer>
+</body>
+</html>

@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RealityForge · Technologie, die im Unternehmen funktioniert</title>
-  <meta name="description" content="RealityForge entwickelt Software, integriert KI-Systeme und begleitet Technologieprojekte bei Finanzierung und Umsetzung.">
+  <meta name="description" content="RealityForge entwickelt Software, KI-Systeme und technische Lösungen für Unternehmen.">
   <meta name="theme-color" content="#09090d">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="de_DE">
   <meta property="og:site_name" content="RealityForge">
   <meta property="og:title" content="RealityForge · Technologie, die im Unternehmen funktioniert">
-  <meta property="og:description" content="Softwareentwicklung, KI & IT sowie Förderprojekt-Management aus Berlin.">
+  <meta property="og:description" content="Softwareentwicklung, KI-Systeme und Förderprojekt-Management aus Berlin.">
   <meta property="og:url" content="https://realityforge.eu/">
   <meta property="og:image" content="https://realityforge.eu/assets/og.png">
   <meta property="og:image:width" content="1200">
@@ -18,11 +18,24 @@
   <meta property="og:image:alt" content="RealityForge · Technologie, die im Unternehmen funktioniert. KI · Software · Förderprojekte">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RealityForge · Technologie, die im Unternehmen funktioniert">
-  <meta name="twitter:description" content="Softwareentwicklung, KI & IT sowie Förderprojekt-Management aus Berlin.">
+  <meta name="twitter:description" content="Softwareentwicklung, KI-Systeme und Förderprojekt-Management aus Berlin.">
   <meta name="twitter:image" content="https://realityforge.eu/assets/og.png">
   <link rel="canonical" href="https://realityforge.eu/">
   <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <script>
+    (() => {
+      const key = 'realityforge-theme';
+      let theme = 'dark';
+      try {
+        theme = localStorage.getItem(key) || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      } catch (_) {
+        theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
   <link rel="stylesheet" href="/assets/styles.css">
+  <script defer src="/assets/theme.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -31,151 +44,85 @@
       <span class="brand-mark" aria-hidden="true">RF</span>
       <span class="brand-name">RealityForge</span>
     </a>
-    <nav class="desktop-nav" aria-label="Hauptnavigation">
-      <a href="#leistungen">Leistungen</a>
-      <a href="#erfahrung">Erfahrung</a>
-      <a class="nav-cta" href="mailto:realityforgeeu@gmail.com">Kontakt</a>
-    </nav>
-    <details class="mobile-nav">
-      <summary aria-label="Navigation öffnen"><span></span><span></span></summary>
-      <nav aria-label="Mobile Navigation">
-        <a href="#leistungen">Leistungen</a>
-        <a href="#ki">KI & IT</a>
-        <a href="#erfahrung">Erfahrung</a>
-        <a href="#kontakt">Kontakt</a>
+    <div class="header-tools">
+      <nav class="desktop-nav" aria-label="Hauptnavigation">
+        <a href="/ki/">KI</a>
+        <a href="/softwareentwicklung/">Software</a>
+        <a href="https://foerderungen.realityforge.eu/">Fördermittel</a>
+        <a href="/#erfahrung">Über uns</a>
+        <a href="/#kontakt">Kontakt</a>
       </nav>
-    </details>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Light Mode aktivieren">
+        <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+        <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+      </button>
+      <details class="mobile-nav">
+        <summary aria-label="Navigation öffnen"><span></span><span></span></summary>
+        <nav aria-label="Mobile Navigation">
+          <a href="/ki/">KI</a>
+          <a href="/softwareentwicklung/">Software</a>
+          <a href="https://foerderungen.realityforge.eu/">Fördermittel</a>
+          <a href="/#erfahrung">Über uns</a>
+          <a href="/#kontakt">Kontakt</a>
+        </nav>
+      </details>
+    </div>
   </header>
 
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow"><span></span> Engineering & Technology Consulting · Berlin</p>
-        <h1 id="hero-title">Technologie, die im Unternehmen <em>funktioniert.</em></h1>
-        <p class="hero-intro">RealityForge entwickelt Software, führt KI-Systeme in Unternehmen ein und begleitet Technologieprojekte bei Finanzierung und Umsetzung.</p>
-        <div class="button-row">
-          <a class="button button-primary" href="mailto:realityforgeeu@gmail.com?subject=Projektanfrage%20an%20RealityForge">Projekt besprechen</a>
-          <a class="button button-secondary" href="#leistungen">Unsere Leistungen <span aria-hidden="true">↓</span></a>
-        </div>
-      </div>
-      <div class="hero-signal" aria-label="Drei Leistungsbereiche">
-        <div class="signal-orbit signal-orbit-one"></div>
-        <div class="signal-orbit signal-orbit-two"></div>
-        <div class="signal-core"><span>RF</span></div>
-        <p class="signal-label signal-label-one">KI & IT</p>
-        <p class="signal-label signal-label-two">Software</p>
-        <p class="signal-label signal-label-three">Förderung</p>
-      </div>
+    <section class="hero hero-compact" aria-labelledby="hero-title">
+      <p class="eyebrow"><span></span> Engineering & Technology Consulting · Berlin</p>
+      <h1 id="hero-title">Technologie, die im Unternehmen <em>funktioniert.</em></h1>
+      <p class="hero-intro">RealityForge entwickelt Software, KI-Systeme und technische Lösungen für Unternehmen.</p>
+      <a class="button button-primary" href="mailto:realityforgeeu@gmail.com?subject=Projektanfrage%20an%20RealityForge">Projekt besprechen</a>
     </section>
 
     <section class="services section" id="leistungen" aria-labelledby="services-title">
       <div class="section-heading">
         <p class="eyebrow"><span></span> Leistungen</p>
-        <h2 id="services-title">Technische Substanz.<br>Klare Entscheidungen.</h2>
-        <p>Wir verbinden Konzeption, Umsetzung und Projektpraxis. Der Maßstab ist nicht die Präsentation, sondern ein System, das seinen Zweck zuverlässig erfüllt.</p>
+        <h2 id="services-title">Drei Leistungsbereiche.</h2>
       </div>
       <div class="service-grid">
         <article class="service-card service-card-featured">
           <div class="card-index">01</div>
-          <h3>KI & IT-Systeme</h3>
-          <p>KI auswählen, benchmarken und in reale Unternehmensprozesse integrieren. Von leistungsfähigen API-Modellen bis zu lokalen Offline-Systemen mit maximaler Datenhoheit.</p>
-          <a href="#ki">Mehr zu KI & IT <span aria-hidden="true">↓</span></a>
+          <h3>KI-Systeme</h3>
+          <p>Wir entwickeln und integrieren KI-Lösungen für konkrete Unternehmensanwendungen. Dazu gehören Benchmarking, lokale KI, RAG, Dokumentenverarbeitung und Systemintegration.</p>
+          <a href="/ki/">Mehr zu KI-Systemen <span aria-hidden="true">→</span></a>
         </article>
         <article class="service-card">
           <div class="card-index">02</div>
-          <h3>App- & Softwareentwicklung</h3>
-          <p>Digitale Produkte von technischer Konzeption und Prototyping bis zu Entwicklung, Integration und Weiterentwicklung.</p>
+          <h3>Softwareentwicklung</h3>
+          <p>Wir entwickeln individuelle Software und Anwendungen und erweitern bestehende Systeme um verlässliche neue Funktionen.</p>
+          <a href="/softwareentwicklung/">Mehr zur Softwareentwicklung <span aria-hidden="true">→</span></a>
         </article>
         <article class="service-card">
           <div class="card-index">03</div>
           <h3>Fördermittel & Projektbetreuung</h3>
-          <p>Förderfähige Vorhaben entwickeln, Anträge strukturieren und bewilligte Projekte administrativ und technisch begleiten.</p>
+          <p>Wir unterstützen Technologieunternehmen bei Förderfähigkeit, Antragstellung und der Betreuung bewilligter Projekte.</p>
           <a href="https://foerderungen.realityforge.eu/">Zur Fördermittelberatung <span aria-hidden="true">↗</span></a>
         </article>
       </div>
     </section>
 
-    <section class="benchmark section" id="ki" aria-labelledby="benchmark-title">
-      <div class="benchmark-copy">
-        <p class="eyebrow"><span></span> KI & IT-Systeme</p>
-        <h2 id="benchmark-title">KI nicht nach Bauchgefühl auswählen. <em>Messen.</em></h2>
-        <p>Unterschiedliche Modelle können bei derselben Unternehmensaufgabe sehr unterschiedlich abschneiden. Wir bauen reproduzierbare Benchmarks und prüfen das, was für den konkreten Prozess zählt.</p>
-        <ul class="metric-list" aria-label="Messkriterien">
-          <li><span>01</span> Qualität</li>
-          <li><span>02</span> Geschwindigkeit</li>
-          <li><span>03</span> Kosten</li>
-          <li><span>04</span> Fehlerquote</li>
-        </ul>
-      </div>
-      <div class="benchmark-panel" aria-label="Schematischer Benchmark-Vergleich">
-        <div class="panel-head">
-          <p>Benchmark / Beispielprozess</p>
-          <span>Reproduzierbar</span>
-        </div>
-        <div class="chart" aria-hidden="true">
-          <div class="chart-row"><span>System A</span><i style="--score: 91%"></i><b>91</b></div>
-          <div class="chart-row"><span>System B</span><i style="--score: 76%"></i><b>76</b></div>
-          <div class="chart-row"><span>System C</span><i style="--score: 58%"></i><b>58</b></div>
-          <div class="chart-row chart-baseline"><span>Prozess heute</span><i style="--score: 72%"></i><b>72</b></div>
-        </div>
-        <p class="panel-note">Schematische Darstellung. Bewertet wird immer eine klar definierte Aufgabe mit belastbaren Testfällen.</p>
-      </div>
-      <div class="architecture-grid">
-        <article>
-          <div class="architecture-icon" aria-hidden="true">API</div>
-          <p class="architecture-kicker">Leistung & Tempo</p>
-          <h3>Frontier-Modelle</h3>
-          <p>Leistungsfähige Modelle über APIs, wenn hohe Modellqualität und schnelle Integration entscheidend sind.</p>
-        </article>
-        <article>
-          <div class="architecture-icon" aria-hidden="true">LOC</div>
-          <p class="architecture-kicker">Kontrolle & Datenhoheit</p>
-          <h3>Lokale KI</h3>
-          <p>Modelle auf eigener Hardware oder Infrastruktur, wenn Daten das Unternehmen nicht verlassen sollen oder vollständige Kontrolle erforderlich ist.</p>
-        </article>
-        <p class="architecture-rule"><span>Entscheidungsregel</span> Die Architektur folgt dem Anwendungsfall, den Daten und den messbaren Anforderungen.</p>
-      </div>
-    </section>
-
-    <section class="software section" aria-labelledby="software-title">
-      <div class="software-layout">
-        <div>
-          <p class="eyebrow"><span></span> App- & Softwareentwicklung</p>
-          <h2 id="software-title">Von der Idee zur funktionierenden Anwendung.</h2>
-        </div>
-        <div class="software-copy">
-          <p>Wir entwickeln digitale Produkte und individuelle Software. Wir unterstützen bei technischer Konzeption, Prototyping, Entwicklung, Integration, Tests und Weiterentwicklung.</p>
-          <p>Unsere Erfahrung in Software, Elektronik, Embedded Systems, Augmented Reality, Computer Vision und technischer Produktentwicklung hilft besonders dort, wo mehrere Disziplinen zusammenkommen.</p>
-        </div>
-      </div>
-      <ol class="process-row" aria-label="Entwicklungsprozess">
-        <li><span>01</span> Konzeption</li>
-        <li><span>02</span> Prototyping</li>
-        <li><span>03</span> Entwicklung</li>
-        <li><span>04</span> Integration & Tests</li>
-        <li><span>05</span> Weiterentwicklung</li>
-      </ol>
-    </section>
-
     <section class="experience section" id="erfahrung" aria-labelledby="experience-title">
       <div class="experience-main">
         <p class="eyebrow"><span></span> Erfahrung</p>
-        <h2 id="experience-title">Wir kennen Technologie aus der <em>Umsetzung.</em></h2>
-        <p>RealityForge verbindet Softwareentwicklung, technische Produktentwicklung, KI, IT und Förderprojekt-Erfahrung. Patrick Bethke und Evgeni Melan haben zuvor gemeinsam ein Technologieunternehmen aufgebaut, Entwicklungsprojekte geleitet und komplexe Hard- und Softwaresysteme von der Idee bis zur Markteinführung begleitet.</p>
+        <h2 id="experience-title">Technische und unternehmerische Erfahrung.</h2>
+        <p>Patrick Bethke und Evgeni Melan verbinden langjährige Produktentwicklung mit dem Aufbau und der Führung eines Technologieunternehmens.</p>
       </div>
       <dl class="stats-grid">
         <div><dt>2</dt><dd>europäische Patente als Miterfinder</dd></div>
         <div><dt>ca. 2,5 Mio. €</dt><dd>selbst eingeworbene Fördermittel</dd></div>
-        <div><dt>seit 2018</dt><dd>Technologie- und Projekterfahrung im gemeinsamen Unternehmen</dd></div>
+        <div><dt>seit 2018</dt><dd>gemeinsame Technologie- und Projekterfahrung</dd></div>
       </dl>
     </section>
 
     <section class="contact section" id="kontakt" aria-labelledby="contact-title">
       <p class="eyebrow"><span></span> Kontakt</p>
       <div class="contact-inner">
-        <h2 id="contact-title">Ein technisches Problem, ein KI-Projekt oder eine Idee?</h2>
+        <h2 id="contact-title">Projekt besprechen</h2>
         <div>
-          <p>Beschreiben Sie uns kurz die Aufgabe. Wir melden uns persönlich und klären gemeinsam, ob und wie wir sinnvoll unterstützen können.</p>
+          <p>Schildern Sie uns kurz Ihre technische Aufgabe. Wir melden uns persönlich.</p>
           <a class="contact-link" href="mailto:realityforgeeu@gmail.com?subject=Projektanfrage%20an%20RealityForge">
             <span>realityforgeeu@gmail.com</span><b aria-hidden="true">↗</b>
           </a>
@@ -190,9 +137,9 @@
       <p>Engineering & Technology Consulting<br>RealityForge GbR · Berlin</p>
     </div>
     <div class="footer-links">
+      <div><p>Leistungen</p><a href="/ki/">KI-Systeme</a><a href="/softwareentwicklung/">Softwareentwicklung</a><a href="https://foerderungen.realityforge.eu/">Fördermittel</a></div>
       <div><p>Kontakt</p><a href="mailto:realityforgeeu@gmail.com">E-Mail schreiben</a></div>
-      <div><p>Rechtliches</p><a href="/legal-notice/">Legal Notice</a></div>
-      <div><p>Privacy Policies</p><a href="/privacy-policy/braingames/">Braingames</a><a href="/privacy-policy/flappy-dragon/">Flappy Dragon</a></div>
+      <div><p>Rechtliches</p><a href="/legal-notice/">Legal Notice</a><a href="/privacy-policy/braingames/">Privacy Policy Braingames</a><a href="/privacy-policy/flappy-dragon/">Privacy Policy Flappy Dragon</a></div>
     </div>
     <div class="footer-bottom"><span>© 2026 RealityForge GbR</span><a href="#main">Nach oben ↑</a></div>
   </footer>

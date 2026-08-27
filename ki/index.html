@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KI-Systeme für Unternehmen · RealityForge</title>
+  <meta name="description" content="RealityForge entwickelt und integriert KI-Systeme: Modellauswahl, Benchmarking, lokale Infrastruktur, RAG, Dokumentenverarbeitung und interne APIs.">
+  <meta name="theme-color" content="#09090d">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="RealityForge">
+  <meta property="og:title" content="KI-Systeme für Unternehmen · RealityForge">
+  <meta property="og:description" content="Modellauswahl, Benchmarking, lokale KI, RAG und Integration in bestehende Systeme.">
+  <meta property="og:url" content="https://realityforge.eu/ki/">
+  <meta property="og:image" content="https://realityforge.eu/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://realityforge.eu/ki/">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <script>
+    (() => {
+      const key = 'realityforge-theme';
+      let theme = 'dark';
+      try { theme = localStorage.getItem(key) || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'); }
+      catch (_) { theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; }
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script defer src="/assets/theme.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="RealityForge Startseite"><span class="brand-mark" aria-hidden="true">RF</span><span class="brand-name">RealityForge</span></a>
+    <div class="header-tools">
+      <nav class="desktop-nav" aria-label="Hauptnavigation">
+        <a href="/ki/" aria-current="page">KI</a><a href="/softwareentwicklung/">Software</a><a href="https://foerderungen.realityforge.eu/">Fördermittel</a><a href="/#erfahrung">Über uns</a><a href="/#kontakt">Kontakt</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Light Mode aktivieren"><span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span><span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span></button>
+      <details class="mobile-nav">
+        <summary aria-label="Navigation öffnen"><span></span><span></span></summary>
+        <nav aria-label="Mobile Navigation"><a href="/ki/" aria-current="page">KI</a><a href="/softwareentwicklung/">Software</a><a href="https://foerderungen.realityforge.eu/">Fördermittel</a><a href="/#erfahrung">Über uns</a><a href="/#kontakt">Kontakt</a></nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero detail-hero" aria-labelledby="hero-title">
+      <p class="eyebrow"><span></span> KI-Systeme</p>
+      <h1 id="hero-title">KI-Systeme für Unternehmen.</h1>
+      <p class="hero-intro">Wir planen, evaluieren und integrieren KI-Systeme für fachliche Prozesse, interne Wissensbestände und technische Dokumente.</p>
+      <a class="button button-primary" href="mailto:realityforgeeu@gmail.com?subject=KI-Projekt%20mit%20RealityForge">KI-Projekt besprechen</a>
+    </section>
+
+    <section class="detail-section" aria-labelledby="capabilities-title">
+      <div class="detail-heading">
+        <div><p class="eyebrow"><span></span> Leistungen</p><h2 id="capabilities-title">Von der Machbarkeit bis zum Betrieb.</h2></div>
+        <p>Jede Lösung beginnt mit einer klaren fachlichen Aufgabe. Wir verbinden Modellkenntnis, Softwareentwicklung und Infrastrukturplanung zu einem umsetzbaren System.</p>
+      </div>
+      <div class="capability-grid">
+        <article class="capability-card"><span class="card-index">01</span><h3>Beratung & Machbarkeit</h3><p>Wir strukturieren Anwendungsfall, Datenlage, Qualitätsziele und technischen Rahmen. Daraus entsteht ein belastbarer Plan für einen Proof of Concept.</p></article>
+        <article class="capability-card"><span class="card-index">02</span><h3>Modellauswahl & Benchmarking</h3><p>Wir vergleichen KI-Modelle anhand reproduzierbarer Testfälle und realer fachlicher Anforderungen. Bewertet werden Qualität, Laufzeit, Kosten und Ressourcenbedarf.</p></article>
+        <article class="capability-card"><span class="card-index">03</span><h3>Lokale KI-Infrastruktur</h3><p>Wir dimensionieren GPUs, Hardware und Serving-Software für intern betriebene Sprachmodelle und sensible Datenverarbeitung.</p></article>
+        <article class="capability-card"><span class="card-index">04</span><h3>RAG & Dokumentenwissen</h3><p>Wir entwickeln semantische Suche, Dokumenten-Chat und Wissenszugriff für technische Unterlagen und kundenspezifische Wissensbestände.</p></article>
+        <article class="capability-card"><span class="card-index">05</span><h3>APIs & Microservices</h3><p>Wir integrieren KI über interne APIs und Microservices in bestehende Anwendungen, Datenflüsse und Bedienoberflächen.</p></article>
+        <article class="capability-card"><span class="card-index">06</span><h3>Datenschutz & Trennung</h3><p>Wir berücksichtigen lokale Datenverarbeitung, Mandantentrennung, Zugriffsrechte und technisch saubere Datengrenzen von Beginn an.</p></article>
+      </div>
+    </section>
+
+    <section class="detail-section" aria-labelledby="operation-title">
+      <div class="detail-heading">
+        <div><p class="eyebrow"><span></span> Infrastruktur</p><h2 id="operation-title">Passende Betriebsmodelle.</h2></div>
+        <p>Die Architektur richtet sich nach Qualitätsziel, Datenlage, Integrationsaufwand, Laufzeit und verfügbaren Ressourcen.</p>
+      </div>
+      <div class="option-grid">
+        <article><p class="architecture-kicker">Schnelle Integration</p><h3>Cloud- und API-Modelle</h3><p>Leistungsfähige Modelle lassen sich über abgesicherte Schnittstellen in Prozesse integrieren. Wir planen Datenfluss, Zugriff, Kostenkontrolle und Systemverhalten.</p></article>
+        <article><p class="architecture-kicker">Eigene Infrastruktur</p><h3>Lokaler und interner Betrieb</h3><p>Modelle laufen auf eigener Hardware oder kontrollierter Infrastruktur. Wir planen Hardware, Serving, Skalierung, Monitoring und den Zugriff auf interne Daten.</p></article>
+      </div>
+    </section>
+
+    <section class="detail-section" aria-labelledby="process-title">
+      <div class="detail-heading">
+        <div><p class="eyebrow"><span></span> Vorgehen</p><h2 id="process-title">Messbar entwickeln.</h2></div>
+        <p>Ein kompakter Evaluationsprozess schafft eine belastbare Grundlage für technische und wirtschaftliche Entscheidungen.</p>
+      </div>
+      <ol class="process-row">
+        <li><span>01</span>Anforderungen<small>Aufgabe, Daten, Qualitätskriterien und Betriebsrahmen klären.</small></li>
+        <li><span>02</span>Proof of Concept<small>Modelle, Retrieval und Systemkomponenten praktisch erproben.</small></li>
+        <li><span>03</span>Evaluation<small>Qualität, Laufzeit, Kosten und Ressourcenbedarf reproduzierbar bewerten.</small></li>
+        <li><span>04</span>Integration<small>APIs, Infrastruktur, Sicherheit und Betrieb in das Zielsystem überführen.</small></li>
+      </ol>
+      <p class="detail-note">Fine-Tuning prüfen wir als mögliche spätere Spezialisierung, wenn Datenlage und Aufgabenprofil einen klaren Nutzen erwarten lassen.</p>
+    </section>
+
+    <section class="detail-section detail-cta" aria-labelledby="contact-title">
+      <h2 id="contact-title">KI-Projekt besprechen</h2>
+      <div><p>Beschreiben Sie uns den fachlichen Prozess und die vorhandene Systemlandschaft.</p><a class="contact-link" href="mailto:realityforgeeu@gmail.com?subject=KI-Projekt%20mit%20RealityForge"><span>realityforgeeu@gmail.com</span><b aria-hidden="true">↗</b></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">RF</span><span class="brand-name">RealityForge</span></a><p>Engineering & Technology Consulting<br>RealityForge GbR · Berlin</p></div>
+    <div class="footer-links"><div><p>Leistungen</p><a href="/ki/">KI-Systeme</a><a href="/softwareentwicklung/">Softwareentwicklung</a><a href="https://foerderungen.realityforge.eu/">Fördermittel</a></div><div><p>Kontakt</p><a href="mailto:realityforgeeu@gmail.com">E-Mail schreiben</a></div><div><p>Rechtliches</p><a href="/legal-notice/">Legal Notice</a><a href="/privacy-policy/braingames/">Privacy Policy Braingames</a><a href="/privacy-policy/flappy-dragon/">Privacy Policy Flappy Dragon</a></div></div>
+    <div class="footer-bottom"><span>© 2026 RealityForge GbR</span><a href="#main">Nach oben ↑</a></div>
+  </footer>
+</body>
+</html>
