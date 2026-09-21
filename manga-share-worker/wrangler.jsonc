@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "realityforge-manga-share",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-21",
+  "workers_dev": true,
+  "vars": {
+    "MANGA_API_BASE": "https://manga-tracker-api.realityforgeeu.workers.dev"
+  },
+  "services": [
+    {
+      "binding": "MANGA_API",
+      "service": "manga-tracker-api",
+      "remote": true
+    }
+  ],
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  }
+}

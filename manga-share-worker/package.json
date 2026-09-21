@@ -1,0 +1,15 @@
+{
+  "name": "realityforge-manga-share-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "node --test",
+    "check": "npm test && wrangler deploy --dry-run",
+    "deploy": "wrangler deploy --config wrangler.production.jsonc"
+  },
+  "devDependencies": {
+    "wrangler": "^4.135.0"
+  }
+}
