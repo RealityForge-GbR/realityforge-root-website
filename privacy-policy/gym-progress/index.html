@@ -46,6 +46,9 @@
       <ul>
         <li>local device storage for workout plans, exercise settings and workout history;</li>
         <li>Google Analytics for Firebase for optional product analytics, only after the user has consented;</li>
+        <li>Google AdMob for banner and interstitial advertising in the free version, subject to the applicable privacy choices;</li>
+        <li>Google User Messaging Platform (UMP) for advertising consent and privacy options where required;</li>
+        <li>Google Play Billing for optional one-time purchases that remove advertising or unlock Pro features;</li>
         <li>the YouTube embedded player in Privacy-Enhanced Mode for optional movement-guide videos;</li>
         <li>in App versions offering it, an optional, separate service for reporting movement-guide video problems or suggesting another video.</li>
       </ul>
@@ -55,21 +58,21 @@
         <li>Firebase Authentication;</li>
         <li>Cloud Firestore or another cloud database for user workout data;</li>
         <li>cloud synchronisation of workout plans or workout history;</li>
-        <li>Google AdMob or another advertising SDK;</li>
         <li>Firebase Crashlytics;</li>
         <li>Firebase Performance Monitoring;</li>
         <li>Firebase Cloud Messaging;</li>
-        <li>in-app purchases or subscriptions;</li>
+        <li>subscriptions;</li>
         <li>a RealityForge backend server for personal workout data.</li>
       </ul>
       <p>Android cloud backup of the App’s private data is disabled.</p>
-      <p>RealityForge does not sell personal data and does not use App analytics for personalised advertising.</p>
+      <p>RealityForge does not sell personal data or use Firebase Analytics data or workout records to personalise advertising.</p>
 
       <h2>3. Data Stored Locally on the Device</h2>
       <p>Gym Progress stores workout-related information locally in the private application storage of the user’s device.</p>
       <p>Depending on how the App is used, this may include:</p>
       <ul>
         <li>the selected App language;</li>
+        <li>the first-use date and number of distinct active days, used locally to delay interstitial advertising;</li>
         <li>workout names entered by the user;</li>
         <li>exercises assigned to individual weekdays;</li>
         <li>the order of exercises within a workout;</li>
@@ -119,8 +122,8 @@
       </ul>
       <p>According to Google, Google Analytics for Firebase uses an App-instance identifier to distinguish individual App installations.</p>
       <p>Gym Progress does not assign or transmit its own user ID to Google Analytics.</p>
-      <p>Collection of the Android Advertising ID is disabled in the App’s configuration. The Android Advertising ID and Android AdServices advertising and attribution permissions are removed from the final App manifest.</p>
-      <p>Advertising storage, advertising user data and advertising personalisation consent remain disabled even if the user allows usage analytics.</p>
+      <p>Collection of the Android Advertising ID by Firebase Analytics remains disabled in the App’s configuration. The advertising SDK may access advertising and other device identifiers as described in section 10.</p>
+      <p>Firebase Analytics advertising storage, advertising user data and advertising personalisation consent remain denied even if the user allows usage analytics. The separate advertising choices are handled through UMP.</p>
       <p>Automatic screen reporting by Firebase Analytics is also disabled.</p>
 
       <h2>5. Custom Analytics Events</h2>
@@ -141,7 +144,8 @@
         <li>recording an exercise as completed;</li>
         <li>completing a workout;</li>
         <li>opening a movement guide;</li>
-        <li>changing the App language.</li>
+        <li>changing the App language;</li>
+        <li>opening the purchase screen, starting or completing a one-time purchase, becoming eligible for interstitial advertising, and displaying an interstitial ad.</li>
       </ul>
       <p>Depending on the event, the transmitted parameters may include:</p>
       <ul>
@@ -201,7 +205,7 @@
         <li>Analytics storage is permitted;</li>
         <li>Firebase Analytics collection is enabled.</li>
       </ul>
-      <p>Advertising-related consent remains denied.</p>
+      <p>This Analytics choice does not grant advertising consent. Advertising privacy choices are managed separately through UMP.</p>
       <p>The user can later change the Analytics choice through the App’s Privacy settings.</p>
       <p>If Analytics permission is withdrawn:</p>
       <ul>
@@ -258,6 +262,8 @@
       <p>Gym Progress currently requires Internet access for:</p>
       <ul>
         <li>optional Firebase Analytics after consent;</li>
+        <li>AdMob advertising and advertising privacy messages where applicable;</li>
+        <li>Google Play Billing for optional purchases;</li>
         <li>optional YouTube movement-guide videos;</li>
         <li>voluntary video feedback in App versions that offer it.</li>
       </ul>
@@ -270,22 +276,22 @@
         <li>SMS messages;</li>
         <li>calendar access;</li>
         <li>photos or videos;</li>
-        <li>general file storage;</li>
-        <li>the Android Advertising ID.</li>
+        <li>general file storage.</li>
       </ul>
       <p>The App does not require these permissions for its workout-tracking functions.</p>
 
-      <h2>10. No Advertising or Advertising Profiles</h2>
-      <p>Gym Progress does not integrate Google AdMob or another advertising SDK.</p>
-      <p>RealityForge does not use Firebase Analytics data for advertising personalisation.</p>
-      <p>Gym Progress does not create an advertising profile based on workout activity.</p>
-      <p>The YouTube embedded player is a separate Google service and may display non-personalised advertising as described above.</p>
+      <h2>10. Advertising, Privacy Choices and Purchases</h2>
+      <p>The free version of Gym Progress uses Google AdMob to display banners. Interstitial ads can appear only after at least 14 calendar days since first recorded use of this version and 10 distinct active days, at natural transitions between App sections. An Ad-Free or Pro one-time purchase removes App advertising; Pro also unlocks the custom exercise builder. These eligibility dates and counts are stored only on the device.</p>
+      <p>Before requesting ads, the App asks the Google User Messaging Platform (UMP) for current advertising privacy information and shows a consent form where required. Where UMP requires an ongoing privacy-options entry point, it is available in the App’s Privacy settings. The UMP advertising choice is separate from the App’s optional Firebase Analytics choice. If UMP does not permit an ad request, the App does not request an ad.</p>
+      <p>When ads are requested, Google Mobile Ads may collect and share the device IP address (from which approximate location may be inferred), interactions with the App and ads, diagnostic information, and device or account identifiers including the Android Advertising ID and App Set ID, for advertising, analytics and fraud prevention. Google describes these data types at <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Google Mobile Ads data disclosure</a>. The exact processing, including any ad personalisation, depends on the user's applicable privacy choices and Google's services. RealityForge does not send workout names, weights, repetitions, histories, or Firebase Analytics events to AdMob for targeting.</p>
+      <p>Optional lifetime purchases are processed by Google Play Billing. Google Play handles payment details; the App receives purchase state, product identifiers and purchase tokens needed to verify, acknowledge and restore access. The App does not receive payment-card details. A pending purchase does not unlock paid features. Purchases can be restored using the same Google Play account.</p>
+      <p>RealityForge does not use Firebase Analytics data for advertising personalisation and does not create an advertising profile from workout activity. The YouTube embedded player is a separate Google service and may display non-personalised advertising as described above.</p>
 
       <h2>11. Service Providers and Recipients</h2>
       <p>Personal or pseudonymous data may be processed by the following recipients where the corresponding feature is used:</p>
       <ul>
         <li>Google Ireland Limited;</li>
-        <li>Google LLC and affiliated Google companies involved in providing Firebase Analytics or YouTube;</li>
+        <li>Google LLC and affiliated Google companies involved in providing Firebase Analytics, AdMob, UMP, Google Play Billing or YouTube;</li>
         <li>technical service providers engaged by Google;</li>
         <li>Cloudflare, when voluntary video feedback is submitted;</li>
         <li>public authorities where disclosure is required by law.</li>
@@ -301,7 +307,7 @@
 
       <h2>12. International Data Transfers</h2>
       <p>Google operates infrastructure in multiple countries.</p>
-      <p>Personal or pseudonymous information processed through Firebase Analytics or YouTube may therefore be processed outside the European Economic Area, including in the United States.</p>
+      <p>Personal or pseudonymous information processed through Firebase Analytics, AdMob, UMP, Google Play Billing or YouTube may therefore be processed outside the European Economic Area, including in the United States.</p>
       <p>Google states that it relies on recognised legal mechanisms for international transfers, including:</p>
       <ul>
         <li>adequacy decisions;</li>
@@ -314,6 +320,7 @@
       <h2>13. Data Retention</h2>
       <p>Local workout information remains on the user’s device until it is deleted through normal App operation, the App’s storage is cleared, the App is uninstalled or the data is otherwise removed by the operating system.</p>
       <p>The locally stored Analytics consent choice remains until it is changed, the App’s storage is cleared or the App is uninstalled.</p>
+      <p>Locally stored first-use and active-day information remains until the App’s storage is cleared or the App is uninstalled. Advertising privacy choices are managed by UMP and Google according to their applicable retention policies. Google Play retains purchase records according to its policies so that purchases can be restored.</p>
       <p>Firebase Analytics information is retained according to the retention settings and policies applicable to the associated Google Analytics property.</p>
       <p>Google Analytics distinguishes between user- and event-level data and aggregated reporting data. The retention controls for user- and event-level data do not necessarily determine how long aggregated reports remain available.</p>
       <p>RealityForge uses Analytics information only for as long as it is required for the product-analysis purposes described in this Privacy Policy, subject to the technical retention controls made available by Google.</p>
@@ -340,10 +347,11 @@
       <p>RealityForge limits the data transmitted by Gym Progress to the information required for the functions described in this Privacy Policy.</p>
       <p>Workout plans and detailed workout-performance information are stored in the App’s private local storage.</p>
       <p>Android cloud backup is disabled.</p>
-      <p>Network connections to Firebase and YouTube use encrypted HTTPS/TLS connections.</p>
+      <p>Network connections to Firebase, AdMob, UMP, Google Play and YouTube use encrypted HTTPS/TLS connections.</p>
       <p>No method of electronic transmission or storage can, however, guarantee absolute security.</p>
 
-      <h2>16. Your Rights under the GDPR</h2>
+      <h2 id="data-deletion">16. Your Rights and Data Deletion</h2>
+      <p>To request deletion of data held by RealityForge for Gym Progress, email <a href="mailto:realityforgeeu@gmail.com?subject=Gym%20Progress%20data%20deletion">realityforgeeu@gmail.com</a> and state that your request concerns Gym Progress. You can delete locally stored workout plans and active-day records at any time by clearing the App’s storage or uninstalling it. RealityForge can delete identifiable voluntary video feedback and correspondence on request, subject to applicable legal retention duties. Firebase Analytics data may not be identifiable from an email address alone; Google Play purchase records and data processed by Google under its own responsibility are managed under Google’s policies.</p>
       <p>Where the GDPR applies, you have, subject to the applicable legal requirements, the following rights:</p>
       <ul>
         <li>the right of access under Article 15 GDPR;</li>
@@ -372,7 +380,7 @@
       <h2>18. Children</h2>
       <p>Gym Progress is not specifically directed at children.</p>
       <p>The App does not require users to provide names, email addresses, telephone numbers or other direct contact information.</p>
-      <p>Where a user is not legally able to provide valid consent to optional Analytics processing under applicable law, Analytics should not be enabled without any authorisation required from a parent or legal guardian.</p>
+      <p>Where a user is not legally able to provide valid consent to optional Analytics or advertising processing under applicable law, the relevant consent should not be given without any authorisation required from a parent or legal guardian.</p>
       <p>If RealityForge becomes aware that personal data relating to a child has been processed without the consent or authorisation required by applicable law, RealityForge will take reasonable steps to address the situation.</p>
 
       <h2>19. No Medical Purpose</h2>
