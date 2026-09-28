@@ -27,7 +27,7 @@
   <main id="legal-content" class="legal-shell">
     <div class="legal-intro"><p class="eyebrow"><span></span> App Privacy Policy</p><h1>Privacy Policy for Gym Progress</h1></div>
     <article class="legal-document">
-      <p class="legal-updated">Last updated: 17 September 2026</p>
+      <p class="legal-updated">Last updated: 28 September 2026</p>
       <p>This Privacy Policy explains how personal data is processed when you use the Android application “Gym Progress”.</p>
 
       <h2>1. Data Controller</h2>
@@ -46,7 +46,8 @@
       <ul>
         <li>local device storage for workout plans, exercise settings and workout history;</li>
         <li>Google Analytics for Firebase for optional product analytics, only after the user has consented;</li>
-        <li>the YouTube embedded player in Privacy-Enhanced Mode for optional movement-guide videos.</li>
+        <li>the YouTube embedded player in Privacy-Enhanced Mode for optional movement-guide videos;</li>
+        <li>in App versions offering it, an optional, separate service for reporting movement-guide video problems or suggesting another video.</li>
       </ul>
       <p>Gym Progress does not currently use:</p>
       <ul>
@@ -244,11 +245,21 @@
       <p>Further information is available at:</p>
       <p><a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a><br><a href="https://www.youtube.com/t/terms">https://www.youtube.com/t/terms</a><br><a href="https://support.google.com/youtube/answer/171780">https://support.google.com/youtube/answer/171780</a></p>
 
+      <h2>8a. Voluntary Movement-Guide Video Feedback</h2>
+      <p>In App versions that offer video feedback, users can voluntarily report a problem with a movement-guide video or suggest a better YouTube video. Feedback is sent only when the user taps Send. It is reviewed internally by RealityForge; it is not published or used to change the exercise catalogue automatically.</p>
+      <p>The App sends the exercise identifier, the current YouTube video ID, a selected reason, and, for a replacement suggestion, the proposed YouTube video ID. It also sends the App version, the selected App language and a randomly generated identifier for this installation used only for video feedback. The complete suggested YouTube URL is reduced to its video ID before sending. The service adds the submission time.</p>
+      <p>The installation identifier is stored locally in the App’s private storage when first needed. The service uses a server-side secret to create a keyed hash for rate limiting and duplicate detection. The raw identifier is not stored in the feedback database. The App does not send workout names, weights, repetitions, sets, workout history, search terms, account information or advertising identifiers with feedback.</p>
+      <p>Feedback is processed independently of Firebase Analytics consent. Firebase Analytics is not used to transport or store feedback. The service permits at most five submissions per installation and two per exercise and installation within 24 hours; identical feedback within 30 days is not added to the moderation queue again.</p>
+      <p>Cloudflare provides the Worker and D1 database for this service. Cloudflare necessarily processes network connection information, including IP addresses, when handling requests. RealityForge does not store raw IP addresses in D1 for video feedback and does not create a device fingerprint for this feature.</p>
+      <p>The keyed installation hash is removed from queue records after 30 days. Reviewed entries are deleted after 90 days, and entries still pending after 180 days. The local installation identifier remains until the App’s data is cleared or the App is uninstalled. Feedback is not silently queued for later transmission when offline.</p>
+      <p>The processing serves RealityForge’s legitimate interest in correcting movement guides and protecting the feedback service from abuse under Article 6(1)(f) GDPR. The feature is optional and does not require an account.</p>
+
       <h2>9. Android Permissions</h2>
       <p>Gym Progress currently requires Internet access for:</p>
       <ul>
         <li>optional Firebase Analytics after consent;</li>
-        <li>optional YouTube movement-guide videos.</li>
+        <li>optional YouTube movement-guide videos;</li>
+        <li>voluntary video feedback in App versions that offer it.</li>
       </ul>
       <p>The App does not request Android permissions for:</p>
       <ul>
@@ -276,11 +287,13 @@
         <li>Google Ireland Limited;</li>
         <li>Google LLC and affiliated Google companies involved in providing Firebase Analytics or YouTube;</li>
         <li>technical service providers engaged by Google;</li>
+        <li>Cloudflare, when voluntary video feedback is submitted;</li>
         <li>public authorities where disclosure is required by law.</li>
       </ul>
       <p>For Google Analytics for Firebase, Google may act as a processor for certain processing carried out on behalf of RealityForge.</p>
       <p>For certain service-operation, security and other purposes, Google may also process information under its own responsibility.</p>
       <p>RealityForge does not operate a server that receives or stores users’ complete workout plans or workout histories.</p>
+      <p>The separate feedback database holds only the limited movement-guide feedback fields described above.</p>
       <p>Further information about Firebase privacy and data processing is available at:</p>
       <p><a href="https://firebase.google.com/support/privacy">https://firebase.google.com/support/privacy</a></p>
       <p>Google’s Privacy Policy is available at:</p>
@@ -305,6 +318,7 @@
       <p>Google Analytics distinguishes between user- and event-level data and aggregated reporting data. The retention controls for user- and event-level data do not necessarily determine how long aggregated reports remain available.</p>
       <p>RealityForge uses Analytics information only for as long as it is required for the product-analysis purposes described in this Privacy Policy, subject to the technical retention controls made available by Google.</p>
       <p>Information processed independently by Google or YouTube is retained in accordance with the applicable Google policies and retention rules.</p>
+      <p>Retention of optional video feedback and its pseudonymous identifier is described in section 8a.</p>
 
       <h2>14. Contact by Email</h2>
       <p>If you contact RealityForge by email, we process the information contained in your message.</p>
