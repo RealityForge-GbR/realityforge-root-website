@@ -19,7 +19,9 @@
   <main id="legal-content" class="legal-shell">
     <div class="legal-intro"><h1>Datenschutzerklärung für die Android-App „Manga Tracker“</h1></div>
     <article class="legal-document">
-      <p class="legal-updated">Stand: 29. September 2026</p>
+      <p>RealityForge GbR</p>
+
+      <p class="legal-updated">Stand: 4. Oktober 2026</p>
 
       <h2>1. Verantwortlicher</h2>
 
@@ -50,6 +52,8 @@
       <p>Firebase Analytics ist optional und standardmäßig deaktiviert. Eine Erfassung zu Nutzungsanalysezwecken durch RealityForge beginnt erst nach ausdrücklicher Zustimmung des Nutzers in der App.</p>
 
       <p>Push-Benachrichtigungen sind ebenfalls optional und unabhängig von der Analytics-Einwilligung.</p>
+
+      <p>Unabhängig von der optionalen Firebase-Nutzungsanalyse verarbeitet das RealityForge-Backend in begrenztem Umfang technische Sicherheitsdaten, um Missbrauch, automatisiertes Crawling, außergewöhnlich hohe Request-Last und kostenverursachende Angriffe auf die Backend-Infrastruktur zu erkennen. Einzelheiten hierzu finden Sie in Abschnitt 6.1.</p>
 
       <h2>3. Lokale Speicherung auf dem Gerät</h2>
 
@@ -119,9 +123,9 @@
 
       <h2>5. Online-Funktionen und RealityForge-Backend</h2>
 
-      <p>Für Online-Funktionen stellt Manga Tracker eine Verbindung zu dem von RealityForge betriebenen Backend her:</p>
+      <p>Für Online-Funktionen stellt Manga Tracker eine Verbindung zu dem von RealityForge betriebenen Backend her, insbesondere unter:</p>
 
-      <p><a href="https://manga-tracker-api.realityforgeeu.workers.dev">https://manga-tracker-api.realityforgeeu.workers.dev</a></p>
+      <p><a href="https://api.manga.realityforge.eu">https://api.manga.realityforge.eu</a></p>
 
       <p>Bei jeder Netzwerkverbindung fallen technisch erforderliche Verbindungsdaten an. Hierzu können insbesondere gehören:</p>
 
@@ -208,11 +212,11 @@
 
       <p>Die Verarbeitung technisch erforderlicher Verbindungs- und Sicherheitsdaten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse besteht in der sicheren, stabilen und missbrauchsresistenten Bereitstellung der App und ihrer Backend-Funktionen.</p>
 
-      <h2>6. Cloudflare Workers, D1 und R2</h2>
+      <h2>6. Cloudflare Workers, D1, R2, Analytics Engine und Email Service</h2>
 
       <p>Das Manga-Tracker-Backend wird mit Diensten von Cloudflare betrieben.</p>
 
-      <p>Hierbei kommen insbesondere Cloudflare Workers, Cloudflare D1 und Cloudflare R2 zum Einsatz.</p>
+      <p>Hierbei kommen insbesondere Cloudflare Workers, Cloudflare D1, Cloudflare R2, Workers Analytics Engine, Analytics SQL und – für interne Sicherheitswarnungen – Cloudflare Email Service zum Einsatz.</p>
 
       <p>Anbieter ist:</p>
 
@@ -235,6 +239,78 @@
       <p>Weitere Informationen:</p>
 
       <p><a href="https://www.cloudflare.com/de-de/privacypolicy/">https://www.cloudflare.com/de-de/privacypolicy/</a><br><a href="https://www.cloudflare.com/cloudflare-customer-dpa/">https://www.cloudflare.com/cloudflare-customer-dpa/</a></p>
+
+      <h3>6.1 Pseudonymisierte Sicherheits- und Missbrauchserkennung</h3>
+
+      <p>Zur Erkennung von langsamen Missbrauchsmustern, automatisiertem Crawling, außergewöhnlich hoher Request-Last sowie sogenannten Denial-of-Wallet- bzw. vergleichbaren kostenverursachenden Angriffen verarbeitet das RealityForge-Backend für bestimmte öffentliche API-Aufrufe pseudonymisierte Sicherheitsdaten.</p>
+
+      <p>Erfasst werden ausschließlich Aufrufe bestimmter öffentlicher Backend-Bereiche, insbesondere der groben Kategorien:</p>
+
+      <ul>
+        <li>Katalog;</li>
+        <li>Reihen;</li>
+        <li>Releases;</li>
+        <li>Genres;</li>
+        <li>Inventar-Anreicherung;</li>
+        <li>Manga-Produktabfragen.</li>
+      </ul>
+
+      <p>Nicht für diese Sicherheits-Telemetrie erfasst werden insbesondere:</p>
+
+      <ul>
+        <li>Health-Checks;</li>
+        <li>administrative Backend-Endpunkte;</li>
+        <li>Cover-Abrufe;</li>
+        <li>andere RealityForge-Hosts;</li>
+        <li>Preview-Deployments.</li>
+      </ul>
+
+      <p>Die beim Verbindungsaufbau technisch vorliegende IP-Adresse wird für diese Sicherheits-Telemetrie nicht im Klartext in Workers Analytics Engine gespeichert. Sie wird unmittelbar im Arbeitsspeicher des Workers mit HMAC-SHA-256 und einem nur serverseitig gespeicherten geheimen Schlüssel verarbeitet. In Workers Analytics Engine wird nur ein auf 128 Bit gekürzter HMAC-Identifier gespeichert.</p>
+
+      <p>Dieser Identifier ist pseudonymisiert und nicht anonymisiert. Er dient ausschließlich dazu, wiederholte Requests desselben technischen Anschlusses innerhalb des Auswertungszeitraums zusammenzufassen. Er ist keine Benutzer-ID und wird nicht mit einer Manga-Bibliothek, Favoriten, Einkaufsliste, Budgets, persönlichen Notizen oder einem RealityForge-Benutzerkonto verknüpft.</p>
+
+      <p>Zusätzlich werden nur folgende Angaben gespeichert:</p>
+
+      <ul>
+        <li>grobe API-Kategorie, beispielsweise „catalog“, „series“ oder „genres“;</li>
+        <li>HTTP-Methode;</li>
+        <li>technischer Zählwert für den Request;</li>
+        <li>der von Cloudflare für den Analytics-Datensatz geführte Zeitbezug.</li>
+      </ul>
+
+      <p>Nicht in dieser Sicherheits-Telemetrie gespeichert werden insbesondere:</p>
+
+      <ul>
+        <li>die rohe IP-Adresse;</li>
+        <li>vollständige URLs oder vollständige Pfade;</li>
+        <li>Query-Parameter;</li>
+        <li>Suchbegriffe;</li>
+        <li>ISBN;</li>
+        <li>Manga-Titel;</li>
+        <li>Reihenschlüssel;</li>
+        <li>User-Agent;</li>
+        <li>persönliche Bibliotheksinhalte;</li>
+        <li>Favoriten;</li>
+        <li>Einkaufslisten;</li>
+        <li>Budgets;</li>
+        <li>persönliche Notizen.</li>
+      </ul>
+
+      <p>Die Sicherheitsdaten werden regelmäßig in einem begrenzten Zeitfenster aggregiert ausgewertet. Ziel ist es, technisch ungewöhnlich hohe Request-Zahlen einzelner pseudonymisierter Quellen zu erkennen. Es werden keine automatischen Nutzerprofile für Werbung, Empfehlungen oder Manga-Interessen erstellt.</p>
+
+      <p>Das System nimmt aufgrund dieser Auswertung keine automatische Sperre vor. Bei einem auffälligen Volumen kann eine interne Warnung an RealityForge erzeugt werden. Dabei enthält die Warnung nur einen verkürzten pseudonymisierten Identifier, aggregierte Request-Zahlen und gegebenenfalls die dominante grobe API-Kategorie. Die rohe IP-Adresse wird nicht in die Warn-E-Mail aufgenommen.</p>
+
+      <p>Für den Versand einer solchen internen Warnung kann Cloudflare Email Service verwendet werden. Die Nachricht wird an eine verifizierte interne RealityForge-E-Mail-Adresse gesendet. Da RealityForge für dieses Postfach Gmail verwendet, kann Google im Rahmen der E-Mail-Zustellung und -Speicherung die in der Warnung enthaltenen pseudonymisierten Informationen verarbeiten.</p>
+
+      <p>Die Verarbeitung dieser Sicherheitsdaten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse besteht in der Erkennung und Abwehr von Missbrauch, dem Schutz der Verfügbarkeit und Stabilität des Backends, der Begrenzung missbräuchlich verursachter Infrastrukturkosten sowie der Aufrechterhaltung eines sicheren Betriebs für alle Nutzer.</p>
+
+      <p>Die Sicherheits-Telemetrie ist von der optionalen Firebase-Analytics-Einwilligung unabhängig. Sie dient nicht der allgemeinen Nutzungsanalyse oder Werbung, sondern ausschließlich Sicherheits- und Missbrauchsschutzzwecken.</p>
+
+      <p>Workers Analytics Engine speichert die für diese Sicherheits-Telemetrie geschriebenen Daten nach der derzeitigen Cloudflare-Dokumentation für drei Monate.</p>
+
+      <p>Weitere Informationen:</p>
+
+      <p><a href="https://developers.cloudflare.com/analytics/analytics-engine/limits/">https://developers.cloudflare.com/analytics/analytics-engine/limits/</a><br><a href="https://developers.cloudflare.com/email-service/">https://developers.cloudflare.com/email-service/</a><br><a href="https://www.cloudflare.com/cloudflare-customer-dpa/">https://www.cloudflare.com/cloudflare-customer-dpa/</a></p>
 
       <h2>7. VLB / MVB GmbH</h2>
 
@@ -281,6 +357,8 @@
       <p>Vor einer ausdrücklichen Zustimmung des Nutzers wird die Analytics-Erfassung durch die App nicht aktiviert.</p>
 
       <p>Die App puffert eigene Analytics-Ereignisse vor einer Zustimmung nicht zur späteren Übertragung.</p>
+
+      <p>Die in Abschnitt 6.1 beschriebene serverseitige Sicherheits-Telemetrie ist hiervon nicht umfasst. Sie ist keine Firebase-Nutzungsanalyse und wird nicht zu Werbe- oder Empfehlungszwecken eingesetzt.</p>
 
       <h3>8.2 Einwilligung</h3>
 
@@ -637,6 +715,8 @@
 
       <p>Die optionale Nutzungsanalyse über Firebase Analytics und die optionale Push-Funktion über Firebase Cloud Messaging sind hiervon ausdrücklich ausgenommen und in den vorstehenden Abschnitten beschrieben.</p>
 
+      <p>Die in Abschnitt 6.1 beschriebene pseudonymisierte Sicherheits-Telemetrie ist keine Werbe- oder Marketinganalyse. Sie dient ausschließlich der Erkennung von Missbrauch und dem Schutz der Backend-Infrastruktur.</p>
+
       <h2>17. Kontaktaufnahme per E-Mail</h2>
 
       <p>Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen übermittelten Daten, insbesondere:</p>
@@ -660,6 +740,8 @@
       <p>Google Ireland Limited<br>Gordon House<br>Barrow Street<br>Dublin 4<br>Irland</p>
 
       <p>Abhängig von der technischen Bereitstellung können Daten auch außerhalb des Europäischen Wirtschaftsraums verarbeitet werden.</p>
+
+      <p>Das interne RealityForge-Postfach kann außerdem Sicherheitswarnungen aus dem in Abschnitt 6.1 beschriebenen Missbrauchsmonitoring empfangen. Diese Warnungen enthalten keine rohe IP-Adresse, sondern nur verkürzte pseudonymisierte Kennungen und aggregierte technische Angaben.</p>
 
       <p>Weitere Informationen:</p>
 
@@ -692,9 +774,9 @@
       <p>Im Rahmen der in dieser Datenschutzerklärung beschriebenen Verarbeitung können insbesondere folgende Empfänger bzw. Dienstleister Daten verarbeiten:</p>
 
       <ul>
-        <li>Cloudflare für die technische Bereitstellung des Manga-Tracker-Backends und der Cover-/Katalog-Infrastruktur;</li>
+        <li>Cloudflare für die technische Bereitstellung des Manga-Tracker-Backends, der Cover-/Katalog-Infrastruktur, die pseudonymisierte Sicherheits-Telemetrie und den technischen Versand interner Sicherheitswarnungen;</li>
         <li>MVB GmbH / VLB für serverseitig abgerufene Buchmetadaten und Cover;</li>
-        <li>Google / Firebase für die optionale Nutzungsanalyse, optionale Push-Benachrichtigungen, Google Play-Dienste, den Google Code Scanner und den In-App-Review-Flow;</li>
+        <li>Google / Firebase für die optionale Nutzungsanalyse, optionale Push-Benachrichtigungen, Google Play-Dienste, den Google Code Scanner und den In-App-Review-Flow sowie Google/Gmail für die interne E-Mail-Kommunikation und gegebenenfalls den Empfang interner Sicherheitswarnungen;</li>
         <li>Amazon bzw. andere externe Shops, wenn der Nutzer einen entsprechenden externen Kauf-Link öffnet;</li>
         <li>GitHub für die Bereitstellung dieser Datenschutzerklärung über GitHub Pages;</li>
         <li>der vom Nutzer gewählte externe Anbieter, wenn Inhalte über den Android-Teilen-Dialog weitergegeben werden.</li>
@@ -717,6 +799,8 @@
       <p>RealityForge betreibt derzeit keine Cloud-Synchronisierung dieser persönlichen Daten.</p>
 
       <p>Manga Tracker fordert keine allgemeine Speicherberechtigung, keine eigene Kamera-Berechtigung und keine Standortberechtigung an.</p>
+
+      <p>Für die in Abschnitt 6.1 beschriebene Sicherheits-Telemetrie wird die rohe IP-Adresse nicht in Workers Analytics Engine gespeichert. Stattdessen wird serverseitig ein HMAC-basierter pseudonymisierter Identifier gebildet. Der hierfür verwendete geheime Schlüssel wird nicht in der App ausgeliefert und nicht in der Telemetrie gespeichert.</p>
 
       <p>Trotz angemessener technischer und organisatorischer Maßnahmen kann eine vollständig risikofreie Datenübertragung oder -speicherung technisch nicht garantiert werden.</p>
 
@@ -771,6 +855,14 @@
 
       <p>Soweit gesetzliche Aufbewahrungspflichten bestehen oder Daten zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen erforderlich sind, können sie entsprechend länger gespeichert werden.</p>
 
+      <h3>21.7 Pseudonymisierte Sicherheits-Telemetrie</h3>
+
+      <p>Die in Abschnitt 6.1 beschriebenen Daten in Workers Analytics Engine werden nach der derzeitigen Cloudflare-Dokumentation für drei Monate gespeichert.</p>
+
+      <p>RealityForge speichert im Rahmen dieser Telemetrie keine rohe IP-Adresse in Workers Analytics Engine.</p>
+
+      <p>Wird aufgrund eines auffälligen Request-Volumens eine interne Sicherheitswarnung per E-Mail erzeugt, kann diese Warnung im internen RealityForge-Mailkonto gespeichert werden. Sie wird nur so lange aufbewahrt, wie dies für die Prüfung, Dokumentation und gegebenenfalls Abwehr eines Sicherheits- oder Missbrauchsvorfalls erforderlich ist, soweit keine gesetzlichen Aufbewahrungsgründe entgegenstehen.</p>
+
       <h2>22. Rechte betroffener Personen</h2>
 
       <p>Soweit die gesetzlichen Voraussetzungen vorliegen, haben betroffene Personen insbesondere folgende Rechte:</p>
@@ -794,7 +886,9 @@
 
       <p>Bitte beachten Sie, dass RealityForge lokale App-Daten, die ausschließlich auf Ihrem Gerät gespeichert sind und nie an RealityForge übermittelt wurden, technisch nicht einem bestimmten Nutzer zuordnen oder aus der Ferne löschen kann.</p>
 
-      <p>Solche Daten können über die Funktionen der App, die Android-Systemeinstellungen oder durch Deinstallation der App entfernt werden.</p>
+      <p>Bei der pseudonymisierten Sicherheits-Telemetrie besteht ebenfalls kein Benutzerkonto oder Klarnamenbezug. Die Zuordnung zu einer bestimmten betroffenen Person kann daher im Einzelfall eingeschränkt oder ohne zusätzliche Angaben technisch nicht möglich sein.</p>
+
+      <p>Solche lokalen App-Daten können über die Funktionen der App, die Android-Systemeinstellungen oder durch Deinstallation der App entfernt werden.</p>
 
       <h2>23. Beschwerderecht</h2>
 
@@ -807,6 +901,8 @@
       <p>RealityForge setzt im Zusammenhang mit Manga Tracker keine automatisierte Entscheidungsfindung einschließlich Profiling im Sinne von Art. 22 DSGVO ein.</p>
 
       <p>Die lokale Ermittlung, ob ein Katalogereignis zu einer auf dem Gerät gespeicherten Reihe, einem Favoriten oder geplanten Kauf passt, dient ausschließlich der vom Nutzer angeforderten App-Funktion und führt nicht zu einer rechtlichen oder vergleichbar erheblichen automatisierten Entscheidung.</p>
+
+      <p>Auch die in Abschnitt 6.1 beschriebene Sicherheits-Telemetrie führt nicht automatisch zu einer Sperre oder einer sonstigen Entscheidung mit rechtlicher oder vergleichbar erheblicher Wirkung. Auffällige technische Request-Muster dienen ausschließlich als Hinweis für eine manuelle Sicherheitsprüfung.</p>
 
       <h2>25. Änderungen dieser Datenschutzerklärung</h2>
 
