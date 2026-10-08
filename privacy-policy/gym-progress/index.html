@@ -303,11 +303,21 @@
         <li>Speichern geänderter Übungseinstellungen;</li>
         <li>Öffnen eines Movement Guides;</li>
         <li>Wechsel der App-Sprache;</li>
+        <li>Abschluss eines Trainingstags beim aktiven Abhaken der letzten offenen Übung: nur Wochentag und Übungsanzahl;</li>
+        <li>Erstellen, Bearbeiten und Archivieren benutzerdefinierter Übungen: nur statische Kategorie;</li>
+        <li>Erstellen, Bearbeiten, Löschen und Abschließen von Kursen: nur Wochentag;</li>
+        <li>Start des Teilens eines Trainingsplans: nur Wochentag und Übungsanzahl;</li>
+        <li>Start des Teilens der App: keine Parameter;</li>
+        <li>erfolgreicher CSV-Import und -Export: keine Parameter;</li>
+        <li>automatischer In-App-Review-Request-Versuch und Öffnen des manuellen Bewertungslinks: keine Parameter;</li>
         <li>Öffnen der Kaufansicht;</li>
+        <li>Start eines Pro-Upgrade-Kaufs: keine Parameter;</li>
         <li>Start oder erfolgreicher Abschluss bestimmter Einmalkäufe;</li>
         <li>Erreichen der Interstitial-Werbe-Eignung;</li>
         <li>Anzeige einer Interstitial-Werbung.</li>
       </ul>
+
+      <p>Das automatische Review-Ereignis erfasst einen Anfrageversuch. Es bestätigt nicht, dass ein Bewertungsdialog angezeigt oder eine Bewertung abgegeben wurde.</p>
 
       <p>Je nach Event können nur fest definierte Parameter übertragen werden, zum Beispiel:</p>
 
@@ -322,24 +332,24 @@
         <li>ausgewählte App-Sprache.</li>
       </ul>
 
-      <p>Gym Progress übermittelt über diese benutzerdefinierten Analytics-Events nicht absichtlich:</p>
+      <p>Gym Progress übermittelt über diese benutzerdefinierten Analytics-Events keine der folgenden Daten:</p>
 
       <ul>
-        <li>Trainingsnamen;</li>
-        <li>Kursnamen, Kursorte oder Kursnotizen;</li>
+        <li>private Trainingsinhalte, einschließlich Trainingsnamen;</li>
+        <li>Kurs-IDs oder Kursinhalte wie Namen, Startzeiten, Dauer, Orte oder Notizen;</li>
         <li>Trainingsgewichte;</li>
         <li>Wiederholungszahlen oder Wiederholungsbereiche;</li>
         <li>Satzanzahl;</li>
         <li>Schwierigkeits- oder Anstrengungswerte;</li>
         <li>Cardio-Minuten oder Cardio-Dauer;</li>
-        <li>Abhakstatus von Übungen oder Kursen;</li>
-        <li>Inhalte oder Namen benutzerdefinierter Übungen;</li>
+        <li>individuelle Abhakzustände von Übungen oder Kursen;</li>
+        <li>IDs, Namen oder Inhalte benutzerdefinierter Übungen;</li>
         <li>selbst ausgewählte Bilder;</li>
         <li>YouTube-IDs benutzerdefinierter Übungen;</li>
         <li>Suchtext;</li>
         <li>vollständige Trainingspläne;</li>
-        <li>Export-/Importdateien;</li>
-        <li>Share-Grafiken;</li>
+        <li>Export-/Importdateien, CSV-Inhalte, Dateinamen oder Dateigrößen;</li>
+        <li>Share-Grafiken oder Share-Texte;</li>
         <li>E-Mail-Adressen oder Telefonnummern;</li>
         <li>freie Texteingaben.</li>
       </ul>
@@ -1055,11 +1065,21 @@
         <li>saving changed exercise settings;</li>
         <li>opening a movement guide;</li>
         <li>changing the app language;</li>
+        <li>completing a workout day by actively checking the last unchecked exercise: only weekday and exercise count;</li>
+        <li>creating, editing and archiving custom exercises: only a static category;</li>
+        <li>creating, editing, deleting and completing courses: only weekday;</li>
+        <li>starting to share a workout plan: only weekday and exercise count;</li>
+        <li>starting to share the app: no parameters;</li>
+        <li>successful CSV import and export: no parameters;</li>
+        <li>an automatic in-app review-request attempt and opening the manual rating link: no parameters;</li>
         <li>opening a purchase screen;</li>
+        <li>starting a Pro-upgrade purchase: no parameters;</li>
         <li>starting or successfully completing certain one-time purchases;</li>
         <li>reaching eligibility for interstitial advertising;</li>
         <li>displaying an interstitial advertisement.</li>
       </ul>
+
+      <p>The automatic review event records a request attempt. It does not confirm that a review dialog was displayed or that a rating was submitted.</p>
 
       <p>Depending on the event, only predefined parameters may be transmitted, for example:</p>
 
@@ -1074,24 +1094,24 @@
         <li>selected app language.</li>
       </ul>
 
-      <p>Gym Progress does not intentionally send the following through these custom Analytics events:</p>
+      <p>Gym Progress does not send any of the following through these custom Analytics events:</p>
 
       <ul>
-        <li>workout names;</li>
-        <li>course names, course locations or course notes;</li>
+        <li>private workout contents, including workout names;</li>
+        <li>course IDs or contents such as names, start times, durations, locations or notes;</li>
         <li>workout weights;</li>
         <li>repetitions or repetition ranges;</li>
         <li>number of sets;</li>
         <li>difficulty or effort values;</li>
         <li>cardio minutes or cardio duration;</li>
-        <li>exercise or course completion status;</li>
-        <li>contents or names of custom exercises;</li>
+        <li>individual exercise or course completion states;</li>
+        <li>IDs, names or contents of custom exercises;</li>
         <li>user-selected images;</li>
         <li>YouTube IDs of custom exercises;</li>
         <li>search text;</li>
         <li>full workout plans;</li>
-        <li>import or export files;</li>
-        <li>share images;</li>
+        <li>import or export files, CSV contents, filenames or file sizes;</li>
+        <li>share images or share text;</li>
         <li>email addresses or phone numbers;</li>
         <li>free-text entries.</li>
       </ul>
