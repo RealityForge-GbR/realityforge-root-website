@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Datenschutzerklärung für Gym Progress · RealityForge</title>
-  <meta name="description" content="Datenschutzerklärung für die Android-App Gym Progress von RealityForge GbR.">
+  <meta name="description" content="Datenschutzerklärung / Privacy Policy für die Android-App Gym Progress von RealityForge GbR.">
   <meta name="theme-color" content="#09090d">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="RealityForge">
-  <meta property="og:title" content="Datenschutzerklärung für Gym Progress · RealityForge">
-  <meta property="og:description" content="Datenschutzerklärung für die Android-App Gym Progress von RealityForge GbR.">
+  <meta property="og:title" content="Datenschutzerklärung / Privacy Policy for Gym Progress · RealityForge">
+  <meta property="og:description" content="Datenschutzerklärung / Privacy Policy für die Android-App Gym Progress von RealityForge GbR.">
   <meta property="og:image" content="https://realityforge.eu/assets/og.png">
   <meta property="og:url" content="https://realityforge.eu/privacy-policy/gym-progress/">
   <link rel="canonical" href="https://realityforge.eu/privacy-policy/gym-progress/">
@@ -17,17 +17,40 @@
   <script>(()=>{const k='realityforge-theme';let t='dark';try{t=localStorage.getItem(k)||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark')}catch(_){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t})();</script>
   <link rel="stylesheet" href="/assets/styles.css">
   <script defer src="/assets/theme.js"></script>
+  <style>
+    #gym-language-switch { display: flex; align-items: center; gap: .35rem; max-width: 820px; margin: 1.5rem auto 0; }
+    #gym-language-switch button { min-width: 44px; min-height: 44px; padding: .5rem .9rem; border: 1px solid var(--line); border-radius: 100px; background: transparent; color: var(--muted); font: inherit; font-weight: 700; cursor: pointer; }
+    #gym-language-switch button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-wash); color: var(--accent-text); }
+    #gym-language-switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    #gym-language-switch[hidden], [data-gym-language][hidden] { display: none; }
+  </style>
 </head>
 <body class="legal-page">
-  <a class="skip-link" href="#legal-content">Zum Inhalt springen</a>
+  <a class="skip-link" href="#legal-content" data-gym-label="skip">Zum Inhalt springen</a>
   <header class="site-header legal-header">
-    <a class="brand" href="/" aria-label="RealityForge Startseite"><span class="brand-mark" aria-hidden="true">RF</span><span class="brand-name">RealityForge</span></a>
-    <div class="header-tools"><nav class="desktop-nav" aria-label="Rechtliche Navigation"><a href="/">Startseite</a><a href="/legal-notice/">Impressum</a></nav><button class="theme-toggle" type="button" data-theme-toggle aria-label="Light Mode aktivieren"><span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span><span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span></button></div>
+    <a class="brand" href="/" aria-label="RealityForge Startseite" data-gym-aria="brand"><span class="brand-mark" aria-hidden="true">RF</span><span class="brand-name">RealityForge</span></a>
+    <div class="header-tools"><nav class="desktop-nav" aria-label="Rechtliche Navigation" data-gym-aria="navigation"><a href="/" data-gym-label="home">Startseite</a><a href="/legal-notice/" data-gym-label="legal">Impressum</a></nav><button class="theme-toggle" type="button" lang="de" data-theme-toggle aria-label="Light Mode aktivieren"><span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span><span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span></button></div>
   </header>
   <main id="legal-content" class="legal-shell">
-    <div class="legal-intro"><p class="eyebrow"><span></span> App-Datenschutz</p><h1>DATENSCHUTZERKLÄRUNG FÜR „GYM PROGRESS“</h1></div>
-    <article class="legal-document">
-      <p class="legal-updated">Stand: 2. Oktober 2026</p>
+    <div class="legal-intro">
+      <div id="gym-intro-de" lang="de" data-gym-language="de">
+        <p class="eyebrow"><span></span> App-Datenschutz</p>
+        <h1 id="gym-title-de">DATENSCHUTZERKLÄRUNG FÜR „GYM PROGRESS“</h1>
+      </div>
+      <div id="gym-intro-en" lang="en" data-gym-language="en" hidden>
+        <p class="eyebrow"><span></span> App Privacy</p>
+        <h1 id="gym-title-en">PRIVACY POLICY FOR “GYM PROGRESS”</h1>
+      </div>
+    </div>
+    <div id="gym-language-switch" role="group" aria-label="Sprache auswählen" hidden>
+      <button type="button" lang="de" data-gym-choice="de" aria-controls="gym-intro-de gym-policy-de" aria-pressed="true">Deutsch</button>
+      <span aria-hidden="true">|</span>
+      <button type="button" lang="en" data-gym-choice="en" aria-controls="gym-intro-en gym-policy-en" aria-pressed="false">English</button>
+    </div>
+    <article id="gym-policy-de" class="legal-document" lang="de" data-gym-language="de" aria-labelledby="gym-title-de">
+      <p class="legal-updated">Stand: 8. Oktober 2026</p>
+
+      <p>Diese Datei enthält die deutsche und die englische Fassung derselben Datenschutzerklärung. Beide Fassungen sollen inhaltlich übereinstimmen. Gesetzliche Rechte bleiben von etwaigen Übersetzungsabweichungen unberührt.</p>
 
       <p>Diese Datenschutzerklärung informiert darüber, wie personenbezogene Daten bei Nutzung der Android-App „Gym Progress“ verarbeitet werden.</p>
 
@@ -56,7 +79,7 @@
       <p>Gym Progress nutzt je nach Funktion:</p>
 
       <ul>
-        <li>lokalen Gerätespeicher für Trainingspläne, Übungseinstellungen, benutzerdefinierte Übungen und App-Einstellungen;</li>
+        <li>lokalen Gerätespeicher für Trainingspläne, Übungseinstellungen, Kurse, benutzerdefinierte Übungen, Notizen, Erinnerungs- und App-Einstellungen;</li>
         <li>Google Analytics for Firebase für optionale Nutzungsanalyse nach ausdrücklicher Einwilligung;</li>
         <li>Google AdMob für Banner- und Interstitial-Werbung in der kostenlosen Version;</li>
         <li>Google User Messaging Platform (UMP) zur Verwaltung von Werbe-Datenschutzentscheidungen;</li>
@@ -80,13 +103,15 @@
 
       <p>Android-Cloud-Backup für die privaten App-Daten ist deaktiviert.</p>
 
+      <p>RealityForge verkauft keine personenbezogenen oder sensiblen Nutzerdaten.</p>
+
       <h2>3. LOKAL AUF DEM GERÄT GESPEICHERTE DATEN</h2>
 
-      <p>Gym Progress speichert für die Nutzung der App insbesondere folgende Informationen lokal im privaten App-Speicher:</p>
+      <p>Gym Progress speichert für die Nutzung der App insbesondere folgende Informationen lokal im privaten App-Speicher oder in app-eigenen lokalen Einstellungen:</p>
 
       <ul>
         <li>ausgewählte App-Sprache;</li>
-        <li>ein aus dem lokal eingegebenen Geburtsdatum abgeleitetes Datum, ab dem bestimmte optionale Onlinefunktionen für das Profil verfügbar sein können; das eingegebene Geburtsdatum selbst wird nicht gespeichert oder übertragen;</li>
+        <li>ein aus dem lokal eingegebenen Geburtsdatum abgeleitetes Datum, ab dem bestimmte optionale Onlinefunktionen für das Profil verfügbar sein können; das eingegebene Geburtsdatum selbst wird nicht gespeichert oder an RealityForge bzw. Drittanbieter übertragen;</li>
         <li>Trainingsnamen;</li>
         <li>Zuordnung von Übungen zu Wochentagen;</li>
         <li>Reihenfolge der Übungen;</li>
@@ -95,21 +120,32 @@
         <li>Einstellung „ohne Zusatzgewicht“;</li>
         <li>Anzahl der Sätze;</li>
         <li>minimale und maximale Wiederholungen;</li>
-        <li>gewählte Schwierigkeit;</li>
+        <li>gewählte Schwierigkeit bzw. Anstrengung;</li>
+        <li>Trainingsdauer bei Cardio-Übungen;</li>
+        <li>für den jeweils aktuellen lokalen Kalendertag den Abhakstatus von Übungen;</li>
+        <li>Kurse eines Trainingstags, einschließlich interner Kurs-ID, Kursname, optionaler Startzeit, optionaler Dauer, optionalem Ort und optionaler Notiz;</li>
+        <li>für den jeweils aktuellen lokalen Kalendertag den Abhakstatus von Kursen;</li>
         <li>selbst eingegebene Namen und Reihenfolge der Gegenstände in der Sporttaschen-Vorlage sowie deren aktuellen Abhakstatus;</li>
-        <li>freiwillig eingegebene Freitextnotizen mit Titeln für das Training;</li>
+        <li>freiwillig eingegebene Freitextnotizen mit Titeln;</li>
         <li>Einstellungen für lokale Benachrichtigungen;</li>
         <li>Zeit der letzten App-Nutzung für Inaktivitätserinnerungen;</li>
-        <li>Datum der ersten Nutzung und Zahl unterschiedlicher aktiver Nutzungstage für die zeitverzögerte Aktivierung von Interstitial-Werbung;</li>
+        <li>Datum der ersten Nutzung sowie Anzahl unterschiedlicher aktiver Nutzungstage für die zeitverzögerte Aktivierung von Interstitial-Werbung;</li>
         <li>lokale Statusdaten für die Begrenzung von In-App-Review-Anfragen;</li>
+        <li>lokale Analytics-Einwilligungsentscheidung;</li>
+        <li>gegebenenfalls von UMP lokal verwaltete Werbe-Datenschutzentscheidungen;</li>
+        <li>bei Nutzung des Video-Feedbacks eine zufällig erzeugte Installations-ID, die ausschließlich für diese Feedback-Funktion verwendet wird;</li>
         <li>technische Informationen zur Versionierung und Migration des lokalen Speicherformats.</li>
       </ul>
 
-      <p>Die aktuelle App-Version erzeugt keine neuen Workout-History- oder Exercise-Completion-Snapshots. Ältere Installationen können jedoch aus früheren App-Versionen noch lokal gespeicherte Legacy-Daten enthalten, insbesondere frühere Workout-History-Einträge. Diese werden aus Kompatibilitätsgründen nicht automatisch gelöscht.</p>
+      <p>Der Abhakstatus von Übungen und Kursen wird nicht als dauerhafte Trainingshistorie geführt. Die aktuelle Implementierung berücksichtigt nur den Status für ein einziges lokales Kalenderdatum. Ein Status eines früheren Datums wird nicht als aktuelle Erledigung interpretiert und wird bei der lokalen Normalisierung bzw. weiteren Nutzung zurückgesetzt.</p>
+
+      <p>Ältere Installationen können aus früheren App-Versionen weiterhin lokal gespeicherte Legacy-Daten enthalten, insbesondere frühere Workout-History-Einträge. Diese können aus Kompatibilitätsgründen im lokalen Datenbestand verbleiben, werden von der aktuellen App aber nicht als neue Trainingshistorie fortgeschrieben.</p>
 
       <p>Die lokalen Trainingsdaten werden nicht an ein RealityForge-Benutzerkonto übertragen und nicht mit einem RealityForge-Server synchronisiert.</p>
 
       <p>RealityForge kann die im privaten App-Speicher gespeicherten Trainingsdaten nicht aus der Ferne abrufen.</p>
+
+      <p>Freitextfelder wie Trainingsnotizen oder Kursnotizen sind für trainingsbezogene Angaben vorgesehen. Nutzer entscheiden selbst, welche Inhalte sie dort lokal speichern. RealityForge erhält diese lokalen Freitexte nicht automatisch.</p>
 
       <h2>4. BENUTZERDEFINIERTE ÜBUNGEN („CUSTOM EXERCISES“)</h2>
 
@@ -123,12 +159,13 @@
         <li>ausgewählte Muskelgruppe/Kategorie;</li>
         <li>optionale YouTube-Video-ID und Startzeit;</li>
         <li>Einstellung „mit/ohne Zusatzgewicht“;</li>
+        <li>die zugehörigen Übungseinstellungen, einschließlich einer gegebenenfalls eingestellten Cardio-Dauer;</li>
         <li>ein optional ausgewähltes eigenes Bild.</li>
       </ul>
 
       <p>Für die Bildauswahl nutzt die App den Android-System-Picker. Eine allgemeine Berechtigung zum Zugriff auf die gesamte Foto- oder Mediendatenbank ist dafür nicht erforderlich.</p>
 
-      <p>Ein ausgewähltes Bild wird aus dem vom Nutzer freigegebenen Inhalt gelesen, lokal im privaten App-Speicher neu verarbeitet und in ein app-eigenes Bildformat übernommen. Dabei wird das Bild auf eine technisch angemessene Größe reduziert und neu encodiert. Metadaten wie EXIF-Informationen oder GPS-Daten werden dadurch nicht übernommen.</p>
+      <p>Ein ausgewähltes Bild wird aus dem vom Nutzer freigegebenen Inhalt gelesen, lokal im privaten App-Speicher neu verarbeitet, gegebenenfalls verkleinert und als app-eigene PNG-Datei gespeichert. Dabei werden die ursprünglichen Dateimetadaten nicht als solche in die neu erzeugte Datei übernommen; insbesondere übernimmt die App keine EXIF- oder GPS-Metadaten in die neu encodierte PNG-Datei.</p>
 
       <p>Benutzerdefinierte Übungen und deren Bilder werden nicht automatisch an RealityForge übertragen.</p>
 
@@ -143,12 +180,15 @@
         <li>Trainingsnamen;</li>
         <li>Übungsreihenfolge;</li>
         <li>Cardio-Werte;</li>
-        <li>Übungseinstellungen;</li>
+        <li>Übungseinstellungen einschließlich Cardio-Dauer;</li>
+        <li>Kurse einschließlich Name, optionaler Startzeit, optionaler Dauer, Ort und Kursnotiz;</li>
         <li>Namen und Reihenfolge der Gegenstände in der Sporttaschen-Vorlage, jedoch nicht deren aktuellen Abhakstatus;</li>
         <li>Titel und Inhalte der freiwillig eingegebenen Freitextnotizen;</li>
-        <li>bei Pro-Nutzern benutzerdefinierte Übungen;</li>
+        <li>benutzerdefinierte Übungen;</li>
         <li>bei benutzerdefinierten Übungen gegebenenfalls lokal eingebettete Bilddaten.</li>
       </ul>
+
+      <p>Der aktuelle Tages-Abhakstatus von Übungen und Kursen wird nicht als Trainingshistorie exportiert.</p>
 
       <p>Der Export wird lokal auf dem Gerät erzeugt. Der Nutzer entscheidet über den Android-Dateidialog, wo die Datei gespeichert wird.</p>
 
@@ -162,16 +202,23 @@
 
       <p>Trainingspläne können als lokal erzeugte Story-/Share-Grafik geteilt werden.</p>
 
-      <p>Die Share-Grafik kann abhängig von den Einstellungen des Nutzers unter anderem enthalten:</p>
+      <p>Die Share-Grafik kann abhängig vom Trainingsplan und den Einstellungen des Nutzers insbesondere enthalten:</p>
 
       <ul>
         <li>Trainingsname;</li>
         <li>Wochentag;</li>
         <li>Übungsnamen;</li>
-        <li>Trainingsgewichte;</li>
+        <li>Trainingsgewichte, wenn deren Anzeige aktiviert ist;</li>
         <li>Satz- und Wiederholungsangaben;</li>
-        <li>Cardio-Informationen.</li>
+        <li>Cardio-Dauer und Anstrengung;</li>
+        <li>allgemeine Cardio-Informationen des Trainingstags;</li>
+        <li>Kursname;</li>
+        <li>optionale Kursstartzeit;</li>
+        <li>optionale Kursdauer;</li>
+        <li>optionalen Kursort.</li>
       </ul>
+
+      <p>Kursnotizen und allgemeine Freitextnotizen werden nicht in die Share-Grafik aufgenommen.</p>
 
       <p>Die Grafik wird zunächst lokal als temporäre Datei erzeugt. RealityForge erhält den Trainingsplan dadurch nicht.</p>
 
@@ -195,6 +242,8 @@
 
       <p>Wird die Systemberechtigung nicht erteilt, werden keine entsprechenden Benachrichtigungen zugestellt. Die app-internen Reminder-Einstellungen können dabei weiterhin als aktiviert gespeichert bleiben und vom Nutzer jederzeit geändert werden.</p>
 
+      <p>Trainingserinnerungen können im Benachrichtigungstext den lokal gespeicherten Namen des betreffenden Trainingsplans und die Anzahl der darin enthaltenen Übungen anzeigen. Ob und in welchem Umfang Benachrichtigungsinhalte auf dem Sperrbildschirm sichtbar sind, richtet sich zusätzlich nach den Android-Systemeinstellungen des Nutzers.</p>
+
       <p>Die Reminder werden lokal über Android-Systemmechanismen geplant. Trainingsdaten werden dafür nicht an RealityForge übermittelt.</p>
 
       <p>Gym Progress verwendet für diese Reminder kein Firebase Cloud Messaging und keinen serverseitigen Push-Dienst.</p>
@@ -205,20 +254,20 @@
 
       <p>Für Profile mit unbekanntem Alter oder unter 21 Jahren bleibt Firebase Analytics deaktiviert. Erst bei einem entsprechenden Erwachsenenprofil kann die App die gesonderte Analytics-Einwilligung anbieten.</p>
 
-      <p>Für Nutzer im Europäischen Wirtschaftsraum ist hierbei regelmäßig Google Ireland Limited,<br>Gordon House, Barrow Street, Dublin 4, Irland,<br>ein relevanter Google-Dienstanbieter.</p>
+      <p>Für Nutzer im Europäischen Wirtschaftsraum ist hierbei regelmäßig Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, ein relevanter Google-Dienstanbieter.</p>
 
-      <p>Die Analytics-Erfassung ist standardmäßig deaktiviert.</p>
+      <p>Die Analytics-Erfassung ist in der App-Konfiguration standardmäßig deaktiviert.</p>
 
       <p>Erst wenn der Nutzer die Nutzungsanalyse ausdrücklich erlaubt, wird Firebase Analytics für die App aktiviert.</p>
 
       <p>Google kann im Rahmen von Firebase Analytics technische und Nutzungsinformationen verarbeiten, etwa:</p>
 
       <ul>
-        <li>eine App-Instanz-Kennung;</li>
+        <li>eine app- bzw. installationsbezogene Kennung;</li>
         <li>App-Starts, Sitzungen und Nutzungsdauer;</li>
         <li>Geräte- und App-Informationen;</li>
         <li>Betriebssystem- und Sprachinformationen;</li>
-        <li>technische Diagnoseinformationen;</li>
+        <li>technische Diagnose- und Ereignisinformationen;</li>
         <li>gegebenenfalls ungefähre regionale Informationen, die aus Netzwerkdaten abgeleitet werden.</li>
       </ul>
 
@@ -228,11 +277,13 @@
 
       <p>Automatische Screen-Reporting-Funktionen von Firebase Analytics sind deaktiviert.</p>
 
+      <p>Die App setzt für Firebase Analytics die werbebezogenen Einwilligungsarten „ad storage“, „ad user data“ und „ad personalization“ auf „denied“. Dies betrifft die Analytics-Integration und ersetzt nicht die gesonderte Werbe-Datenschutzverwaltung über UMP/AdMob.</p>
+
       <p>Rechtsgrundlage für die optionale Analytics-Verarbeitung ist Art. 6 Abs. 1 lit. a DSGVO.</p>
 
-      <p>Soweit die Speicherung von oder der Zugriff auf Informationen in der Endeinrichtung einer Einwilligung nach § 25 Abs. 1 TDDDG bedarf, erfolgt diese ebenfalls auf Grundlage der Einwilligung.</p>
+      <p>Soweit die Speicherung von oder der Zugriff auf Informationen in der Endeinrichtung einer Einwilligung nach § 25 Abs. 1 TDDDG bedarf, erfolgt dies ebenfalls auf Grundlage der Einwilligung.</p>
 
-      <p>Die Einwilligung kann jederzeit in den Datenschutzeinstellungen der App mit Wirkung für die Zukunft widerrufen werden.</p>
+      <p>Die Einwilligung kann jederzeit in den Datenschutzeinstellungen der App mit Wirkung für die Zukunft widerrufen werden. Bei Widerruf deaktiviert die App die weitere Analytics-Erfassung und setzt lokale Firebase-Analytics-Daten zurück. Bereits zuvor an Google übermittelte Daten unterliegen den anwendbaren Aufbewahrungs- und Löschregeln von Google sowie den gesetzlichen Betroffenenrechten.</p>
 
       <h2>9. VON GYM PROGRESS GESENDE ANALYTICS-EVENTS</h2>
 
@@ -258,7 +309,7 @@
         <li>Anzeige einer Interstitial-Werbung.</li>
       </ul>
 
-      <p>Je nach Event können nur fest definierte Parameter übertragen werden, z. B.:</p>
+      <p>Je nach Event können nur fest definierte Parameter übertragen werden, zum Beispiel:</p>
 
       <ul>
         <li>Wochentag;</li>
@@ -275,13 +326,14 @@
 
       <ul>
         <li>Trainingsnamen;</li>
+        <li>Kursnamen, Kursorte oder Kursnotizen;</li>
         <li>Trainingsgewichte;</li>
         <li>Wiederholungszahlen oder Wiederholungsbereiche;</li>
         <li>Satzanzahl;</li>
-        <li>Schwierigkeitswerte;</li>
-        <li>Cardio-Minuten;</li>
-        <li>Inhalte benutzerdefinierter Übungen;</li>
-        <li>Namen benutzerdefinierter Übungen;</li>
+        <li>Schwierigkeits- oder Anstrengungswerte;</li>
+        <li>Cardio-Minuten oder Cardio-Dauer;</li>
+        <li>Abhakstatus von Übungen oder Kursen;</li>
+        <li>Inhalte oder Namen benutzerdefinierter Übungen;</li>
         <li>selbst ausgewählte Bilder;</li>
         <li>YouTube-IDs benutzerdefinierter Übungen;</li>
         <li>Suchtext;</li>
@@ -298,7 +350,7 @@
 
       <p>AdMob und UMP werden erst für Profile ab 21 Jahren gestartet. Bei unbekanntem Alter und für jüngere Profile fordert Gym Progress keine App-Werbung an.</p>
 
-      <p>Neue kostenlose Nutzer können Bannerwerbung sehen.</p>
+      <p>Neue kostenlose Nutzer können Bannerwerbung sehen, sobald die App nach dem UMP-Verfahren Werbung anfordern darf.</p>
 
       <p>Interstitial-Werbung wird nach der derzeitigen Produktlogik erst aktiviert, wenn:</p>
 
@@ -307,7 +359,7 @@
         <li>die App an mindestens 10 unterschiedlichen Kalendertagen genutzt wurde.</li>
       </ul>
 
-      <p>Diese Nutzungszähler werden lokal gespeichert und nicht an RealityForge übertragen.</p>
+      <p>Diese Nutzungszähler werden ausschließlich lokal gespeichert und nicht an RealityForge übertragen.</p>
 
       <p>Gym Progress verwendet Google User Messaging Platform (UMP), um erforderliche Werbe-Datenschutzinformationen und Auswahlmöglichkeiten anzuzeigen.</p>
 
@@ -315,7 +367,7 @@
 
       <p>Die App fordert Werbung erst an, wenn der von UMP bereitgestellte Status dies erlaubt.</p>
 
-      <p>Das Google Mobile Ads SDK kann nach Angaben von Google je nach Konfiguration, Einwilligungsstatus und Geräteeinstellungen automatisch Daten für Werbeauslieferung, Analyse und Betrugsprävention verarbeiten bzw. weitergeben. Dazu können insbesondere gehören:</p>
+      <p>Das Google Mobile Ads SDK kann je nach Konfiguration, Einwilligungsstatus, Werbemodus und Geräteeinstellungen automatisch Daten für Werbeauslieferung, Messung, Analyse, Sicherheit und Betrugsprävention verarbeiten bzw. weitergeben. Dazu können insbesondere gehören:</p>
 
       <ul>
         <li>IP-Adresse, aus der ein ungefährer Standort abgeleitet werden kann;</li>
@@ -324,17 +376,17 @@
         <li>Geräte- oder Konto-Kennungen, einschließlich Android Advertising ID und App Set ID, soweit verfügbar und zulässig.</li>
       </ul>
 
-      <p>Ob personalisierte oder eingeschränkte/nicht personalisierte Werbung ausgeliefert wird, richtet sich unter anderem nach den anwendbaren Rechtsvorgaben, den über UMP erfassten Entscheidungen und den Google-Diensten.</p>
+      <p>Ob personalisierte, nicht personalisierte, eingeschränkte oder technisch beschränkte Werbung ausgeliefert werden kann, richtet sich unter anderem nach den anwendbaren Rechtsvorgaben, den über UMP erfassten Entscheidungen und den von Google bereitgestellten Werbemodi.</p>
 
-      <p>RealityForge übermittelt Trainingsnamen, Trainingsgewichte, Wiederholungen, Workout-History oder Firebase-Analytics-Events nicht als Targeting-Daten an AdMob.</p>
+      <p>RealityForge übermittelt Trainingsnamen, Kursinhalte, Trainingsgewichte, Wiederholungen, detaillierte Trainingspläne oder Firebase-Analytics-Events nicht als eigene Targeting-Daten an AdMob.</p>
 
       <p>Soweit für das Speichern von oder den Zugriff auf Informationen in der Endeinrichtung eine Einwilligung erforderlich ist, erfolgt dies auf Grundlage von § 25 Abs. 1 TDDDG.</p>
 
       <p>Soweit personenbezogene Daten für personalisierte Werbung auf Grundlage einer Einwilligung verarbeitet werden, ist Rechtsgrundlage Art. 6 Abs. 1 lit. a DSGVO.</p>
 
-      <p>Soweit Google oder RealityForge Datenverarbeitungen unabhängig davon aus zwingenden Sicherheits-, Missbrauchs- oder Betrugspräventionsgründen durchführen, kann die Verarbeitung – soweit rechtlich zulässig – auf berechtigten Interessen gemäß Art. 6 Abs. 1 lit. f DSGVO beruhen.</p>
+      <p>Soweit einzelne Verarbeitungen, insbesondere Sicherheits-, Missbrauchs- oder Betrugspräventionsmaßnahmen, zulässigerweise auf berechtigten Interessen beruhen, kommt Art. 6 Abs. 1 lit. f DSGVO in Betracht. Die konkreten Werbe- und Einwilligungszwecke sowie die beteiligten Anbieter werden über die von UMP bereitgestellten Informationen und Auswahlmöglichkeiten näher beschrieben.</p>
 
-      <p>Weitere Informationen:<br><a href="https://policies.google.com/privacy" rel="noopener noreferrer">https://policies.google.com/privacy</a><br><a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener noreferrer">https://developers.google.com/admob/android/privacy/play-data-disclosure</a><br><a href="https://developers.google.com/admob/android/privacy" rel="noopener noreferrer">https://developers.google.com/admob/android/privacy</a></p>
+      <p>Soweit UMP einen Datenschutz-Einstiegspunkt verlangt, stellt Gym Progress in den Datenschutzeinstellungen einen Aufruf der Werbe-Datenschutzoptionen bereit.</p>
 
       <h2>11. EINMALIGE KÄUFE ÜBER GOOGLE PLAY</h2>
 
@@ -342,7 +394,7 @@
 
       <ul>
         <li>dauerhaft werbefrei;</li>
-        <li>Gym Progress Pro mit Werbefreiheit und zusätzlichen Funktionen wie dem Custom Exercise Builder.</li>
+        <li>Gym Progress Pro mit Werbefreiheit und zusätzlichen Funktionen, insbesondere benutzerdefinierten Übungen und Kursen.</li>
       </ul>
 
       <p>Es handelt sich nicht um Abonnements.</p>
@@ -358,8 +410,6 @@
       <p>Rechtsgrundlage für die zur Vertragserfüllung erforderliche Verarbeitung durch RealityForge ist Art. 6 Abs. 1 lit. b DSGVO.</p>
 
       <p>Für Datenverarbeitungen, die Google in eigener Verantwortung vornimmt, gelten ergänzend die Datenschutzbestimmungen von Google.</p>
-
-      <p>Weitere Informationen:<br><a href="https://policies.google.com/privacy" rel="noopener noreferrer">https://policies.google.com/privacy</a><br><a href="https://developer.android.com/google/play/billing" rel="noopener noreferrer">https://developer.android.com/google/play/billing</a></p>
 
       <h2>12. YOUTUBE MOVEMENT GUIDES</h2>
 
@@ -395,13 +445,11 @@
 
       <p>RealityForge erhält dadurch keine YouTube-Zugangsdaten des Nutzers und keine vollständige YouTube-Wiedergabehistorie.</p>
 
-      <p>Das Öffnen eines Movement Guides ist von der Firebase-Analytics-Einwilligung unabhängig.</p>
+      <p>Das Öffnen eines Movement Guides ist von der Firebase-Analytics-Einwilligung unabhängig. Wenn Analytics eingewilligt wurde, kann Gym Progress lediglich das app-interne Ereignis „Movement Guide geöffnet“ mit der statischen ID einer integrierten Katalogübung erfassen; der eigentliche YouTube-Player und dessen Datenverarbeitung bleiben davon getrennt.</p>
 
-      <p>Die Verbindung wird vom Nutzer durch Öffnen des extern gehosteten Videos ausgelöst. Soweit die Verarbeitung zur Bereitstellung der vom Nutzer ausdrücklich angeforderten Videofunktion erforderlich ist, stützt RealityForge die Verarbeitung auf Art. 6 Abs. 1 lit. b DSGVO. Soweit § 25 TDDDG auf technisch notwendige Speicherung/Zugriffe für diese ausdrücklich angeforderte Funktion anwendbar ist, kommt § 25 Abs. 2 Nr. 2 TDDDG in Betracht.</p>
+      <p>Die Verbindung wird vom Nutzer durch Öffnen des extern gehosteten Videos ausgelöst. Soweit die Verarbeitung zur Bereitstellung der vom Nutzer ausdrücklich angeforderten Videofunktion erforderlich ist, stützt RealityForge die Verarbeitung auf Art. 6 Abs. 1 lit. b DSGVO. Soweit § 25 TDDDG auf technisch notwendige Speicherung oder Zugriffe für diese ausdrücklich angeforderte Funktion anwendbar ist, kommt § 25 Abs. 2 Nr. 2 TDDDG in Betracht.</p>
 
       <p>Google und YouTube können Daten daneben in eigener Verantwortlichkeit verarbeiten.</p>
-
-      <p>Weitere Informationen:<br><a href="https://policies.google.com/privacy" rel="noopener noreferrer">https://policies.google.com/privacy</a><br><a href="https://www.youtube.com/t/terms" rel="noopener noreferrer">https://www.youtube.com/t/terms</a><br><a href="https://support.google.com/youtube/answer/171780" rel="noopener noreferrer">https://support.google.com/youtube/answer/171780</a></p>
 
       <h2>13. FREIWILLIGES FEEDBACK ZU MOVEMENT-GUIDE-VIDEOS</h2>
 
@@ -412,7 +460,7 @@
       <ul>
         <li>ein nicht funktionierendes Video melden;</li>
         <li>eine falsche Übung oder Gerätevariante melden;</li>
-        <li>eine schlechte Übereinstimmung/Ausführung melden;</li>
+        <li>eine schlechte Übereinstimmung bzw. Ausführung melden;</li>
         <li>ein besseres YouTube-Video vorschlagen.</li>
       </ul>
 
@@ -436,6 +484,7 @@
 
       <ul>
         <li>Trainingsnamen;</li>
+        <li>Kursdaten;</li>
         <li>Trainingsgewichte;</li>
         <li>Wiederholungen;</li>
         <li>Sätze;</li>
@@ -443,7 +492,8 @@
         <li>Suchbegriffe;</li>
         <li>Google-Konto;</li>
         <li>Advertising ID;</li>
-        <li>Firebase-App-Instanz-ID.</li>
+        <li>Firebase-App-Instanz-ID;</li>
+        <li>Freitextnotizen.</li>
       </ul>
 
       <p>Die lokale Feedback-Installations-ID wird bei der ersten Nutzung der Feedback-Funktion zufällig erzeugt.</p>
@@ -524,25 +574,26 @@
 
       <ul>
         <li>Google Ireland Limited;</li>
-        <li>Google LLC und verbundene Google-Unternehmen im Zusammenhang mit Firebase Analytics, AdMob, UMP, Google Play Billing und YouTube;</li>
-        <li>technische Unterauftragnehmer von Google;</li>
-        <li>Cloudflare, Inc. und gegebenenfalls verbundene Unternehmen im Zusammenhang mit dem freiwilligen Video-Feedback;</li>
+        <li>Google LLC und verbundene Google-Unternehmen im Zusammenhang mit Firebase Analytics, AdMob, UMP, Google Play Billing, Google Play Review und YouTube;</li>
+        <li>technische Unterauftragnehmer bzw. von Google eingesetzte Anbieter;</li>
+        <li>Cloudflare, Inc. und gegebenenfalls verbundene Unternehmen bzw. Unterauftragnehmer im Zusammenhang mit dem freiwilligen Video-Feedback;</li>
+        <li>vom Nutzer selbst ausgewählte externe Apps, Dokumentanbieter oder Cloud-Dienste bei Export- oder Share-Vorgängen;</li>
         <li>Behörden, soweit eine gesetzliche Verpflichtung zur Offenlegung besteht.</li>
       </ul>
+
+      <p>Abhängig vom jeweiligen Dienst können Anbieter als Auftragsverarbeiter bzw. Dienstleister für RealityForge oder in eigener datenschutzrechtlicher Verantwortlichkeit handeln. Maßgeblich sind die jeweiligen Vertrags-, Datenschutz- und Produktbedingungen.</p>
 
       <p>RealityForge betreibt derzeit keinen Server, auf dem vollständige Trainingspläne oder Trainingshistorien von Nutzern gespeichert werden.</p>
 
       <p>Die Cloudflare-D1-Datenbank für Video-Feedback enthält ausschließlich die in Abschnitt 13 beschriebenen begrenzten Feedbackdaten.</p>
 
-      <p>Weitere Informationen:<br><a href="https://firebase.google.com/support/privacy" rel="noopener noreferrer">https://firebase.google.com/support/privacy</a><br><a href="https://policies.google.com/privacy" rel="noopener noreferrer">https://policies.google.com/privacy</a><br><a href="https://www.cloudflare.com/cloudflare-customer-dpa/" rel="noopener noreferrer">https://www.cloudflare.com/cloudflare-customer-dpa/</a></p>
-
       <h2>18. INTERNATIONALE DATENÜBERMITTLUNGEN</h2>
 
       <p>Google und Cloudflare betreiben internationale Infrastrukturen. Deshalb können personenbezogene oder pseudonyme Daten auch außerhalb des Europäischen Wirtschaftsraums verarbeitet werden, insbesondere in den USA.</p>
 
-      <p>Die Anbieter geben an, für internationale Datenübermittlungen anerkannte Übermittlungsmechanismen zu verwenden, insbesondere Angemessenheitsbeschlüsse, das EU-U.S. Data Privacy Framework, soweit anwendbar, sowie Standardvertragsklauseln.</p>
+      <p>Soweit hierfür eine Drittlandübermittlung im Sinne der DSGVO vorliegt, kommen abhängig vom jeweiligen Empfänger und Dienst anerkannte Übermittlungsmechanismen in Betracht, insbesondere Angemessenheitsbeschlüsse einschließlich des EU-U.S. Data Privacy Framework, soweit die Voraussetzungen hierfür erfüllt sind, sowie die von der Europäischen Kommission erlassenen Standardvertragsklauseln und gegebenenfalls zusätzliche Schutzmaßnahmen.</p>
 
-      <p>Weitere Informationen:<br><a href="https://policies.google.com/privacy/frameworks" rel="noopener noreferrer">https://policies.google.com/privacy/frameworks</a><br><a href="https://www.cloudflare.com/cloudflare-customer-dpa/" rel="noopener noreferrer">https://www.cloudflare.com/cloudflare-customer-dpa/</a></p>
+      <p>Weitere Informationen zu den von Google und Cloudflare eingesetzten Mechanismen sind in deren unten verlinkten Datenschutz- und Vertragsinformationen verfügbar.</p>
 
       <h2>19. ALLGEMEINE SPEICHERDAUER</h2>
 
@@ -555,6 +606,8 @@
         <li>das Betriebssystem sie anderweitig entfernt.</li>
       </ul>
 
+      <p>Der Tages-Abhakstatus von Übungen und Kursen wird nur für ein lokales Kalenderdatum als aktueller Status interpretiert und nicht als neue dauerhafte Trainingshistorie fortgeführt.</p>
+
       <p>Benutzerdefinierte Übungsbilder werden im privaten App-Speicher gespeichert. Nicht mehr referenzierte Bilddateien können durch die App nach einer Sicherheitsfrist bereinigt werden.</p>
 
       <p>Lokale Analytics-Einwilligungsentscheidungen bleiben gespeichert, bis sie geändert, die App-Daten gelöscht oder die App deinstalliert werden.</p>
@@ -563,9 +616,11 @@
 
       <p>Lokale Nutzungszähler für die verzögerte Werbeschaltung und In-App-Review-Begrenzung verbleiben grundsätzlich bis zur Löschung der App-Daten oder Deinstallation.</p>
 
-      <p>Google Play bewahrt Kaufdaten nach den eigenen gesetzlichen und dienstbezogenen Aufbewahrungsregeln auf.</p>
+      <p>Die lokale Feedback-Installations-ID verbleibt bis zum Löschen der App-Daten oder der Deinstallation.</p>
 
-      <p>Firebase-Analytics-Daten werden entsprechend der für das verbundene Google-Analytics-Property konfigurierten Aufbewahrung und den Google-Richtlinien verarbeitet. Aggregierte Berichte können anderen Aufbewahrungsregeln unterliegen als nutzer- oder ereignisbezogene Rohdaten.</p>
+      <p>Google Play bewahrt Kauf- und Transaktionsdaten nach den eigenen gesetzlichen und dienstbezogenen Aufbewahrungsregeln auf.</p>
+
+      <p>Firebase-Analytics-Daten werden entsprechend der für das verbundene Google-Analytics-Property konfigurierten Aufbewahrung und den Google-Richtlinien verarbeitet. Aggregierte Berichte können anderen Aufbewahrungsregeln unterliegen als nutzer- oder ereignisbezogene Daten.</p>
 
       <p>Werbe-Datenschutzentscheidungen und AdMob-Daten werden nach den Vorgaben von UMP/Google und den dort anwendbaren Aufbewahrungsregeln verarbeitet.</p>
 
@@ -581,7 +636,9 @@
 
       <p>Android-Cloud-Backup ist deaktiviert.</p>
 
-      <p>Netzwerkverbindungen zu Firebase, AdMob/UMP, Google Play, YouTube und Cloudflare erfolgen über verschlüsselte HTTPS/TLS-Verbindungen.</p>
+      <p>Netzwerkverbindungen zu Firebase, AdMob/UMP, Google Play, YouTube und Cloudflare erfolgen über verschlüsselte HTTPS/TLS-Verbindungen, soweit die jeweilige Verbindung über das Internet erfolgt.</p>
+
+      <p>Selbst ausgewählte Übungsbilder werden im privaten App-Speicher verarbeitet und nicht automatisch hochgeladen.</p>
 
       <p>Trotz technischer und organisatorischer Maßnahmen kann keine elektronische Übertragung oder Speicherung absolute Sicherheit garantieren.</p>
 
@@ -590,9 +647,9 @@
       <p>Je nach Verarbeitung stützt RealityForge die Verarbeitung insbesondere auf:</p>
 
       <ul>
-        <li>Art. 6 Abs. 1 lit. b DSGVO, soweit die Verarbeitung zur Bereitstellung von vom Nutzer verwendeten App-Funktionen oder zur Durchführung eines Einmalkaufs erforderlich ist;</li>
+        <li>Art. 6 Abs. 1 lit. b DSGVO, soweit eine Verarbeitung zur Bereitstellung einer vom Nutzer ausdrücklich verwendeten App-Funktion oder zur Durchführung eines Einmalkaufs erforderlich ist;</li>
         <li>Art. 6 Abs. 1 lit. a DSGVO, soweit der Nutzer ausdrücklich in optionale Analytics- oder werbebezogene Verarbeitung einwilligt;</li>
-        <li>Art. 6 Abs. 1 lit. f DSGVO für das freiwillige Video-Feedback sowie Sicherheits-, Missbrauchs- und Betrugspräventionsmaßnahmen, soweit keine vorrangigen Interessen oder Rechte des Nutzers entgegenstehen;</li>
+        <li>Art. 6 Abs. 1 lit. f DSGVO für das freiwillige Video-Feedback sowie Sicherheits-, Missbrauchs- und Betrugspräventionsmaßnahmen, soweit keine vorrangigen Interessen oder Rechte der betroffenen Person entgegenstehen;</li>
         <li>Art. 6 Abs. 1 lit. c DSGVO, soweit eine gesetzliche Verpflichtung besteht.</li>
       </ul>
 
@@ -600,9 +657,27 @@
 
       <p>Soweit eine Einwilligung erforderlich ist, wird sie nach § 25 Abs. 1 TDDDG eingeholt.</p>
 
-      <p>Soweit die Speicherung oder der Zugriff unbedingt erforderlich ist, um einen vom Nutzer ausdrücklich gewünschten digitalen Dienst bereitzustellen, kann § 25 Abs. 2 Nr. 2 TDDDG Anwendung finden.</p>
+      <p>Soweit die Speicherung oder der Zugriff unbedingt erforderlich ist, um einen vom Nutzer ausdrücklich gewünschten digitalen Dienst zur Verfügung zu stellen, kann § 25 Abs. 2 Nr. 2 TDDDG Anwendung finden.</p>
 
-      <h2>22. WIDERRUF UND DATENSCHUTZEINSTELLUNGEN</h2>
+      <h2>22. BEREITSTELLUNG VON DATEN UND FOLGEN EINER NICHTBEREITSTELLUNG</h2>
+
+      <p>Für die grundlegende lokale Trainingsplanung ist kein Benutzerkonto erforderlich.</p>
+
+      <p>Die Eingabe eines Geburtsdatums dient ausschließlich der lokalen Bestimmung, ob bestimmte optionale Netzwerkfunktionen für das Profil freigeschaltet werden können. Wird kein verwertbarer Erwachsenenstatus festgestellt, bleiben AdMob/UMP, Firebase Analytics, externe Movement Guides und das Video-Feedback deaktiviert; die lokalen Trainingsfunktionen bleiben nutzbar.</p>
+
+      <p>Die Analytics-Einwilligung ist freiwillig. Eine Ablehnung hat keine Auswirkung auf die lokalen Kernfunktionen.</p>
+
+      <p>Werbe-Datenschutzentscheidungen werden über UMP verwaltet. Je nach Rechtslage und Auswahl kann dies beeinflussen, ob und in welchem Modus Google Werbung anfordern bzw. ausliefern darf. Die lokalen Trainingsfunktionen bleiben unabhängig davon nutzbar.</p>
+
+      <p>Die Android-Benachrichtigungsberechtigung ist freiwillig. Ohne Berechtigung können die entsprechenden lokalen Benachrichtigungen nicht zugestellt werden.</p>
+
+      <p>Google-Play-Kaufdaten sind nur erforderlich, wenn der Nutzer einen kostenpflichtigen Einmalkauf durchführen oder einen bestehenden Kaufstatus wiederherstellen möchte.</p>
+
+      <p>Die Verbindung zu YouTube ist nur erforderlich, wenn der Nutzer einen extern gehosteten Movement Guide öffnet.</p>
+
+      <p>Die Übermittlung von Video-Feedback ist freiwillig. Ohne Übermittlung kann lediglich diese Feedback-Funktion nicht genutzt werden.</p>
+
+      <h2>23. WIDERRUF UND DATENSCHUTZEINSTELLUNGEN</h2>
 
       <p>Eine erteilte Einwilligung kann jederzeit mit Wirkung für die Zukunft widerrufen werden.</p>
 
@@ -612,7 +687,17 @@
 
       <p>Ein Widerruf berührt nicht die Rechtmäßigkeit der Verarbeitung, die bis zum Widerruf auf Grundlage der Einwilligung erfolgt ist.</p>
 
-      <h2 id="data-deletion">23. RECHTE BETROFFENER PERSONEN</h2>
+      <h2>24. BESONDERER HINWEIS ZUM WIDERSPRUCHSRECHT</h2>
+
+      <p>Soweit RealityForge personenbezogene Daten auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO verarbeitet, haben betroffene Personen gemäß Art. 21 Abs. 1 DSGVO das Recht, aus Gründen, die sich aus ihrer besonderen Situation ergeben, jederzeit gegen diese Verarbeitung Widerspruch einzulegen.</p>
+
+      <p>Dies betrifft insbesondere Verarbeitungen im Zusammenhang mit dem freiwilligen Video-Feedback sowie Sicherheits-, Missbrauchs- und Betrugspräventionsmaßnahmen, soweit diese auf berechtigten Interessen beruhen.</p>
+
+      <p>Nach einem wirksamen Widerspruch verarbeitet RealityForge die betreffenden personenbezogenen Daten nicht weiter, es sei denn, RealityForge kann zwingende schutzwürdige Gründe für die Verarbeitung nachweisen, die die Interessen, Rechte und Freiheiten der betroffenen Person überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.</p>
+
+      <p>Kontakt für einen Widerspruch:<br><a href="mailto:realityforgeeu@gmail.com">realityforgeeu@gmail.com</a></p>
+
+      <h2 data-gym-rights id="data-deletion">25. RECHTE BETROFFENER PERSONEN</h2>
 
       <p>Soweit die DSGVO anwendbar ist, haben betroffene Personen nach Maßgabe der gesetzlichen Voraussetzungen insbesondere folgende Rechte:</p>
 
@@ -627,43 +712,49 @@
         <li>Recht auf Beschwerde bei einer Datenschutzaufsichtsbehörde nach Art. 77 DSGVO.</li>
       </ul>
 
-      <p>Zur Ausübung der Rechte:</p>
+      <p>Zur Ausübung der Rechte:<br><a href="mailto:realityforgeeu@gmail.com">realityforgeeu@gmail.com</a></p>
 
-      <p><a href="mailto:realityforgeeu@gmail.com">realityforgeeu@gmail.com</a></p>
-
-      <p>Da Gym Progress kein Benutzerkonto verwendet und RealityForge viele lokale Daten überhaupt nicht erhält, kann RealityForge lokale Trainingsdaten auf dem Gerät nicht serverseitig identifizieren, abrufen oder löschen.</p>
+      <p>Da Gym Progress kein Benutzerkonto verwendet und RealityForge viele lokale Daten überhaupt nicht erhält, kann RealityForge lokale Trainingsdaten auf dem Gerät nicht serverseitig identifizieren, abrufen oder löschen. Nutzer können lokale App-Daten über die Android-Systemfunktionen löschen oder die App deinstallieren.</p>
 
       <p>Auch bei pseudonymen Analytics- oder Feedbackdaten kann RealityForge einen bestimmten Datensatz unter Umständen nicht allein anhand einer E-Mail-Adresse identifizieren. Soweit zur Bearbeitung einer Anfrage zusätzliche technische Angaben erforderlich und rechtlich zulässig sind, kann RealityForge um die dafür notwendigen Informationen bitten.</p>
 
-      <h2>24. BESCHWERDERECHT</h2>
+      <h2>26. BESCHWERDERECHT</h2>
 
-      <p>Betroffene Personen können sich bei einer Datenschutzaufsichtsbehörde beschweren.</p>
+      <p>Betroffene Personen können sich gemäß Art. 77 DSGVO bei einer Datenschutzaufsichtsbehörde beschweren.</p>
 
       <p>Für den Sitz von RealityForge ist insbesondere zuständig:</p>
 
       <p>Berliner Beauftragte für Datenschutz und Informationsfreiheit<br>Alt-Moabit 59-61<br>10555 Berlin<br>Deutschland</p>
 
-      <p>Telefon: +49 30 13889-0<br>E-Mail: <a href="mailto:mailbox@datenschutz-berlin.de">mailbox@datenschutz-berlin.de</a></p>
+      <p>Telefon: +49 30 13889-0<br>E-Mail: <a href="mailto:mailbox@datenschutz-berlin.de">mailbox@datenschutz-berlin.de</a><br>Website: <a href="https://www.datenschutz-berlin.de/" rel="noopener noreferrer">https://www.datenschutz-berlin.de/</a></p>
 
-      <p>Website:<br><a href="https://www.datenschutz-berlin.de/" rel="noopener noreferrer">https://www.datenschutz-berlin.de/</a></p>
-
-      <h2>25. MINDERJÄHRIGE</h2>
+      <h2>27. MINDERJÄHRIGE UND LOKALE ALTERSPRÜFUNG</h2>
 
       <p>Gym Progress richtet sich nicht speziell an Kinder.</p>
 
       <p>Die App erfordert kein Benutzerkonto und keine Angabe direkter Kontaktdaten.</p>
 
-      <p>Beim ersten Start fragt Gym Progress neutral nach dem Geburtsdatum. Daraus berechnet die App lokal einen Berechtigungstag und speichert nur diesen im privaten App-Speicher. Das eingegebene Geburtsdatum wird nicht an RealityForge oder Drittanbieter übertragen.</p>
+      <p>Beim ersten Start fragt Gym Progress neutral nach dem Geburtsdatum. Daraus berechnet die App lokal einen Berechtigungstag und speichert nur diesen im privaten App-Speicher. Das eingegebene Geburtsdatum wird nicht an RealityForge oder Drittanbieter übertragen und nicht als Geburtsdatum gespeichert.</p>
 
       <p>Bei unbekanntem Alter und für Profile unter 21 Jahren werden AdMob/UMP und Firebase Analytics nicht für Werbung oder Nutzungsanalyse gestartet. Externe Movement Guides und das Video-Feedback bleiben dort deaktiviert. Die lokalen Trainingsfunktionen sind weiterhin nutzbar.</p>
 
-      <h2>26. KEIN MEDIZINISCHER ZWECK</h2>
+      <p>Die Schwelle von 21 Jahren ist eine von RealityForge gewählte produktseitige Schutzschwelle für die Freischaltung dieser optionalen Netzwerkfunktionen und stellt keine Aussage darüber dar, ab welchem Alter eine Person nach allen anwendbaren Rechtsordnungen generell einwilligungsfähig ist.</p>
+
+      <h2>28. KEINE AUTOMATISIERTE ENTSCHEIDUNGSFINDUNG IM SINNE VON ART. 22 DSGVO</h2>
+
+      <p>Gym Progress verwendet keine ausschließlich automatisierte Entscheidungsfindung einschließlich Profiling, die gegenüber dem Nutzer rechtliche Wirkungen entfaltet oder ihn in ähnlich erheblicher Weise beeinträchtigt.</p>
+
+      <p>Lokale Regeln, etwa für die altersabhängige Freischaltung optionaler Netzwerkfunktionen oder die zeitverzögerte Eignung für Interstitial-Werbung, dienen lediglich der technischen Funktionssteuerung innerhalb der App und entfalten keine rechtliche oder vergleichbar erhebliche Wirkung im Sinne von Art. 22 DSGVO.</p>
+
+      <h2>29. KEIN MEDIZINISCHER ZWECK</h2>
 
       <p>Gym Progress ist eine Fitness- und Trainingsplanungs-App.</p>
 
       <p>Die App ist kein Medizinprodukt und dient nicht der Diagnose, Prävention, Überwachung oder Behandlung von Krankheiten, Verletzungen oder medizinischen Zuständen.</p>
 
-      <h2>27. ÄNDERUNGEN DIESER DATENSCHUTZERKLÄRUNG</h2>
+      <p>RealityForge fordert Nutzer nicht dazu auf, medizinische Diagnosen oder sonstige besondere Kategorien personenbezogener Daten in Freitextfelder einzutragen.</p>
+
+      <h2>30. ÄNDERUNGEN DIESER DATENSCHUTZERKLÄRUNG</h2>
 
       <p>RealityForge kann diese Datenschutzerklärung anpassen, wenn sich Funktionen der App, eingesetzte Dienste oder rechtliche Anforderungen ändern.</p>
 
@@ -673,6 +764,16 @@
 
       <p>Bei wesentlichen Änderungen wird das Aktualisierungsdatum angepasst.</p>
 
+      <h2>31. AUFRUF DIESER DATENSCHUTZERKLÄRUNG AUF REALITYFORGE.EU</h2>
+
+      <p>Diese App-Datenschutzerklärung wird unter realityforge.eu bereitgestellt.</p>
+
+      <p>Für die technische Bereitstellung der Website selbst, insbesondere Hosting über GitHub Pages und die lokale Speicherung der vom Besucher gewählten Dark-/Light-Mode-Einstellung im Browser, gilt ergänzend die allgemeine Datenschutzerklärung der RealityForge-Website:</p>
+
+      <p><a href="https://realityforge.eu/privacy-policy/" rel="noopener noreferrer">https://realityforge.eu/privacy-policy/</a></p>
+
+      <p>Die dort beschriebenen Website-Verarbeitungen sind von der Datenverarbeitung innerhalb der Android-App zu unterscheiden.</p>
+
       <h2>WEITERFÜHRENDE INFORMATIONEN / ANBIETERDOKUMENTATION</h2>
 
       <p>Datenschutz-Grundverordnung:<br><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" rel="noopener noreferrer">https://eur-lex.europa.eu/eli/reg/2016/679/oj</a></p>
@@ -680,6 +781,8 @@
       <p>§ 25 TDDDG:<br><a href="https://www.gesetze-im-internet.de/ttdsg/__25.html" rel="noopener noreferrer">https://www.gesetze-im-internet.de/ttdsg/__25.html</a></p>
 
       <p>Google-Datenschutzerklärung:<br><a href="https://policies.google.com/privacy" rel="noopener noreferrer">https://policies.google.com/privacy</a></p>
+
+      <p>Google – internationale Datenübermittlungen:<br><a href="https://policies.google.com/privacy/frameworks" rel="noopener noreferrer">https://policies.google.com/privacy/frameworks</a></p>
 
       <p>Firebase Privacy:<br><a href="https://firebase.google.com/support/privacy" rel="noopener noreferrer">https://firebase.google.com/support/privacy</a></p>
 
@@ -697,9 +800,803 @@
 
       <p>Berliner Beauftragte für Datenschutz und Informationsfreiheit:<br><a href="https://www.datenschutz-berlin.de/" rel="noopener noreferrer">https://www.datenschutz-berlin.de/</a></p>
     </article>
+    <article id="gym-policy-en" class="legal-document" lang="en" data-gym-language="en" aria-labelledby="gym-title-en" hidden>
+      <p class="legal-updated">Last updated: 8 October 2026</p>
+
+      <p>This file contains the German and English versions of the same Privacy Policy. Both versions are intended to have the same meaning. Statutory rights are not affected by any translation differences.
+</p>
+
+      <p>This Privacy Policy explains how personal data is processed when using the Android app “Gym Progress”.</p>
+
+      <h2>1. CONTROLLER</h2>
+
+      <p>The controller responsible for data processing in connection with Gym Progress is:</p>
+
+      <p>RealityForge GbR<br>Biberacher Weg 3<br>12247 Berlin<br>Germany</p>
+
+      <p>Represented by the partners:<br>Patrick Bethke<br>Evgeni Melan</p>
+
+      <p>Email: <a href="mailto:realityforgeeu@gmail.com">realityforgeeu@gmail.com</a><br>Website: <a href="https://www.realityforge.eu" rel="noopener noreferrer">https://www.realityforge.eu</a></p>
+
+      <h2>2. SCOPE AND GENERAL PRINCIPLES</h2>
+
+      <p>This Privacy Policy applies to the Android app “Gym Progress” with the package name:</p>
+
+      <p>eu.realityforge.gymprogress</p>
+
+      <p>Gym Progress is a locally oriented app for planning and organising workouts. The app can be used without a user account.</p>
+
+      <p>RealityForge generally does not require registration or the provision of a name, email address, phone number or password in order to use the app.</p>
+
+      <p>Most workout data is processed only in the app’s private storage on the device. Workout plans are not synchronised to a RealityForge cloud service.</p>
+
+      <p>Depending on the feature used, Gym Progress uses:</p>
+
+      <ul>
+        <li>local device storage for workout plans, exercise settings, courses, custom exercises, notes, reminders and app settings;</li>
+        <li>Google Analytics for Firebase for optional usage analytics after the user’s explicit consent;</li>
+        <li>Google AdMob for banner and interstitial advertising in the free version;</li>
+        <li>Google User Messaging Platform (UMP) to manage advertising privacy choices;</li>
+        <li>Google Play Billing for one-time purchases (“Ad-Free” and “Pro”);</li>
+        <li>the embedded YouTube player in privacy-enhanced mode for movement-guide videos that the user chooses to open;</li>
+        <li>a separate Cloudflare Worker with a D1 database for voluntary feedback about movement-guide videos.</li>
+      </ul>
+
+      <p>Gym Progress currently does not use:</p>
+
+      <ul>
+        <li>user accounts;</li>
+        <li>Firebase Authentication;</li>
+        <li>Cloud Firestore for workout data;</li>
+        <li>cloud synchronisation of workout plans;</li>
+        <li>Firebase Crashlytics;</li>
+        <li>Firebase Performance Monitoring;</li>
+        <li>Firebase Cloud Messaging;</li>
+        <li>subscriptions.</li>
+      </ul>
+
+      <p>Android cloud backup is disabled for the app’s private data.</p>
+
+      <p>RealityForge does not sell personal or sensitive user data.</p>
+
+      <h2>3. DATA STORED LOCALLY ON THE DEVICE</h2>
+
+      <p>For operation of the app, Gym Progress stores, in particular, the following information locally in the app’s private storage or app-specific local preferences:</p>
+
+      <ul>
+        <li>selected app language;</li>
+        <li>a date derived from the birth date entered locally, indicating when certain optional online features may become available for the profile; the entered birth date itself is not stored and is not transmitted to RealityForge or third parties;</li>
+        <li>workout names;</li>
+        <li>assignment of exercises to weekdays;</li>
+        <li>exercise order;</li>
+        <li>cardio values for warm-up, Zone 2 and cool-down;</li>
+        <li>workout weight;</li>
+        <li>the “no external weight” setting;</li>
+        <li>number of sets;</li>
+        <li>minimum and maximum repetitions;</li>
+        <li>selected difficulty or effort;</li>
+        <li>workout duration for cardio exercises;</li>
+        <li>completion status of exercises for the current local calendar date;</li>
+        <li>courses assigned to a workout day, including an internal course ID, course name, optional start time, optional duration, optional location and optional note;</li>
+        <li>completion status of courses for the current local calendar date;</li>
+        <li>user-entered names and order of items in the gym-bag template and their current checked state;</li>
+        <li>voluntarily entered free-text notes and titles;</li>
+        <li>local notification settings;</li>
+        <li>time of last app use for inactivity reminders;</li>
+        <li>date of first use and number of distinct active days for delayed activation of interstitial advertising;</li>
+        <li>local state used to limit in-app review requests;</li>
+        <li>the local Analytics consent decision;</li>
+        <li>advertising privacy choices that may be managed locally by UMP;</li>
+        <li>when video feedback is used, a randomly generated installation ID used only for that feedback feature;</li>
+        <li>technical information used for versioning and migration of the local storage format.</li>
+      </ul>
+
+      <p>Exercise and course completion status is not maintained as a permanent workout history. The current implementation considers only the status for one local calendar date. A status from a previous date is not interpreted as current completion and is reset during local normalisation or subsequent use.</p>
+
+      <p>Older installations may still contain locally stored legacy data from earlier app versions, in particular older workout-history entries. Such legacy data may remain for compatibility purposes, but the current app does not continue creating new workout-history records.</p>
+
+      <p>Local workout data is not transferred to a RealityForge user account and is not synchronised with a RealityForge server.</p>
+
+      <p>RealityForge cannot remotely access workout data stored in the app’s private device storage.</p>
+
+      <p>Free-text fields such as workout notes or course notes are intended for workout-related information. Users decide which content they store there locally. RealityForge does not automatically receive these local free-text entries.</p>
+
+      <h2>4. CUSTOM EXERCISES</h2>
+
+      <p>Gym Progress Pro allows users to create custom exercises.</p>
+
+      <p>Depending on use, the following may be stored locally:</p>
+
+      <ul>
+        <li>a randomly generated internal exercise ID;</li>
+        <li>the user-entered exercise name;</li>
+        <li>selected muscle group/category;</li>
+        <li>optional YouTube video ID and start time;</li>
+        <li>the “with/without external weight” setting;</li>
+        <li>associated exercise settings, including a cardio duration if configured;</li>
+        <li>an optional user-selected image.</li>
+      </ul>
+
+      <p>For image selection, the app uses the Android system picker. General permission to access the entire photo or media library is not required for this feature.</p>
+
+      <p>A selected image is read from the content specifically made available by the user, processed locally in the app’s private storage, resized where necessary, and stored as an app-generated PNG file. Original file metadata is not carried over as such into the newly encoded file; in particular, the app does not copy EXIF or GPS metadata into the newly encoded PNG.</p>
+
+      <p>Custom exercises and their images are not automatically transmitted to RealityForge.</p>
+
+      <h2>5. IMPORT AND EXPORT OF WORKOUT DATA</h2>
+
+      <p>Gym Progress provides manual CSV import and export of workout data.</p>
+
+      <p>An export may include, in particular:</p>
+
+      <ul>
+        <li>all seven workout plans;</li>
+        <li>workout names;</li>
+        <li>exercise order;</li>
+        <li>cardio values;</li>
+        <li>exercise settings, including cardio duration;</li>
+        <li>courses, including name, optional start time, optional duration, location and course note;</li>
+        <li>names and order of items in the gym-bag template, but not their current checked state;</li>
+        <li>titles and contents of voluntarily entered free-text notes;</li>
+        <li>custom exercises;</li>
+        <li>where applicable, locally embedded image data for custom exercises.</li>
+      </ul>
+
+      <p>The current daily completion status of exercises and courses is not exported as workout history.</p>
+
+      <p>The export is generated locally on the device. The user decides through the Android file picker where the file is saved.</p>
+
+      <p>Imports are also processed locally. Imported files are technically validated and subject to size and content limits before being applied.</p>
+
+      <p>RealityForge does not receive the content of import or export files.</p>
+
+      <p>If the user selects an external document provider or cloud service in the Android file picker, that provider may process the file under its own privacy terms. This is initiated by the user’s selection and is outside RealityForge’s access.</p>
+
+      <h2>6. SHARING A WORKOUT PLAN AND SHARING THE APP</h2>
+
+      <p>Workout plans can be shared as a locally generated story/share image.</p>
+
+      <p>Depending on the workout plan and the user’s settings, the share image may include:</p>
+
+      <ul>
+        <li>workout name;</li>
+        <li>weekday;</li>
+        <li>exercise names;</li>
+        <li>workout weights, if display of weights is enabled;</li>
+        <li>sets and repetition information;</li>
+        <li>cardio duration and effort;</li>
+        <li>general cardio information for the workout day;</li>
+        <li>course name;</li>
+        <li>optional course start time;</li>
+        <li>optional course duration;</li>
+        <li>optional course location.</li>
+      </ul>
+
+      <p>Course notes and general free-text notes are not included in the share image.</p>
+
+      <p>The image is first created locally as a temporary file. RealityForge does not receive the workout plan as a result.</p>
+
+      <p>Only when the user selects an external destination app through the Android share sheet are the selected contents passed to that app. From that point on, the privacy terms of the selected recipient or platform provider also apply.</p>
+
+      <p>When the user shares Gym Progress itself, only a user-initiated share text containing a Google Play link is passed to the selected external app.</p>
+
+      <h2>7. LOCAL NOTIFICATIONS</h2>
+
+      <p>Gym Progress can schedule local notifications for:</p>
+
+      <ul>
+        <li>workout days;</li>
+        <li>longer periods of inactivity;</li>
+        <li>the start of a new workout week.</li>
+      </ul>
+
+      <p>On a new installation, these three reminder settings are enabled by default within the app. On Android versions that require runtime permission for notifications, actual delivery is possible only after the Android notification permission has been granted.</p>
+
+      <p>If the system permission is not granted, the corresponding notifications are not delivered. The in-app reminder settings may nevertheless remain stored as enabled and can be changed by the user at any time.</p>
+
+      <p>Workout reminders may display the locally stored name of the relevant workout plan and the number of exercises in the notification text. Whether and to what extent notification content is visible on the lock screen also depends on the user’s Android system settings.</p>
+
+      <p>Reminders are scheduled locally using Android system mechanisms. Workout data is not transmitted to RealityForge for this purpose.</p>
+
+      <p>Gym Progress does not use Firebase Cloud Messaging or a server-side push service for these reminders.</p>
+
+      <h2>8. GOOGLE ANALYTICS FOR FIREBASE</h2>
+
+      <p>Gym Progress uses Google Analytics for Firebase only after the user has given explicit consent.</p>
+
+      <p>For profiles with unknown age or under 21, Firebase Analytics remains disabled. Only an eligible adult profile can be offered the separate Analytics consent choice.</p>
+
+      <p>For users in the European Economic Area, Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland, will generally be a relevant Google service provider.</p>
+
+      <p>Analytics collection is disabled by default in the app configuration.</p>
+
+      <p>Firebase Analytics is enabled for the app only after the user expressly allows usage analytics.</p>
+
+      <p>In connection with Firebase Analytics, Google may process technical and usage information such as:</p>
+
+      <ul>
+        <li>an app- or installation-related identifier;</li>
+        <li>app opens, sessions and usage duration;</li>
+        <li>device and app information;</li>
+        <li>operating-system and language information;</li>
+        <li>technical diagnostic and event information;</li>
+        <li>where applicable, approximate regional information derived from network data.</li>
+      </ul>
+
+      <p>Gym Progress does not set its own user ID for Firebase Analytics.</p>
+
+      <p>Collection of the Android Advertising ID by Firebase Analytics is disabled in the app configuration. Advertising processing through Google AdMob is separate from this.</p>
+
+      <p>Automatic screen reporting in Firebase Analytics is disabled.</p>
+
+      <p>For the Firebase Analytics integration, the app sets the advertising-related consent types “ad storage”, “ad user data” and “ad personalization” to “denied”. This applies to the Analytics integration and does not replace the separate advertising privacy management provided through UMP/AdMob.</p>
+
+      <p>The legal basis for optional Analytics processing is Article 6(1)(a) GDPR.</p>
+
+      <p>To the extent that consent is required under Section 25(1) TDDDG for storing information on, or accessing information from, the user’s terminal device, that processing is likewise based on consent.</p>
+
+      <p>Consent can be withdrawn at any time in the app’s privacy settings with effect for the future. When consent is withdrawn, the app disables further Analytics collection and resets local Firebase Analytics data. Data previously transmitted to Google remains subject to Google’s applicable retention and deletion rules and to statutory data-subject rights.</p>
+
+      <h2>9. ANALYTICS EVENTS SENT BY GYM PROGRESS</h2>
+
+      <p>Only after Analytics consent has been granted does Gym Progress send a limited, predefined set of product-usage events.</p>
+
+      <p>These currently include, in particular:</p>
+
+      <ul>
+        <li>opening a workout day;</li>
+        <li>opening the exercise library;</li>
+        <li>selecting an exercise category;</li>
+        <li>using exercise search;</li>
+        <li>opening an exercise preview;</li>
+        <li>adding and removing an exercise;</li>
+        <li>undoing an exercise removal;</li>
+        <li>changing exercise order;</li>
+        <li>saving changed exercise settings;</li>
+        <li>opening a movement guide;</li>
+        <li>changing the app language;</li>
+        <li>opening a purchase screen;</li>
+        <li>starting or successfully completing certain one-time purchases;</li>
+        <li>reaching eligibility for interstitial advertising;</li>
+        <li>displaying an interstitial advertisement.</li>
+      </ul>
+
+      <p>Depending on the event, only predefined parameters may be transmitted, for example:</p>
+
+      <ul>
+        <li>weekday;</li>
+        <li>number of exercises;</li>
+        <li>static category ID;</li>
+        <li>static ID of a built-in catalogue exercise;</li>
+        <li>source of an add action;</li>
+        <li>length of a search query;</li>
+        <li>number of search results;</li>
+        <li>selected app language.</li>
+      </ul>
+
+      <p>Gym Progress does not intentionally send the following through these custom Analytics events:</p>
+
+      <ul>
+        <li>workout names;</li>
+        <li>course names, course locations or course notes;</li>
+        <li>workout weights;</li>
+        <li>repetitions or repetition ranges;</li>
+        <li>number of sets;</li>
+        <li>difficulty or effort values;</li>
+        <li>cardio minutes or cardio duration;</li>
+        <li>exercise or course completion status;</li>
+        <li>contents or names of custom exercises;</li>
+        <li>user-selected images;</li>
+        <li>YouTube IDs of custom exercises;</li>
+        <li>search text;</li>
+        <li>full workout plans;</li>
+        <li>import or export files;</li>
+        <li>share images;</li>
+        <li>email addresses or phone numbers;</li>
+        <li>free-text entries.</li>
+      </ul>
+
+      <h2>10. ADVERTISING WITH GOOGLE ADMOB AND UMP</h2>
+
+      <p>The free version of Gym Progress uses Google AdMob.</p>
+
+      <p>AdMob and UMP are started only for profiles aged 21 or older. For profiles with unknown age and for younger profiles, Gym Progress does not request in-app advertising.</p>
+
+      <p>New free users may see banner advertising once the app is permitted to request ads under the UMP process.</p>
+
+      <p>Under the current product logic, interstitial advertising is activated only when:</p>
+
+      <ul>
+        <li>at least 14 calendar days have passed since the first recorded use; and</li>
+        <li>the app has been used on at least 10 distinct calendar days.</li>
+      </ul>
+
+      <p>These usage counters are stored only locally and are not transmitted to RealityForge.</p>
+
+      <p>Gym Progress uses Google User Messaging Platform (UMP) to display required advertising privacy information and choices.</p>
+
+      <p>The advertising privacy decision is independent from the separate Firebase Analytics consent choice.</p>
+
+      <p>The app requests ads only when the status supplied by UMP permits it to do so.</p>
+
+      <p>Depending on configuration, consent status, ad-serving mode and device settings, the Google Mobile Ads SDK may automatically process or share data for ad delivery, measurement, analytics, security and fraud prevention. This may include, in particular:</p>
+
+      <ul>
+        <li>IP address, from which an approximate location may be derived;</li>
+        <li>interactions with the app and with advertisements;</li>
+        <li>diagnostic and performance information;</li>
+        <li>device or account identifiers, including the Android Advertising ID and App Set ID where available and permitted.</li>
+      </ul>
+
+      <p>Whether personalised, non-personalised, limited or technically restricted advertising can be served depends, among other things, on applicable law, the choices collected through UMP and the ad-serving modes made available by Google.</p>
+
+      <p>RealityForge does not submit workout names, course content, workout weights, repetitions, detailed workout plans or Firebase Analytics events to AdMob as its own targeting data.</p>
+
+      <p>To the extent that consent is required for storing information on, or accessing information from, the terminal device, processing is based on Section 25(1) TDDDG.</p>
+
+      <p>Where personal data is processed for personalised advertising on the basis of consent, the legal basis is Article 6(1)(a) GDPR.</p>
+
+      <p>Where individual processing activities, in particular security, abuse-prevention or fraud-prevention measures, may lawfully be based on legitimate interests, Article 6(1)(f) GDPR may apply. The specific advertising and consent purposes and participating providers are described in more detail through the information and choices presented by UMP.</p>
+
+      <p>Where UMP requires a persistent privacy-options entry point, Gym Progress provides access to the advertising privacy options from the app’s privacy settings.</p>
+
+      <h2>11. ONE-TIME PURCHASES THROUGH GOOGLE PLAY</h2>
+
+      <p>Gym Progress offers optional, non-consumable one-time purchases through Google Play Billing, in particular:</p>
+
+      <ul>
+        <li>permanent ad-free access;</li>
+        <li>Gym Progress Pro, including ad-free access and additional features, in particular custom exercises and courses.</li>
+      </ul>
+
+      <p>These are not subscriptions.</p>
+
+      <p>Google Play handles payment processing. RealityForge does not receive the user’s credit-card or bank-card details.</p>
+
+      <p>The app receives technical purchase information from Google Play, in particular purchase status, product identifiers and purchase tokens, in order to determine, acknowledge and restore purchase status for the same Google Play identity.</p>
+
+      <p>The current implementation processes these purchase tokens client-side through the Google Play Billing Library and does not transmit them to a RealityForge purchase server.</p>
+
+      <p>A purchase in “pending” status does not unlock paid features.</p>
+
+      <p>The legal basis for processing by RealityForge that is necessary to perform the purchase contract is Article 6(1)(b) GDPR.</p>
+
+      <p>Processing carried out by Google under its own responsibility is additionally governed by Google’s privacy terms.</p>
+
+      <h2>12. YOUTUBE MOVEMENT GUIDES</h2>
+
+      <p>Gym Progress offers optional movement-guide videos hosted on YouTube.</p>
+
+      <p>For profiles with unknown age or under 21, these external online videos remain disabled in the app.</p>
+
+      <p>The app uses the embedded YouTube player in privacy-enhanced mode through:</p>
+
+      <p><a href="https://www.youtube-nocookie.com" rel="noopener noreferrer">https://www.youtube-nocookie.com</a></p>
+
+      <p>The video is embedded in an Android WebView.</p>
+
+      <p>Merely opening a workout plan, exercise library or exercise editor does not establish a connection to YouTube.</p>
+
+      <p>A connection to YouTube is established only when the user deliberately opens a movement guide that contains a video.</p>
+
+      <p>When an embedded video is loaded, Google or YouTube may process, in particular:</p>
+
+      <ul>
+        <li>IP address;</li>
+        <li>device and operating-system information;</li>
+        <li>technical browser/WebView information;</li>
+        <li>requested video ID;</li>
+        <li>time of the request;</li>
+        <li>interactions with the embedded player;</li>
+        <li>information required for operation, security and delivery of the video.</li>
+      </ul>
+
+      <p>The embedded player may use cookies, local storage or comparable browser technologies.</p>
+
+      <p>According to YouTube, viewing a video in privacy-enhanced mode is not used to personalise the user’s YouTube browsing experience or personalised advertising outside the embedded player. If ads are shown in a video played through privacy-enhanced mode, YouTube states that those ads are non-personalised.</p>
+
+      <p>RealityForge does not thereby receive the user’s YouTube credentials or a complete YouTube viewing history.</p>
+
+      <p>Opening a movement guide is independent of the Firebase Analytics consent choice. If Analytics consent has been granted, Gym Progress may record only the app-level event “movement guide opened” together with the static ID of a built-in catalogue exercise; the YouTube player and its own data processing remain separate.</p>
+
+      <p>The connection is initiated by the user by opening the externally hosted video. To the extent that the processing is necessary to provide the video feature expressly requested by the user, RealityForge relies on Article 6(1)(b) GDPR. To the extent that Section 25 TDDDG applies to technically necessary storage or access for this expressly requested function, Section 25(2) no. 2 TDDDG may apply.</p>
+
+      <p>Google and YouTube may also process data under their own responsibility.</p>
+
+      <h2>13. VOLUNTARY FEEDBACK ABOUT MOVEMENT-GUIDE VIDEOS</h2>
+
+      <p>This online feature is unavailable for profiles with unknown age and for profiles under 21.</p>
+
+      <p>Users may voluntarily:</p>
+
+      <ul>
+        <li>report a video that no longer works;</li>
+        <li>report an incorrect exercise or equipment variant;</li>
+        <li>report a poor match or execution;</li>
+        <li>suggest a better YouTube video.</li>
+      </ul>
+
+      <p>Data is transmitted only when the user actively submits a report.</p>
+
+      <p>The following is transmitted:</p>
+
+      <ul>
+        <li>exercise ID;</li>
+        <li>current YouTube video ID;</li>
+        <li>selected report reason;</li>
+        <li>for a replacement suggestion, the suggested YouTube video ID;</li>
+        <li>app version;</li>
+        <li>selected app language;</li>
+        <li>a randomly generated installation ID used exclusively for this feedback feature.</li>
+      </ul>
+
+      <p>A YouTube URL entered by the user is reduced to the video ID before transmission.</p>
+
+      <p>In particular, the following is not sent:</p>
+
+      <ul>
+        <li>workout names;</li>
+        <li>course data;</li>
+        <li>workout weights;</li>
+        <li>repetitions;</li>
+        <li>sets;</li>
+        <li>complete workout plans;</li>
+        <li>search terms;</li>
+        <li>Google account;</li>
+        <li>Advertising ID;</li>
+        <li>Firebase app-instance ID;</li>
+        <li>free-text notes.</li>
+      </ul>
+
+      <p>The local feedback installation ID is randomly generated when the feedback feature is first used.</p>
+
+      <p>The Cloudflare Worker uses HMAC-SHA-256 with a secret stored only on the server to calculate a pseudonymous hash. The raw installation ID is not stored in the D1 database.</p>
+
+      <p>Current abuse-protection limits are:</p>
+
+      <ul>
+        <li>no more than 5 stored reports per exercise and installation within a rolling 24-hour period;</li>
+        <li>no more than 200 stored reports per installation within a rolling 24-hour period;</li>
+        <li>identical reports from the same installation, exercise, reason and suggested video ID are not stored as a separate queue entry again within 30 days.</li>
+      </ul>
+
+      <p>The Android dialog also prevents concurrent duplicate submissions while a request is in progress. There is no general time-based 10-minute cooldown.</p>
+
+      <p>Cloudflare provides the Worker and D1 database infrastructure. As an infrastructure provider, Cloudflare necessarily processes network connection data such as IP addresses. RealityForge does not store a raw IP address in D1 for this feature and does not create a device fingerprint.</p>
+
+      <p>Reports are moderated internally by RealityForge. An accepted suggestion does not automatically change the exercise catalogue.</p>
+
+      <p>The legal basis is Article 6(1)(f) GDPR. RealityForge’s legitimate interest is to identify broken or unsuitable movement guides, improve app quality and protect the feedback infrastructure against abuse.</p>
+
+      <h2>14. RETENTION OF VIDEO FEEDBACK</h2>
+
+      <p>The following retention rules currently apply to voluntary video feedback:</p>
+
+      <ul>
+        <li>the pseudonymous installation hash is removed from older queue entries after 30 days;</li>
+        <li>reviewed entries with status “approved” or “rejected” are deleted after 90 days;</li>
+        <li>entries still marked “pending” are deleted after no more than 180 days;</li>
+        <li>the raw feedback installation ID stored locally on the device remains until the app data is cleared or the app is uninstalled.</li>
+      </ul>
+
+      <h2>15. EXTERNAL LINKS, GOOGLE PLAY REVIEW AND EXTERNAL APPS</h2>
+
+      <p>When the user uses features such as:</p>
+
+      <ul>
+        <li>“Rate Gym Progress”;</li>
+        <li>“Share Gym Progress”;</li>
+        <li>opening a YouTube video;</li>
+        <li>sharing a workout plan,</li>
+      </ul>
+
+      <p>the app may, at the user’s request, open an external app or service.</p>
+
+      <p>Once data is handed over to that external service, its privacy terms additionally apply.</p>
+
+      <p>The in-app review feature is provided through Google Play. Gym Progress stores only local information needed to limit its own review prompts over time. The app cannot reliably determine whether the user actually submitted a review.</p>
+
+      <h2>16. ANDROID PERMISSIONS</h2>
+
+      <p>Gym Progress currently uses, in particular:</p>
+
+      <ul>
+        <li>INTERNET, for Firebase Analytics after consent, AdMob/UMP, Google Play Billing, YouTube and voluntary video feedback;</li>
+        <li>POST_NOTIFICATIONS, on Android versions that require runtime permission for local notifications.</li>
+      </ul>
+
+      <p>For its core functions, Gym Progress currently does not request general Android permissions for:</p>
+
+      <ul>
+        <li>precise location;</li>
+        <li>contacts;</li>
+        <li>microphone;</li>
+        <li>phone calls;</li>
+        <li>SMS;</li>
+        <li>calendar;</li>
+        <li>general file-system access;</li>
+        <li>broad photo/video-library access.</li>
+      </ul>
+
+      <p>Selecting an image for a custom exercise uses the Android system picker.</p>
+
+      <h2>17. RECIPIENTS AND SERVICE PROVIDERS</h2>
+
+      <p>Depending on the feature used, personal or pseudonymous data may be processed in particular by:</p>
+
+      <ul>
+        <li>Google Ireland Limited;</li>
+        <li>Google LLC and affiliated Google companies in connection with Firebase Analytics, AdMob, UMP, Google Play Billing, Google Play Review and YouTube;</li>
+        <li>technical subprocessors or providers used by Google;</li>
+        <li>Cloudflare, Inc. and, where applicable, affiliated companies or subprocessors in connection with voluntary video feedback;</li>
+        <li>external apps, document providers or cloud services selected by the user for export or sharing;</li>
+        <li>public authorities where disclosure is required by law.</li>
+      </ul>
+
+      <p>Depending on the specific service, providers may act as processors/service providers for RealityForge or as independent controllers under their own terms. The applicable contractual, privacy and product terms govern the respective roles.</p>
+
+      <p>RealityForge currently does not operate a server that stores users’ complete workout plans or workout histories.</p>
+
+      <p>The Cloudflare D1 database used for video feedback contains only the limited feedback data described in Section 13.</p>
+
+      <h2>18. INTERNATIONAL DATA TRANSFERS</h2>
+
+      <p>Google and Cloudflare operate international infrastructure. Personal or pseudonymous data may therefore also be processed outside the European Economic Area, in particular in the United States.</p>
+
+      <p>Where such processing constitutes a transfer to a third country under the GDPR, recognised transfer mechanisms may apply depending on the recipient and service, in particular adequacy decisions including the EU-U.S. Data Privacy Framework where its requirements are met, as well as the Standard Contractual Clauses adopted by the European Commission and, where necessary, supplementary safeguards.</p>
+
+      <p>Further information on the mechanisms used by Google and Cloudflare is available in the privacy and contractual information linked below.</p>
+
+      <h2>19. GENERAL RETENTION PERIODS</h2>
+
+      <p>Local workout data generally remains on the device until:</p>
+
+      <ul>
+        <li>it is changed or removed through normal app functions;</li>
+        <li>the user clears the app’s data through Android;</li>
+        <li>the app is uninstalled;</li>
+        <li>the operating system removes it for another reason.</li>
+      </ul>
+
+      <p>Daily exercise and course completion status is interpreted as current only for one local calendar date and is not continued as a new permanent workout history.</p>
+
+      <p>Custom-exercise images are stored in the app’s private storage. Image files that are no longer referenced may be cleaned up by the app after a safety period.</p>
+
+      <p>Local Analytics consent choices remain stored until they are changed, app data is cleared or the app is uninstalled.</p>
+
+      <p>The locally stored eligibility date derived from the birth date remains until app data is cleared or the app is uninstalled.</p>
+
+      <p>Local usage counters used for delayed advertising and in-app review limits generally remain until app data is cleared or the app is uninstalled.</p>
+
+      <p>The local feedback installation ID remains until app data is cleared or the app is uninstalled.</p>
+
+      <p>Google Play retains purchase and transaction data according to its own legal and service-related retention rules.</p>
+
+      <p>Firebase Analytics data is processed in accordance with the retention setting configured for the linked Google Analytics property and Google’s applicable policies. Aggregated reports may be subject to different retention rules than user- or event-level data.</p>
+
+      <p>Advertising privacy choices and AdMob data are processed under the applicable UMP/Google rules and retention periods.</p>
+
+      <p>Retention of voluntary video feedback is described in Section 14.</p>
+
+      <p>Copies of exported CSV files or shared story images that the user stores or passes outside the app are under the user’s control and, where applicable, subject to the retention rules of the selected third-party provider.</p>
+
+      <h2>20. DATA SECURITY</h2>
+
+      <p>RealityForge limits data transmission to the data intended for the respective feature.</p>
+
+      <p>Detailed workout data generally remains in the app’s private storage.</p>
+
+      <p>Android cloud backup is disabled.</p>
+
+      <p>Network connections to Firebase, AdMob/UMP, Google Play, YouTube and Cloudflare use encrypted HTTPS/TLS connections where the relevant connection takes place over the internet.</p>
+
+      <p>User-selected exercise images are processed in the app’s private storage and are not uploaded automatically.</p>
+
+      <p>Despite technical and organisational measures, no electronic transmission or storage can be guaranteed to be absolutely secure.</p>
+
+      <h2>21. OVERVIEW OF LEGAL BASES</h2>
+
+      <p>Depending on the processing activity, RealityForge relies in particular on:</p>
+
+      <ul>
+        <li>Article 6(1)(b) GDPR where processing is necessary to provide an app function expressly used by the user or to perform a one-time purchase;</li>
+        <li>Article 6(1)(a) GDPR where the user expressly consents to optional Analytics or advertising-related processing;</li>
+        <li>Article 6(1)(f) GDPR for voluntary video feedback and security, abuse-prevention and fraud-prevention measures, provided that the data subject’s overriding interests or rights do not prevail;</li>
+        <li>Article 6(1)(c) GDPR where processing is necessary to comply with a legal obligation.</li>
+      </ul>
+
+      <p>Section 25 TDDDG additionally applies to storing information on, or accessing information already stored on, a terminal device.</p>
+
+      <p>Where consent is required, it is obtained in accordance with Section 25(1) TDDDG.</p>
+
+      <p>Where storage or access is strictly necessary to provide a digital service expressly requested by the user, Section 25(2) no. 2 TDDDG may apply.</p>
+
+      <h2>22. PROVISION OF DATA AND CONSEQUENCES OF NOT PROVIDING IT</h2>
+
+      <p>No user account is required for the basic local workout-planning functions.</p>
+
+      <p>Entering a birth date is used solely to determine locally whether certain optional network features may be enabled for the profile. If no valid adult status is established, AdMob/UMP, Firebase Analytics, external movement guides and video feedback remain disabled; local workout functions remain available.</p>
+
+      <p>Analytics consent is voluntary. Refusing Analytics does not affect the local core functions.</p>
+
+      <p>Advertising privacy choices are managed through UMP. Depending on applicable law and the user’s choice, this may affect whether and in which mode Google can request or serve ads. Local workout functions remain available regardless.</p>
+
+      <p>Android notification permission is voluntary. Without it, the relevant local notifications cannot be delivered.</p>
+
+      <p>Google Play purchase data is required only if the user wishes to complete a paid one-time purchase or restore an existing purchase status.</p>
+
+      <p>A connection to YouTube is required only if the user chooses to open an externally hosted movement guide.</p>
+
+      <p>Submitting video feedback is voluntary. Without transmission, only the feedback feature cannot be used.</p>
+
+      <h2>23. WITHDRAWAL OF CONSENT AND PRIVACY SETTINGS</h2>
+
+      <p>Consent can be withdrawn at any time with effect for the future.</p>
+
+      <p>Firebase Analytics consent:<br>The choice can be changed in the Gym Progress privacy settings.</p>
+
+      <p>Advertising privacy:<br>Where UMP requires a persistent privacy entry point, advertising privacy choices can be reopened from within the app.</p>
+
+      <p>Withdrawal does not affect the lawfulness of processing carried out on the basis of consent before its withdrawal.</p>
+
+      <h2>24. SPECIAL NOTICE ABOUT THE RIGHT TO OBJECT</h2>
+
+      <p>Where RealityForge processes personal data on the basis of Article 6(1)(f) GDPR, data subjects have the right under Article 21(1) GDPR to object to such processing at any time on grounds relating to their particular situation.</p>
+
+      <p>This applies in particular to processing connected with voluntary video feedback and to security, abuse-prevention and fraud-prevention measures where these rely on legitimate interests.</p>
+
+      <p>Following a valid objection, RealityForge will no longer process the personal data concerned unless RealityForge demonstrates compelling legitimate grounds for the processing which override the interests, rights and freedoms of the data subject, or the processing is necessary for the establishment, exercise or defence of legal claims.</p>
+
+      <p>Contact for objections:<br><a href="mailto:realityforgeeu@gmail.com">realityforgeeu@gmail.com</a></p>
+
+      <h2 data-gym-rights>25. DATA-SUBJECT RIGHTS</h2>
+
+      <p>Where the GDPR applies, data subjects have, subject to the applicable legal requirements, in particular:</p>
+
+      <ul>
+        <li>the right of access under Article 15 GDPR;</li>
+        <li>the right to rectification under Article 16 GDPR;</li>
+        <li>the right to erasure under Article 17 GDPR;</li>
+        <li>the right to restriction of processing under Article 18 GDPR;</li>
+        <li>the right to data portability under Article 20 GDPR;</li>
+        <li>the right to object under Article 21 GDPR;</li>
+        <li>the right to withdraw consent under Article 7(3) GDPR;</li>
+        <li>the right to lodge a complaint with a supervisory authority under Article 77 GDPR.</li>
+      </ul>
+
+      <p>To exercise these rights:<br><a href="mailto:realityforgeeu@gmail.com">realityforgeeu@gmail.com</a></p>
+
+      <p>Because Gym Progress does not use user accounts and RealityForge never receives much of the locally stored data, RealityForge cannot identify, retrieve or delete local workout data on the user’s device from a server. Users can delete local app data through Android system settings or uninstall the app.</p>
+
+      <p>For pseudonymous Analytics or feedback data, RealityForge may in some cases be unable to identify a specific record from an email address alone. Where additional technical information is necessary to process a request and may lawfully be requested, RealityForge may ask for the information required for that purpose.</p>
+
+      <h2>26. RIGHT TO LODGE A COMPLAINT</h2>
+
+      <p>Under Article 77 GDPR, data subjects may lodge a complaint with a data-protection supervisory authority.</p>
+
+      <p>For RealityForge’s establishment in Berlin, the following authority is particularly relevant:</p>
+
+      <p>Berlin Commissioner for Data Protection and Freedom of Information<br>(Berliner Beauftragte für Datenschutz und Informationsfreiheit)<br>Alt-Moabit 59-61<br>10555 Berlin<br>Germany</p>
+
+      <p>Phone: +49 30 13889-0<br>Email: <a href="mailto:mailbox@datenschutz-berlin.de">mailbox@datenschutz-berlin.de</a><br>Website: <a href="https://www.datenschutz-berlin.de/" rel="noopener noreferrer">https://www.datenschutz-berlin.de/</a></p>
+
+      <h2>27. MINORS AND LOCAL AGE CHECK</h2>
+
+      <p>Gym Progress is not specifically directed at children.</p>
+
+      <p>The app does not require a user account or the provision of direct contact details.</p>
+
+      <p>On first launch, Gym Progress neutrally asks for the user’s birth date. From that date, the app calculates an eligibility date locally and stores only that derived date in the app’s private storage. The entered birth date is not transmitted to RealityForge or third parties and is not stored as a birth date.</p>
+
+      <p>For profiles with unknown age and for profiles under 21, AdMob/UMP and Firebase Analytics are not started for advertising or usage analytics. External movement guides and video feedback also remain disabled. Local workout functions remain available.</p>
+
+      <p>The age threshold of 21 is a product-level protective threshold chosen by RealityForge for enabling these optional network features. It is not a statement that a person is generally capable of giving valid consent under every applicable legal system only from that age.</p>
+
+      <h2>28. NO AUTOMATED DECISION-MAKING WITHIN THE MEANING OF ARTICLE 22 GDPR</h2>
+
+      <p>Gym Progress does not use solely automated decision-making, including profiling, that produces legal effects concerning the user or similarly significantly affects the user.</p>
+
+      <p>Local rules, such as age-based activation of optional network features or delayed eligibility for interstitial advertising, merely control technical app functionality and do not produce legal or similarly significant effects within the meaning of Article 22 GDPR.</p>
+
+      <h2>29. NO MEDICAL PURPOSE</h2>
+
+      <p>Gym Progress is a fitness and workout-planning app.</p>
+
+      <p>The app is not a medical device and is not intended to diagnose, prevent, monitor or treat diseases, injuries or medical conditions.</p>
+
+      <p>RealityForge does not ask users to enter medical diagnoses or other special categories of personal data into free-text fields.</p>
+
+      <h2>30. CHANGES TO THIS PRIVACY POLICY</h2>
+
+      <p>RealityForge may update this Privacy Policy when app functionality, service providers or legal requirements change.</p>
+
+      <p>The current version is available at:</p>
+
+      <p><a href="https://realityforge.eu/privacy-policy/gym-progress/" rel="noopener noreferrer">https://realityforge.eu/privacy-policy/gym-progress/</a></p>
+
+      <p>The “last updated” date will be changed when material updates are made.</p>
+
+      <h2>31. ACCESSING THIS PRIVACY POLICY ON REALITYFORGE.EU</h2>
+
+      <p>This app Privacy Policy is provided on realityforge.eu.</p>
+
+      <p>For the technical provision of the website itself, including hosting through GitHub Pages and local storage of the visitor’s selected dark/light theme in the browser, the general RealityForge website privacy policy additionally applies:</p>
+
+      <p><a href="https://realityforge.eu/privacy-policy/" rel="noopener noreferrer">https://realityforge.eu/privacy-policy/</a></p>
+
+      <p>The website processing described there is separate from data processing within the Android app.</p>
+
+      <h2>FURTHER INFORMATION / PROVIDER DOCUMENTATION</h2>
+
+      <p>General Data Protection Regulation:<br><a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" rel="noopener noreferrer">https://eur-lex.europa.eu/eli/reg/2016/679/oj</a></p>
+
+      <p>Section 25 TDDDG:<br><a href="https://www.gesetze-im-internet.de/ttdsg/__25.html" rel="noopener noreferrer">https://www.gesetze-im-internet.de/ttdsg/__25.html</a></p>
+
+      <p>Google Privacy Policy:<br><a href="https://policies.google.com/privacy" rel="noopener noreferrer">https://policies.google.com/privacy</a></p>
+
+      <p>Google – data transfer frameworks:<br><a href="https://policies.google.com/privacy/frameworks" rel="noopener noreferrer">https://policies.google.com/privacy/frameworks</a></p>
+
+      <p>Firebase Privacy:<br><a href="https://firebase.google.com/support/privacy" rel="noopener noreferrer">https://firebase.google.com/support/privacy</a></p>
+
+      <p>Firebase Analytics – configure data collection:<br><a href="https://firebase.google.com/docs/analytics/android/configure-data-collection" rel="noopener noreferrer">https://firebase.google.com/docs/analytics/android/configure-data-collection</a></p>
+
+      <p>Google Mobile Ads – data disclosure:<br><a href="https://developers.google.com/admob/android/privacy/play-data-disclosure" rel="noopener noreferrer">https://developers.google.com/admob/android/privacy/play-data-disclosure</a></p>
+
+      <p>Google UMP:<br><a href="https://developers.google.com/admob/android/privacy" rel="noopener noreferrer">https://developers.google.com/admob/android/privacy</a></p>
+
+      <p>Google Play Billing:<br><a href="https://developer.android.com/google/play/billing" rel="noopener noreferrer">https://developer.android.com/google/play/billing</a></p>
+
+      <p>YouTube – privacy-enhanced mode:<br><a href="https://support.google.com/youtube/answer/171780" rel="noopener noreferrer">https://support.google.com/youtube/answer/171780</a></p>
+
+      <p>Cloudflare Data Processing Addendum:<br><a href="https://www.cloudflare.com/cloudflare-customer-dpa/" rel="noopener noreferrer">https://www.cloudflare.com/cloudflare-customer-dpa/</a></p>
+
+      <p>Berlin Commissioner for Data Protection and Freedom of Information:<br><a href="https://www.datenschutz-berlin.de/" rel="noopener noreferrer">https://www.datenschutz-berlin.de/</a></p>
+    </article>
   </main>
   <footer class="site-footer legal-footer">
-    <div class="footer-bottom"><span>© 2026 RealityForge GbR</span><span><a href="/">Startseite</a> · <a href="mailto:realityforgeeu@gmail.com">Kontakt</a></span></div>
+    <div class="footer-bottom"><span>© 2026 RealityForge GbR</span><span><a href="/" data-gym-label="home">Startseite</a> · <a href="mailto:realityforgeeu@gmail.com" data-gym-label="contact">Kontakt</a></span></div>
   </footer>
+  <script>
+    (() => {
+      const controls = document.getElementById('gym-language-switch');
+      const buttons = controls.querySelectorAll('[data-gym-choice]');
+      const languageContent = document.querySelectorAll('[data-gym-language]');
+      const labels = {
+        de: { skip: 'Zum Inhalt springen', home: 'Startseite', legal: 'Impressum', contact: 'Kontakt', brand: 'RealityForge Startseite', navigation: 'Rechtliche Navigation', language: 'Sprache auswählen', title: 'Datenschutzerklärung für Gym Progress · RealityForge' },
+        en: { skip: 'Skip to content', home: 'Home', legal: 'Legal Notice', contact: 'Contact', brand: 'RealityForge home', navigation: 'Legal navigation', language: 'Choose language', title: 'Privacy Policy for Gym Progress · RealityForge' }
+      };
+      const scrollToRights = () => {
+        if (window.location.hash === '#data-deletion') {
+          requestAnimationFrame(() => document.getElementById('data-deletion').scrollIntoView({ block: 'start' }));
+        }
+      };
+      const selectLanguage = (language) => {
+        document.querySelectorAll('[data-gym-rights]').forEach(heading => heading.removeAttribute('id'));
+        languageContent.forEach(content => {
+          content.hidden = content.dataset.gymLanguage !== language;
+        });
+        document.querySelector('#gym-policy-' + language + ' [data-gym-rights]').id = 'data-deletion';
+        buttons.forEach(button => {
+          button.setAttribute('aria-pressed', String(button.dataset.gymChoice === language));
+        });
+        document.documentElement.lang = language;
+        document.title = labels[language].title;
+        controls.setAttribute('aria-label', labels[language].language);
+        document.querySelectorAll('[data-gym-label]').forEach(element => {
+          element.textContent = labels[language][element.dataset.gymLabel];
+        });
+        document.querySelectorAll('[data-gym-aria]').forEach(element => {
+          element.setAttribute('aria-label', labels[language][element.dataset.gymAria]);
+        });
+        scrollToRights();
+      };
+      selectLanguage((navigator.language || '').toLowerCase().startsWith('de') ? 'de' : 'en');
+      buttons.forEach(button => {
+        button.addEventListener('click', () => selectLanguage(button.dataset.gymChoice));
+      });
+      window.addEventListener('hashchange', scrollToRights);
+      controls.hidden = false;
+    })();
+  </script>
 </body>
 </html>
