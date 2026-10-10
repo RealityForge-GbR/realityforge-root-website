@@ -1,4 +1,5 @@
-const DEFAULT_API_BASE = "https://manga-tracker-api.realityforgeeu.workers.dev";
+const DEFAULT_API_BASE = "https://api.manga.realityforge.eu";
+const LEGACY_API_ORIGIN = "https://manga-tracker-api.realityforgeeu.workers.dev";
 const SITE_ORIGIN = "https://manga.realityforge.eu";
 const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=eu.realityforge.mangatracker";
 const FALLBACK_IMAGE = `${SITE_ORIGIN}/manga-tracker-og.png`;
@@ -6,7 +7,33 @@ const ROOT_IMPRINT = "https://realityforge.eu/legal-notice/";
 const ROOT_PRIVACY = "https://realityforge.eu/privacy-policy/";
 const MANGA_PRIVACY = "https://realityforge.eu/privacy-policy/manga-tracker/";
 const FETCH_TIMEOUT_MS = 5000;
-const CACHE_VERSION = "2";
+const CACHE_VERSION = "3";
+
+// Fixed, hash-authorized script: no backend text or inline event handlers.
+const CLIENT_SCRIPT = `(() => {
+  const cover = document.querySelector("img[data-fallback]");
+  if (cover) {
+    const fallback = cover.dataset.fallback;
+    const showFallback = () => { if (cover.src !== fallback) cover.src = fallback; };
+    cover.addEventListener("error", showFallback, { once: true });
+    if (cover.complete && cover.naturalWidth === 0) showFallback();
+  }
+  const openApp = document.getElementById("open-app");
+  const ua = navigator.userAgent;
+  const androidChrome = /Android/i.test(ua) && /Chrome\\//.test(ua)
+    && !/Firefox|SamsungBrowser|EdgA|OPR|DuckDuckGo|; wv\\)|Version\\/4\\.0/i.test(ua);
+  if (openApp && androidChrome) {
+    openApp.href = openApp.dataset.androidIntent;
+    openApp.hidden = false;
+  }
+})();`;
+let clientScriptHash;
+
+async function scriptHash() {
+  clientScriptHash ||= crypto.subtle.digest("SHA-256", new TextEncoder().encode(CLIENT_SCRIPT))
+    .then((buffer) => btoa(String.fromCharCode(...new Uint8Array(buffer))));
+  return clientScriptHash;
+}
 
 const SECURITY_HEADERS = {
   "Referrer-Policy": "strict-origin-when-cross-origin",
@@ -132,7 +159,7 @@ function authorNames(contributors) {
   return [...new Set(authors)];
 }
 
-function htmlResponse(html, status, cacheControl, apiOrigin = DEFAULT_API_BASE) {
+async function htmlResponse(html, status, cacheControl, apiOrigin = DEFAULT_API_BASE) {
   let imageOrigin = DEFAULT_API_BASE;
   try { imageOrigin = new URL(apiOrigin).origin; } catch { /* use the fixed safe default */ }
   return new Response(html, {
@@ -140,13 +167,13 @@ function htmlResponse(html, status, cacheControl, apiOrigin = DEFAULT_API_BASE) 
     headers: {
       "Content-Type": "text/html; charset=utf-8",
       "Cache-Control": cacheControl,
-      "Content-Security-Policy": `default-src 'none'; style-src 'unsafe-inline'; img-src 'self' ${imageOrigin}; base-uri 'none'; frame-ancestors 'none'; form-action 'none'`,
+      "Content-Security-Policy": `default-src 'none'; script-src 'sha256-${await scriptHash()}'; style-src 'unsafe-inline'; img-src 'self' ${imageOrigin}; base-uri 'none'; frame-ancestors 'none'; form-action 'none'`,
       ...SECURITY_HEADERS,
     },
   });
 }
 
-function shell({ title, socialTitle = title, description, canonical, image, body, type = "website", robots = "index,follow", jsonLd = "" }) {
+function shell({ title, socialTitle = title, description, canonical, image, body, type = "website", robots = "index,follow", jsonLd = "", clientScript = false }) {
   const safeTitle = escapeHtml(title);
   const safeSocialTitle = escapeHtml(socialTitle);
   const safeDescription = escapeHtml(description);
@@ -176,12 +203,14 @@ function shell({ title, socialTitle = title, description, canonical, image, body
   <meta name="twitter:description" content="${safeDescription}">
   <meta name="twitter:image" content="${safeImage}">
   ${jsonLd}
-  <style>${STYLES}</style>
+  <style>${STYLES}
+.app-link{display:block;width:fit-content;margin-top:1rem;color:#d6c7e3;text-underline-offset:.22em}.app-link[hidden]{display:none}</style>
 </head>
 <body>
   <header class="site-header"><a class="brand" href="/" aria-label="Manga Tracker Startseite"><span aria-hidden="true">M</span>Manga Tracker</a></header>
   ${body}
   <footer><nav aria-label="Rechtliches"><a href="${ROOT_IMPRINT}">Impressum</a><a href="${ROOT_PRIVACY}">Datenschutz</a><a href="${MANGA_PRIVACY}">Datenschutz Manga Tracker</a></nav><p>RealityForge GbR</p></footer>
+  ${clientScript ? `<script>${CLIENT_SCRIPT}</script>` : ""}
 </body>
 </html>`;
 }
@@ -218,6 +247,7 @@ function bookJsonLd(manga, canonical, image, authors, publicationDate) {
 
 export function renderMangaPage(manga, coverUrl) {
   const canonical = `${SITE_ORIGIN}/manga/${manga.isbn}`;
+  const androidIntent = `intent://manga.realityforge.eu/manga/${manga.isbn}#Intent;scheme=https;package=eu.realityforge.mangatracker;S.browser_fallback_url=${encodeURIComponent(canonical)};end`;
   const image = coverUrl || FALLBACK_IMAGE;
   const authors = authorNames(manga.contributors);
   const release = dateInfo(manga.publicationDate);
@@ -240,10 +270,11 @@ export function renderMangaPage(manga, coverUrl) {
     manga.description ? `<section class="panel description" aria-labelledby="description"><h2 id="description">${descriptionHeading}</h2>${renderDescription(manga.description)}</section>` : "",
     details ? `<section class="panel" aria-labelledby="details"><h2 id="details">Details</h2><dl class="details">${details}</dl></section>` : "",
   ].filter(Boolean).join("");
-  const body = `<main><article><section class="hero"><div class="cover-wrap"><img class="cover" src="${escapeHtml(image)}" alt="Cover von ${escapeHtml(manga.title)}" width="600" height="900"></div><div><p class="eyebrow">Manga Tracker</p><h1 class="title">${escapeHtml(manga.title)}</h1>${manga.subtitle ? `<p class="subtitle">${escapeHtml(manga.subtitle)}</p>` : ""}${authors.length ? `<p class="authors">${escapeHtml(authors.join(", "))}</p>` : ""}${facts ? `<ul class="key-facts" aria-label="Kurzinformationen">${facts}</ul>` : ""}<a class="cta" href="${PLAY_STORE_URL}">Manga Tracker bei Google Play</a></div></section>${content ? `<div class="content">${content}</div>` : ""}<section class="panel app-promo" aria-labelledby="app"><h2 id="app">Manga Tracker</h2><p>Entdecke deutsche Manga-Neuerscheinungen, verwalte deine Sammlung und behalte neue Bände deiner Reihen im Blick.</p><a class="cta" href="${PLAY_STORE_URL}">Manga Tracker bei Google Play</a></section></article></main>`;
+  const body = `<main><article><section class="hero"><div class="cover-wrap"><img class="cover" src="${escapeHtml(image)}" data-fallback="${FALLBACK_IMAGE}" alt="Cover von ${escapeHtml(manga.title)}" width="600" height="900"></div><div><p class="eyebrow">Manga Tracker</p><h1 class="title">${escapeHtml(manga.title)}</h1>${manga.subtitle ? `<p class="subtitle">${escapeHtml(manga.subtitle)}</p>` : ""}${authors.length ? `<p class="authors">${escapeHtml(authors.join(", "))}</p>` : ""}${facts ? `<ul class="key-facts" aria-label="Kurzinformationen">${facts}</ul>` : ""}<a class="cta" href="${PLAY_STORE_URL}">Manga Tracker bei Google Play</a><a class="app-link" id="open-app" href="${canonical}" data-android-intent="${escapeHtml(androidIntent)}" hidden>In Manga Tracker öffnen</a></div></section>${content ? `<div class="content">${content}</div>` : ""}<section class="panel app-promo" aria-labelledby="app"><h2 id="app">Manga Tracker</h2><p>Entdecke deutsche Manga-Neuerscheinungen, verwalte deine Sammlung und behalte neue Bände deiner Reihen im Blick.</p><a class="cta" href="${PLAY_STORE_URL}">Manga Tracker bei Google Play</a></section></article></main>`;
   return shell({
     title: `${manga.title} | Manga Tracker`, socialTitle: manga.title, description: metaDescription, canonical, image, body, type: "book",
     jsonLd: bookJsonLd(manga, canonical, image, authors, release?.iso || ""),
+    clientScript: true,
   });
 }
 
@@ -271,17 +302,62 @@ function apiBase(env) {
   try {
     const parsed = new URL(candidate);
     if (parsed.protocol !== "https:") return DEFAULT_API_BASE;
+    if (parsed.origin === LEGACY_API_ORIGIN) return DEFAULT_API_BASE;
     return candidate.replace(/\/+$/, "");
   } catch { return DEFAULT_API_BASE; }
 }
 
-async function coverExists(fetcher, url) {
+function hasImageSignature(type, bytes) {
+  const startsWith = (signature) => signature.every((byte, index) => bytes[index] === byte);
+  const text = new TextDecoder().decode(bytes);
+  switch (type) {
+    case "image/jpeg": return startsWith([0xff, 0xd8, 0xff]);
+    case "image/png": return startsWith([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+    case "image/gif": return /^GIF8[79]a/.test(text);
+    case "image/webp": return text.startsWith("RIFF") && text.slice(8, 12) === "WEBP";
+    case "image/avif": return text.slice(4, 8) === "ftyp" && /avif|avis/.test(text.slice(8));
+    default: return false;
+  }
+}
+
+// Only the existing legacy -> canonical bridge may redirect an image probe.
+// Public HTML always receives the final, canonical URL, never a redirecting URL.
+export async function probeCover(fetcher, url) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  let response;
+  let reader;
   try {
-    const response = await fetchWithTimeout(fetcher, url, { method: "GET", headers: { Accept: "image/*", Range: "bytes=0-0" } });
-    const valid = response.ok && (response.headers.get("content-type") || "").toLowerCase().startsWith("image/");
-    await response.body?.cancel().catch(() => {});
-    return valid;
-  } catch { return false; }
+    let current = new URL(url);
+    const options = { method: "GET", redirect: "manual", headers: { Accept: "image/*", Range: "bytes=0-31" }, signal: controller.signal };
+    response = await fetcher(current.href, options);
+    if (response.status === 307 && current.origin === LEGACY_API_ORIGIN) {
+      const location = response.headers.get("location");
+      const next = location && new URL(location, current);
+      if (!next || next.href !== `${DEFAULT_API_BASE}${current.pathname}${current.search}`) return "";
+      await response.body?.cancel().catch(() => {});
+      current = next;
+      response = await fetcher(current.href, options);
+    }
+    if (!response.ok || !response.body) return "";
+    const type = (response.headers.get("content-type") || "").split(";")[0].trim().toLowerCase();
+    if (!["image/jpeg", "image/png", "image/gif", "image/webp", "image/avif"].includes(type)) return "";
+    reader = response.body.getReader();
+    const prefix = new Uint8Array(32);
+    let length = 0;
+    while (length < prefix.length) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const part = value.subarray(0, prefix.length - length);
+      prefix.set(part, length);
+      length += part.length;
+    }
+    return hasImageSignature(type, prefix.subarray(0, length)) ? current.href : "";
+  } catch { return ""; }
+  finally {
+    clearTimeout(timeout);
+    await (reader ? reader.cancel() : response?.body?.cancel())?.catch(() => {});
+  }
 }
 
 async function loadManga(isbn, env) {
@@ -299,15 +375,18 @@ async function loadManga(isbn, env) {
   const manga = normalizeManga(payload?.manga);
   if (!manga || manga.isbn !== isbn) return { status: 503, base };
   const coverUrl = `${base}/manga/${isbn}/cover`;
-  const hasCover = await coverExists(fetcher, coverUrl);
-  return { status: 200, manga, coverUrl: hasCover ? coverUrl : "", base };
+  const checkedCover = await probeCover(fetcher, coverUrl);
+  return { status: 200, manga, coverUrl: checkedCover, base };
 }
 
 function assetLinks(env) {
   const fingerprintPattern = /^(?:[A-F0-9]{2}:){31}[A-F0-9]{2}$/i;
-  const fingerprints = cleanText(env?.ANDROID_SHA256_CERT_FINGERPRINTS).split(",").map((value) => value.trim().toUpperCase()).filter((value) => fingerprintPattern.test(value));
+  const configured = cleanText(env?.ANDROID_SHA256_CERT_FINGERPRINTS);
+  const values = configured ? configured.split(",").map((value) => value.trim().toUpperCase()) : [];
+  const fingerprints = values.filter((value) => fingerprintPattern.test(value));
+  const configuration = !configured ? "incomplete" : fingerprints.length === values.length ? "complete" : "invalid";
   const payload = [{ relation: ["delegate_permission/common.handle_all_urls"], target: { namespace: "android_app", package_name: "eu.realityforge.mangatracker", sha256_cert_fingerprints: [...new Set(fingerprints)] } }];
-  return new Response(JSON.stringify(payload, null, 2), { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "public, max-age=300", "X-Assetlinks-Configuration": fingerprints.length ? "complete" : "incomplete", ...SECURITY_HEADERS } });
+  return new Response(JSON.stringify(payload, null, 2), { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": configuration === "complete" ? "public, max-age=300" : "no-store", "X-Assetlinks-Configuration": configuration, ...SECURITY_HEADERS } });
 }
 
 function asHead(request, response) {

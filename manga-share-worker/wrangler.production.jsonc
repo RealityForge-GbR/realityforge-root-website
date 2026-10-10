@@ -5,7 +5,9 @@
   "compatibility_date": "2026-09-21",
   "workers_dev": true,
   "vars": {
-    "MANGA_API_BASE": "https://manga-tracker-api.realityforgeeu.workers.dev"
+    "MANGA_API_BASE": "https://api.manga.realityforge.eu",
+    // Public App Signing SHA-256 from Manga Tracker's Play Console Digital Asset Links snippet (2026-10-10), NOT the upload key.
+    "ANDROID_SHA256_CERT_FINGERPRINTS": "E8:A3:66:B3:9E:0F:C4:91:2A:6F:25:27:A6:A0:AA:54:1D:05:CA:44:F1:48:41:5B:29:88:AA:5F:3A:1A:34:05"
   },
   "services": [
     {
