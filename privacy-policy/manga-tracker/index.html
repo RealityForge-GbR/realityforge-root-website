@@ -21,7 +21,7 @@
     <article class="legal-document">
       <p>RealityForge GbR</p>
 
-      <p class="legal-updated">Stand: 4. Oktober 2026</p>
+      <p class="legal-updated">Stand: 14. Oktober 2026</p>
 
       <h2>1. Verantwortlicher</h2>
 
@@ -51,7 +51,7 @@
 
       <p>Firebase Analytics ist optional und standardmäßig deaktiviert. Eine Erfassung zu Nutzungsanalysezwecken durch RealityForge beginnt erst nach ausdrücklicher Zustimmung des Nutzers in der App.</p>
 
-      <p>Push-Benachrichtigungen sind ebenfalls optional und unabhängig von der Analytics-Einwilligung.</p>
+      <p>Push-Benachrichtigungen sind unabhängig von der Analytics-Einwilligung und können jederzeit ausgeschaltet werden. Bei echten Neuinstallationen sind die App-Einstellung und ihre vier Kategorien voreingeschaltet; vorhandene Einstellungen werden bei Updates erhalten. Die erforderliche Android-Freigabe und der genaue Ablauf sind in Abschnitt 9 beschrieben.</p>
 
       <p>Unabhängig von der optionalen Firebase-Nutzungsanalyse verarbeitet das RealityForge-Backend in begrenztem Umfang technische Sicherheitsdaten, um Missbrauch, automatisiertes Crawling, außergewöhnlich hohe Request-Last und kostenverursachende Angriffe auf die Backend-Infrastruktur zu erkennen. Einzelheiten hierzu finden Sie in Abschnitt 6.1.</p>
 
@@ -391,7 +391,7 @@
         <li>Nutzung von Sortierung und Publisher-Filtern in abstrahierter Form;</li>
         <li>Start bzw. Abschluss eines Serienimports;</li>
         <li>generische Interaktionen mit Benachrichtigungen und Benachrichtigungseinstellungen;</li>
-        <li>generische Anzeige und Nutzung externer Amazon-Kaufaktionen;</li>
+        <li>generische Anzeige und Nutzung externer Amazon-Kaufaktionen sowie Klicks und Öffnungsfehler bei Thalia-Kaufaktionen;</li>
         <li>Start eines Manga- oder App-Sharevorgangs;</li>
         <li>Start des Google-Play-In-App-Review-Flows.</li>
       </ul>
@@ -413,7 +413,7 @@
         <li>Cover-URLs oder Bilder;</li>
         <li>konkrete Preise;</li>
         <li>konkrete Budgetbeträge;</li>
-        <li>Amazon-Affiliate-Tracking-IDs;</li>
+        <li>Affiliate-URLs und Amazon-/Awin-Tracking-IDs;</li>
         <li>FCM-Token;</li>
         <li>E-Mail-Adressen;</li>
         <li>Inhalte der Bibliothek;</li>
@@ -498,9 +498,15 @@
 
       <p>Manga Tracker kann auf Wunsch Push-Benachrichtigungen zu relevanten Katalogänderungen und Veröffentlichungen bereitstellen.</p>
 
-      <p>Die Push-Funktion ist standardmäßig deaktiviert.</p>
+      <p>Bei echten Neuinstallationen sind Push-Benachrichtigungen in der App standardmäßig eingeschaltet. Dies gilt für die vier Kategorien „Meine Reihen“, „Erscheinungstermine“, „Einkaufsliste“ und „Neuheiten &amp; Rückkehr“. Jede Kategorie und der Hauptschalter können in den App-Einstellungen geändert werden.</p>
 
-      <p>Auf Android-Versionen mit entsprechender Laufzeitberechtigung wird die Systemberechtigung für Benachrichtigungen erst nach einer Nutzeraktion angefordert.</p>
+      <p>Bei Updates bestehender Installationen bleiben alle bisherigen Push-Entscheidungen und Kategorieeinstellungen erhalten. Das gilt auch für ausdrücklich ausgeschaltete Benachrichtigungen und ältere Installationen, bei denen Push ohne gespeicherten Hauptschalter bisher ausgeschaltet war.</p>
+
+      <p>Ab Android 13 ist zusätzlich die Systemberechtigung für Benachrichtigungen erforderlich. Die App fordert sie nach einer bewussten Nutzeraktion an, beispielsweise über den Hinweis nach dem ersten Hinzufügen eines Manga oder in den Einstellungen. Solange Android die Systembenachrichtigungen nicht erlaubt, aktiviert die App keine neue FCM-Registrierung und kein Katalog-Topic-Abonnement.</p>
+
+      <p>Eine Ablehnung wird respektiert; die App fordert die Berechtigung nicht bei jedem Start erneut an. Der gewünschte App-Schalter bleibt von der tatsächlichen Android-Freigabe getrennt sichtbar. Eine spätere Freigabe ist über die App- bzw. Android-Einstellungen möglich.</p>
+
+      <p>Auf Android 8 bis 12 ist kein entsprechender Laufzeitdialog vorgesehen. Bei Neuinstallationen startet die technische Push-Einrichtung, wenn Android Systembenachrichtigungen erlaubt. Der Nutzer kann Push jederzeit in der App oder in Android ausschalten. Die In-App-Benachrichtigungen bleiben unabhängig davon verfügbar.</p>
 
       <p>Die Push-Einstellungen und die Analytics-Einwilligung sind voneinander unabhängig.</p>
 
@@ -508,7 +514,7 @@
 
       <p>Für den Transport technischer Push-Signale wird Firebase Cloud Messaging (FCM) von Google verwendet.</p>
 
-      <p>Nach Aktivierung registriert sich die App technisch bei Firebase Cloud Messaging und abonniert einen gemeinsamen Katalog-Topic.</p>
+      <p>Wenn Push in der App gewünscht ist und Android Systembenachrichtigungen erlaubt, registriert sich die App technisch bei Firebase Cloud Messaging und abonniert einen gemeinsamen Katalog-Topic.</p>
 
       <p>RealityForge verwendet keine individuellen Manga-, Reihen-, Favoriten- oder ISBN-Topics.</p>
 
@@ -543,19 +549,18 @@
 
       <h3>9.4 Deaktivierung</h3>
 
-      <p>Wenn der Nutzer Push-Benachrichtigungen in Manga Tracker deaktiviert, versucht die App:</p>
+      <p>Wenn der Nutzer Push in Manga Tracker ausschaltet oder Android die Systembenachrichtigungen nicht mehr erlaubt, deaktiviert die App die automatische FCM-Initialisierung und beendet die periodische Push-Aktualisierung sowie noch ausstehende Signal-Aktualisierungen.</p>
 
-      <ul>
-        <li>den gemeinsamen Topic abzubestellen;</li>
-        <li>die FCM-Registrierung bzw. den Token zu löschen;</li>
-        <li>die periodische Push-Aktualisierung zu beenden.</li>
-      </ul>
+      <p>Die App löscht den vorhandenen FCM-Token und beendet damit dessen Zustellung und Topic-Zuordnung. Bei einer Deaktivierung in der App mit weiterhin erlaubten Android-Benachrichtigungen bestellt sie zuvor den gemeinsamen Topic ab. Ist die Android-Freigabe entzogen, fordert sie für die Abmeldung keinen neuen Token an. Diese Schritte benötigen gegebenenfalls eine erreichbare Google-Verbindung. Fehlgeschlagene Schritte bleiben als ausstehend gespeichert und werden mit begrenzten Wiederholungen bzw. beim nächsten App-Start erneut abgeglichen. Ein fehlgeschlagener Abmeldeversuch wird nicht als abgeschlossene Löschung behandelt.</p>
+
+      <p>Eine Android-Sperre verändert nicht automatisch die gespeicherten App- und Kategorieentscheidungen. Die Löschung eines FCM-Tokens ist keine Zusage, dass eine Firebase-Installationskennung oder sämtliche Google-Protokolldaten sofort gelöscht sind.</p>
 
       <p>Dies ist keine Zusage, dass sämtliche bereits bei Google zu technischen Sicherheits- oder Betriebszwecken vorhandenen Protokolldaten sofort gelöscht werden.</p>
 
       <h3>9.5 Rechtsgrundlage</h3>
 
-      <p>Die Aktivierung von Push-Benachrichtigungen erfolgt auf ausdrücklichen Wunsch des Nutzers.</p>
+      <!-- RELEASE BLOCKER: Vor Veröffentlichung die Rechtsgrundlage der voreingeschalteten FCM-Einrichtung auf Android 8–12 einschließlich § 25 TDDDG fachlich bestätigen. Die Voreinstellung und die Android-Berechtigung sind kein pauschaler Einwilligungsnachweis. Keine unbelegte Ausnahme oder Interessenabwägung einsetzen. -->
+      <p>Die App-Einstellung und die Android-Berechtigung steuern die technische Push-Funktion. Eine voreingeschaltete Option oder die bloße Installation der App wird nicht als datenschutzrechtliche Einwilligung gewertet. Die Analytics-Einwilligung bleibt davon getrennt.</p>
 
       <p>Soweit eine Einwilligung erforderlich ist, stützen wir die Verarbeitung auf Art. 6 Abs. 1 lit. a DSGVO und – soweit anwendbar – § 25 Abs. 1 TDDDG.</p>
 
@@ -654,11 +659,7 @@
 
       <h2>14. Öffentliche Manga-Links und Deep Links</h2>
 
-      <p>Geteilte Manga-Links können auf die Domain</p>
-
-      <p><a href="https://manga.realityforge.eu/">https://manga.realityforge.eu/</a></p>
-
-      <p>verweisen.</p>
+      <p>Neu geteilte Manga-Links verwenden <a href="https://mangatracker.de/">https://mangatracker.de/</a>. Frühere Links unter <a href="https://manga.realityforge.eu/">https://manga.realityforge.eu/</a> bleiben unterstützt. Für beide Domains gelten der technische Webseitenabruf und die Android-App-Link-Zuordnung.</p>
 
       <p>Beim Aufruf einer solchen Webseite fallen – wie bei gewöhnlichen Webzugriffen – technische Verbindungsdaten an.</p>
 
@@ -670,9 +671,9 @@
 
       <p>In diesem Fall verwendet die App die ISBN aus dem Link, um den angeforderten Manga zu laden.</p>
 
-      <h2>15. Externe Kauf- und Affiliate-Links, insbesondere Amazon</h2>
+      <h2>15. Externe Kauf- und Affiliate-Links: Amazon und Thalia/Awin</h2>
 
-      <p>Manga Tracker stellt externe Links zu Amazon bereit.</p>
+      <p>Manga Tracker stellt externe Kauf- bzw. Affiliate-Links zu Amazon und zu Thalia über das Affiliate-Netzwerk Awin bereit. Amazon und Thalia/Awin sind getrennte Partnerintegrationen.</p>
 
       <p>Beim Tippen auf einen Kauf-Link wird die Zielseite außerhalb von Manga Tracker in einer geeigneten App oder einem Browser geöffnet.</p>
 
@@ -700,6 +701,20 @@
       <p>Weitere Informationen:</p>
 
       <p><a href="https://www.amazon.de/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ">https://www.amazon.de/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ</a><br><a href="https://partnernet.amazon.de/">https://partnernet.amazon.de/</a></p>
+
+      <h3>15.1 Thalia-Angebote und Weiterleitung über Awin</h3>
+
+      <p>Für einen gültigen Manga kann die App dessen ISBN an das RealityForge-Backend übermitteln, um ein bestätigtes Thalia-Angebot abzufragen. Die Angebotsabfrage übermittelt keine Bibliothek, Favoritenliste, Einkaufsliste, Budgets oder Notizen an Thalia/Awin. Ein freigegebener Kauf-Link wird nur verwendet, wenn der Backend-Nachweis zur angefragten ISBN passt.</p>
+
+      <p>Beim bewussten Öffnen des Thalia-Links verlässt der Nutzer Manga Tracker. Der externe Aufruf führt über Awin zu Thalia. Der Link enthält technische Produkt-, Händler- und Partnerkennungen für die Zuordnung der Weiterleitung und einer möglichen Provision. Awin und Thalia können dabei die URL-Angaben, IP-Adresse sowie übliche Browser-, App- und Verbindungsinformationen verarbeiten.</p>
+
+      <p>Welche weiteren Trackingverfahren, Cookies und Kaufdaten die externen Anbieter einsetzen, richtet sich nach der dortigen konkreten Nutzung, deren Informationen und gegebenenfalls dort eingeholten Einwilligungen. Manga Tracker bindet kein Awin-Tracking-SDK und keinen Shop-WebView ein; daraus folgt keine Aussage, dass die externe Weiterleitung oder der Shop ohne Tracking arbeitet.</p>
+
+      <p>Die Affiliate-Kennzeichnung „Affiliate-Link · Wir erhalten eine Provision“ und die Partnerhinweise gelten auch für Thalia. RealityForge kann bei qualifizierten Käufen eine Provision erhalten. Persönliche Sammlungen werden hierfür nicht an Awin oder Thalia übertragen.</p>
+
+      <p>Nur bei zuvor aktivierter Firebase Analytics kann die App den Thalia-Klick bzw. einen Öffnungsfehler generisch mit Händler und Platzierung erfassen. ISBN, Manga-Titel, Produktkennung, Affiliate-URL, Partner-/Tracking-IDs, Preise und persönliche Listen sind keine Analytics-Parameter.</p>
+
+      <p>Weitere Informationen: <a href="https://www.awin.com/de/datenschutzerklarung">Awin-Datenschutzerklärung</a> und <a href="https://www.thalia.de/hilfe/rechtliches/datenschutz">Thalia-Datenschutzerklärung</a>.</p>
 
       <h2>16. Keine Werbe-SDKs, keine Benutzerkonten und kein Crashlytics</h2>
 
@@ -777,7 +792,7 @@
         <li>Cloudflare für die technische Bereitstellung des Manga-Tracker-Backends, der Cover-/Katalog-Infrastruktur, die pseudonymisierte Sicherheits-Telemetrie und den technischen Versand interner Sicherheitswarnungen;</li>
         <li>MVB GmbH / VLB für serverseitig abgerufene Buchmetadaten und Cover;</li>
         <li>Google / Firebase für die optionale Nutzungsanalyse, optionale Push-Benachrichtigungen, Google Play-Dienste, den Google Code Scanner und den In-App-Review-Flow sowie Google/Gmail für die interne E-Mail-Kommunikation und gegebenenfalls den Empfang interner Sicherheitswarnungen;</li>
-        <li>Amazon bzw. andere externe Shops, wenn der Nutzer einen entsprechenden externen Kauf-Link öffnet;</li>
+        <li>Amazon sowie Awin und Thalia bzw. andere externe Shops, wenn der Nutzer einen entsprechenden externen Kauf-Link öffnet;</li>
         <li>GitHub für die Bereitstellung dieser Datenschutzerklärung über GitHub Pages;</li>
         <li>der vom Nutzer gewählte externe Anbieter, wenn Inhalte über den Android-Teilen-Dialog weitergegeben werden.</li>
       </ul>
@@ -847,7 +862,7 @@
 
       <h3>21.5 Google Code Scanner, Google Play und externe Anbieter</h3>
 
-      <p>Für Daten, die Google, Amazon oder andere externe Anbieter in eigener Verantwortung verarbeiten, gelten die jeweiligen Aufbewahrungs- und Löschregeln dieser Anbieter.</p>
+      <p>Für Daten, die Google, Amazon, Awin, Thalia oder andere externe Anbieter in eigener Verantwortung verarbeiten, gelten die jeweiligen Aufbewahrungs- und Löschregeln dieser Anbieter.</p>
 
       <h3>21.6 E-Mail-Kommunikation</h3>
 
