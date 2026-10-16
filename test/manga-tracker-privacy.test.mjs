@@ -38,13 +38,13 @@ test('contains every section, in order, and both complete source lists', () => {
   assert.match(article, /Stand: 17\. Oktober 2026/);
 });
 
-test('retains the complete source wording except the documented version-specific corrections', () => {
-  // Golden text: complete 2026-10-17 TXT sections 1–25, without list markers;
-  // only sections 12, 14 and 15 have the factual version distinctions recorded in PR #3.
-  // Original TXT SHA-256: 2c2eb0dfa5ebbbb6dbd0146ed3ea377091d583160b012ee7e77b0c3cc363aa3c.
+test('retains the complete updated 1.0.2 source wording', () => {
+  // Golden text: complete Manga_Tracker_Datenschutzerklaerung_1.0.2_2026-10-17.txt
+  // sections 1–25, without list markers. No wording amendments.
+  // Original TXT SHA-256: 63b00705c1d4c1e3d635d969a8bc40a8b2278a0c88127c0598203d0bae95e47b.
   const policy = article.slice(article.indexOf('<h2>1.'));
   const digest = createHash('sha256').update(text(policy)).digest('hex');
-  assert.equal(digest, 'bc84bcee9828edf7ddc8276d64067df4c6a72ad7f1e2ade545038128f94381b9');
+  assert.equal(digest, '09b5041ad7851ac1ce74aecdb00c18d90b6f38112ac3299cfd2eca8aefd3d3b5');
 });
 
 test('has balanced semantic HTML, valid list nesting, unique IDs and no heading-level skips', () => {
@@ -95,13 +95,20 @@ test('retains Analytics opt-in, withdrawal, event minimisation and verified rete
   }
 });
 
-test('preserves the requested explicit push opt-in as a release requirement, not a default-on claim', () => {
+test('describes version-specific push defaults, Android permission and unchanged existing choices', () => {
   const push = text(section(9));
-  for (const expected of ['Bei Neuinstallationen ist die externe Push-Zustellung zunächst deaktiviert',
-    'ausdrücklich aktiviert', 'Ab Android 13', 'Auf Android 8 bis 12', 'bereits getroffene',
-    'lokal auf dem Gerät', 'keine nutzerspezifische FCM-Token-Datenbank', 'bis zu 180 Tagen',
-    'nicht zugesagt', 'widerrufen']) assert.ok(push.includes(expected), expected);
-  assert.doesNotMatch(push, /standardmäßig eingeschaltet|voreingeschaltet/);
+  for (const expected of ['Version 1.0.1 sind Push-Benachrichtigungen standardmäßig deaktiviert',
+    'echten Neuinstallation der Version 1.0.2', 'zunächst eingeschaltet',
+    'Meine Reihen', 'Erscheinungstermine', 'Einkaufsliste', 'Neuheiten & Rückkehr',
+    'Bestehende Installationen behalten ihre bisherigen Einstellungen',
+    'bisher deaktivierte Benachrichtigungen durch das Update nicht automatisch eingeschaltet',
+    'Auf Android 8 bis 12', 'ohne zuvor eine gesonderte Bestätigung innerhalb der App einzuholen',
+    'Ab Android 13', 'Solange diese nicht erteilt ist, registriert die App keine neue FCM-Zustellung',
+    'jederzeit in den App-Einstellungen ausschalten', 'auf dem Gerät anhand',
+    'keine nutzerspezifische Datenbank von FCM-Registrierungstoken', 'bis zu 180 Tagen',
+    'nicht automatisch eine ausdrückliche Löschung der FID',
+    'keine gesonderte datenschutzrechtliche Einwilligung']) assert.ok(push.includes(expected), expected);
+  assert.doesNotMatch(push, /erst, nachdem der Nutzer die Funktion in der App ausdrücklich aktiviert hat/);
 });
 
 test('distinguishes published and planned review, share-domain and Thalia behavior', () => {
