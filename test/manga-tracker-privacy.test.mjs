@@ -6,6 +6,7 @@ import test from 'node:test';
 const bytes = readFileSync(new URL('../privacy-policy/manga-tracker/index.html', import.meta.url));
 const html = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
 const article = html.match(/<article class="legal-document">([\s\S]*?)<\/article>/)?.[1];
+const main = html.match(/<main id="legal-content" class="legal-shell">([\s\S]*?)<\/main>/)?.[1];
 const decode = (text) => text.replace(/&(amp|lt|gt|quot|#39);/g, (_, entity) =>
   ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'" })[entity]);
 const text = (markup) => decode(markup.replace(/<\/?a\b[^>]*>/g, '').replace(/<[^>]*>/g, ' '))
@@ -25,7 +26,7 @@ test('preserves the public identity, metadata and existing page shell', () => {
   assert.match(html, /<main id="legal-content" class="legal-shell">/);
   assert.match(html, /<a class="skip-link" href="#legal-content">Zum Inhalt springen<\/a>/);
   assert.equal([...html.matchAll(/<h1\b/g)].length, 1);
-  assert.match(html, /<h1>Datenschutzerklärung für die Android-App „Manga Tracker“<\/h1>/);
+  assert.match(html, /<h1>DATENSCHUTZERKLÄRUNG FÜR DIE ANDROID-APP „MANGA TRACKER“<\/h1>/);
 });
 
 test('contains every section, in order, and both complete source lists', () => {
@@ -33,18 +34,21 @@ test('contains every section, in order, and both complete source lists', () => {
   assert.equal(headings.length, 25);
   assert.deepEqual(headings.map((heading) => Number(heading.split('.')[0])),
     Array.from({ length: 25 }, (_, index) => index + 1));
+  assert.deepEqual([...article.matchAll(/<h3>(\d+\.\d+) /g)].map((match) => match[1]),
+    ['8.1', '8.2', '8.3', '8.4', '9.1', '9.2', '9.3', '9.4']);
   assert.equal([...article.matchAll(/<ul>/g)].length, 2);
-  assert.equal([...article.matchAll(/<li>/g)].length, 18);
-  assert.match(article, /Stand: 17\. Oktober 2026/);
+  assert.equal([...article.matchAll(/<li>/g)].length, 13);
+  assert.match(article, /Fassung für Version 1\.0\.3 \(versionCode 5\)/);
+  assert.match(article, /Stand: 22\. Oktober 2026/);
+  assert.match(article, /Ende der Datenschutzerklärung\./);
 });
 
-test('retains the complete updated 1.0.2 source wording', () => {
-  // Golden text: complete Manga_Tracker_Datenschutzerklaerung_1.0.2_2026-10-17.txt
-  // sections 1–25, without list markers. No wording amendments.
-  // Original TXT SHA-256: 63b00705c1d4c1e3d635d969a8bc40a8b2278a0c88127c0598203d0bae95e47b.
-  const policy = article.slice(article.indexOf('<h2>1.'));
-  const digest = createHash('sha256').update(text(policy)).digest('hex');
-  assert.equal(digest, '09b5041ad7851ac1ce74aecdb00c18d90b6f38112ac3299cfd2eca8aefd3d3b5');
+test('retains the complete verbatim 1.0.3 source, including title, preface and ending', () => {
+  // Golden text: complete Manga_Tracker_Datenschutzerklaerung_1.0.3_2026-10-22.txt.
+  // Only whitespace and semantic list markers are normalized; no wording amendments.
+  // Original TXT SHA-256: 430b38bcf042cb03a58f28ce6f1388daa7d6907f01bc04d80d9767a471de918c.
+  const digest = createHash('sha256').update(text(main)).digest('hex');
+  assert.equal(digest, 'f16434392409b9f182e8a92b5347e904a950cbe6926cce493079410ca2194210');
 });
 
 test('has balanced semantic HTML, valid list nesting, unique IDs and no heading-level skips', () => {
@@ -58,6 +62,7 @@ test('has balanced semantic HTML, valid list nesting, unique IDs and no heading-
     else {
       if (name === 'li') assert.equal(stack.at(-1), 'ul');
       if (name === 'h2') assert.equal(stack.at(-1), 'article');
+      if (name === 'h3') assert.equal(stack.at(-1), 'article');
       if (name === 'p') assert.notEqual(stack.at(-1), 'p');
       stack.push(name);
     }
@@ -65,13 +70,15 @@ test('has balanced semantic HTML, valid list nesting, unique IDs and no heading-
   assert.deepEqual(stack, []);
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
   assert.equal(ids.length, new Set(ids).size);
-  assert.doesNotMatch(article, /<h[3-6]\b/);
+  const levels = [...main.matchAll(/<h([1-6])\b/g)].map((match) => Number(match[1]));
+  for (let index = 1; index < levels.length; index++) assert.ok(levels[index] <= levels[index - 1] + 1);
+  assert.doesNotMatch(article, /<h[4-6]\b/);
   assert.doesNotMatch(html, /&(?!amp;|lt;|gt;|quot;|#39;)/);
 });
 
 test('marks every source URL and email as a valid, readable link', () => {
   const links = [...article.matchAll(/<a href="([^"]+)">([^<]+)<\/a>/g)];
-  assert.ok(links.length >= 30);
+  assert.equal(links.length, 33);
   for (const [, encodedHref, encodedLabel] of links) {
     const href = decode(encodedHref);
     const label = decode(encodedLabel);
@@ -86,40 +93,43 @@ test('marks every source URL and email as a valid, readable link', () => {
   assert.match(article, /href="mailto:realityforgeeu@gmail\.com"/);
 });
 
-test('retains Analytics opt-in, withdrawal, event minimisation and verified retention', () => {
+test('retains the source G1/G2 choices, withdrawal, minimisation and documented retention', () => {
   const analytics = text(section(8));
-  for (const expected of ['standardmäßig deaktiviert', 'gesonderten ausdrücklichen Zustimmung',
-    'nicht für eine spätere Übermittlung gepuffert', 'widerrufen', 'keine konkreten ISBNs',
-    'eingegebenen Suchbegriffe', 'zwei Monate', '14 Monate', 'bei neuer Aktivität zurückgesetzt']) {
+  for (const expected of ['standardmäßig ausgeschaltet', 'wirksam gespeicherten, ausdrücklichen Entscheidung',
+    'G1 – Funktionsanalyse', 'G2 – Zusätzliche Ablaufauswertung', 'Sie ist ohne G1 nicht aktiv',
+    'journey_consent=extended', 'Eine G2-Abwahl lässt G1 eingeschaltet', 'widerrufen',
+    'keine konkreten ISBNs', 'eingegebenen Suchtexte', 'zwei Monate', '14 Monate',
+    'bei weiterer Aktivität zurücksetzen']) {
     assert.ok(analytics.includes(expected), expected);
   }
 });
 
-test('describes version-specific push defaults, Android permission and unchanged existing choices', () => {
+test('retains the source 1.0.3 push activation, existing-choice handling and operator notices', () => {
   const push = text(section(9));
-  for (const expected of ['Version 1.0.1 sind Push-Benachrichtigungen standardmäßig deaktiviert',
-    'echten Neuinstallation der Version 1.0.2', 'zunächst eingeschaltet',
-    'Meine Reihen', 'Erscheinungstermine', 'Einkaufsliste', 'Neuheiten & Rückkehr',
-    'Bestehende Installationen behalten ihre bisherigen Einstellungen',
-    'bisher deaktivierte Benachrichtigungen durch das Update nicht automatisch eingeschaltet',
-    'Auf Android 8 bis 12', 'ohne zuvor eine gesonderte Bestätigung innerhalb der App einzuholen',
-    'Ab Android 13', 'Solange diese nicht erteilt ist, registriert die App keine neue FCM-Zustellung',
-    'jederzeit in den App-Einstellungen ausschalten', 'auf dem Gerät anhand',
-    'keine nutzerspezifische Datenbank von FCM-Registrierungstoken', 'bis zu 180 Tagen',
-    'nicht automatisch eine ausdrückliche Löschung der FID',
-    'keine gesonderte datenschutzrechtliche Einwilligung']) assert.ok(push.includes(expected), expected);
-  assert.doesNotMatch(push, /erst, nachdem der Nutzer die Funktion in der App ausdrücklich aktiviert hat/);
+  for (const expected of ['In Version 1.0.3 beginnt Push bei neuen Installationen deaktiviert',
+    'unabhängig von der Android-Version', 'dokumentierte bewusste Nutzerentscheidung',
+    'Bereits ausdrücklich ausgeschaltete Push-Funktionen bleiben aus',
+    'Erst nach einer bewussten Aktivierung in der App', 'Ab Android 13',
+    'App-Mitteilungen', 'Meine Reihen', 'Erscheinungstermine', 'Einkaufsliste', 'Neuheiten & Rückkehr',
+    'Eine Kategorieauswahl allein aktiviert einen ausgeschalteten Push-Hauptschalter nicht',
+    'keine eigene personenbezogene Datenbank der FCM-Registrierungstoken',
+    'nicht automatisch die sofortige Löschung der FID',
+    'Normal, Wichtig und Update erforderlich', 'keine Werbefunktion']) {
+    assert.ok(push.includes(expected), expected);
+  }
 });
 
-test('distinguishes published and planned review, share-domain and Thalia behavior', () => {
-  assert.match(text(section(12)), /1\.0\.1.*In-App-Review-Schnittstelle.*1\.0\.2.*Store-Seite/);
-  assert.match(text(section(14)), /1\.0\.1.*manga\.realityforge\.eu\/manga\/.*1\.0\.2.*mangatracker\.de\/manga\//);
-  assert.match(text(section(15)), /1\.0\.1 bietet Amazon-Kaufaktionen.*Thalia-\/Awin-Kaufaktion ist für Version 1\.0\.2 vorgesehen/);
+test('retains the source review/update, share-domain and external affiliate descriptions', () => {
+  assert.match(text(section(12)), /Version 1\.0\.3.*Google-Play-App.*Browser/);
+  assert.match(text(section(12)), /Prüfung der Update-Verfügbarkeit/);
+  assert.match(text(section(14)), /https:\/\/mangatracker\.de\/manga\/\[ISBN\].*https:\/\/manga\.realityforge\.eu\/manga\/\[ISBN\]/);
+  assert.match(text(section(15)), /Amazon.*Thalia\/Awin/);
+  assert.match(text(section(15)), /kein Awin-Webtracking-SDK/);
 });
 
 test('retains the backup, pseudonymous telemetry, provider and data-subject disclosures', () => {
-  assert.match(text(section(4)), /ZIP-basiertes Archiv.*nicht mit einem Passwort verschlüsselt/);
-  assert.match(text(section(6)), /HMAC-SHA-256.*128 Bit.*pseudonymisiert, nicht anonymisiert/);
+  assert.match(text(section(4)), /ZIP-basiert.*nicht durch ein eigenes Passwort verschlüsselt/);
+  assert.match(text(section(6)), /HMAC-SHA-256.*128 Bit.*pseudonymer HMAC-Wert/);
   assert.match(text(section(6)), /drei Monate/);
   assert.match(text(section(19)), /Art\. 46 DSGVO/);
   assert.match(text(section(22)), /Art\. 15 DSGVO.*Art\. 16 DSGVO.*Art\. 17 DSGVO.*Art\. 18 DSGVO.*Art\. 20 DSGVO.*Art\. 21 DSGVO/);
@@ -129,6 +139,6 @@ test('retains the backup, pseudonymous telemetry, provider and data-subject disc
 test('contains no editing notes, replacement characters, placeholders or external embeds', () => {
   assert.doesNotMatch(html, /\uFFFD|\[\[|\]\]|TODO|FIXME|Codex|Entwurf|FIREBASE_ANALYTICS_AUFBEWAHRUNG/);
   assert.doesNotMatch(html, /<(?:script|iframe|style)\b|\son[a-z]+\s*=/i);
-  assert.match(html, /Übermittlung|Überblick/);
-  assert.match(html, /ausdrückliche/);
+  assert.match(html, /ÜBERTRAGUNG/);
+  assert.match(html, /„MANGA TRACKER“/);
 });
