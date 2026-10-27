@@ -38,17 +38,17 @@ test('contains every section, in order, and both complete source lists', () => {
     ['8.1', '8.2', '8.3', '8.4', '9.1', '9.2', '9.3', '9.4']);
   assert.equal([...article.matchAll(/<ul>/g)].length, 2);
   assert.equal([...article.matchAll(/<li>/g)].length, 13);
-  assert.match(article, /Fassung für Version 1\.0\.3 \(versionCode 5\)/);
-  assert.match(article, /Stand: 22\. Oktober 2026/);
+  assert.match(article, /Fassung für Version 1\.0\.4 \(versionCode 6\)/);
+  assert.match(article, /Stand: 27\. Oktober 2026/);
   assert.match(article, /Ende der Datenschutzerklärung\./);
 });
 
-test('retains the complete verbatim 1.0.3 source, including title, preface and ending', () => {
-  // Golden text: complete Manga_Tracker_Datenschutzerklaerung_1.0.3_2026-10-22.txt.
+test('retains the complete verbatim 1.0.4 source, including title, preface and ending', () => {
+  // Golden text: complete Manga_Tracker_Datenschutzerklaerung_1.0.4_2026-10-27.txt.
   // Only whitespace and semantic list markers are normalized; no wording amendments.
-  // Original TXT SHA-256: 430b38bcf042cb03a58f28ce6f1388daa7d6907f01bc04d80d9767a471de918c.
+  // Original TXT SHA-256: ae2251c555da9f2a7faa9e5f0dc546c2830c4d9899bef87b88956b2c976c5827.
   const digest = createHash('sha256').update(text(main)).digest('hex');
-  assert.equal(digest, 'f16434392409b9f182e8a92b5347e904a950cbe6926cce493079410ca2194210');
+  assert.equal(digest, 'ff9d46bc0ffa32cbff45d59d4f3ac6ef23552242ba4125d2613a9c41fdf90b27');
 });
 
 test('has balanced semantic HTML, valid list nesting, unique IDs and no heading-level skips', () => {
@@ -93,20 +93,22 @@ test('marks every source URL and email as a valid, readable link', () => {
   assert.match(article, /href="mailto:realityforgeeu@gmail\.com"/);
 });
 
-test('retains the source G1/G2 choices, withdrawal, minimisation and documented retention', () => {
+test('retains the source joint analytics choice, withdrawal, minimisation and documented retention', () => {
   const analytics = text(section(8));
-  for (const expected of ['standardmäßig ausgeschaltet', 'wirksam gespeicherten, ausdrücklichen Entscheidung',
-    'G1 – Funktionsanalyse', 'G2 – Zusätzliche Ablaufauswertung', 'Sie ist ohne G1 nicht aktiv',
-    'journey_consent=extended', 'Eine G2-Abwahl lässt G1 eingeschaltet', 'widerrufen',
+  for (const expected of ['standardmäßig ausgeschaltet', 'eine einzige freiwillige Einwilligung',
+    '„Erlauben“ aktiviert nach erfolgreicher Speicherung', '„Nicht erlauben“ hält beide ausgeschaltet',
+    'nicht automatisch als neue Zustimmung übernommen', 'einmal erneut ab',
+    'keine separate Zustimmung oder einen getrennten Schalter',
+    'journey_consent=extended', 'eine Ausschaltung beendet beide', 'widerrufen',
     'keine konkreten ISBNs', 'eingegebenen Suchtexte', 'zwei Monate', '14 Monate',
     'bei weiterer Aktivität zurücksetzen']) {
     assert.ok(analytics.includes(expected), expected);
   }
 });
 
-test('retains the source 1.0.3 push activation, existing-choice handling and operator notices', () => {
+test('retains the source 1.0.4 push activation, existing-choice handling and operator notices', () => {
   const push = text(section(9));
-  for (const expected of ['In Version 1.0.3 beginnt Push bei neuen Installationen deaktiviert',
+  for (const expected of ['in Version 1.0.4 beginnt Push bei neuen Installationen deaktiviert',
     'unabhängig von der Android-Version', 'dokumentierte bewusste Nutzerentscheidung',
     'Bereits ausdrücklich ausgeschaltete Push-Funktionen bleiben aus',
     'Erst nach einer bewussten Aktivierung in der App', 'Ab Android 13',
@@ -120,7 +122,7 @@ test('retains the source 1.0.3 push activation, existing-choice handling and ope
 });
 
 test('retains the source review/update, share-domain and external affiliate descriptions', () => {
-  assert.match(text(section(12)), /Version 1\.0\.3.*Google-Play-App.*Browser/);
+  assert.match(text(section(12)), /Version 1\.0\.4.*Google-Play-App.*Browser/);
   assert.match(text(section(12)), /Prüfung der Update-Verfügbarkeit/);
   assert.match(text(section(14)), /https:\/\/mangatracker\.de\/manga\/\[ISBN\].*https:\/\/manga\.realityforge\.eu\/manga\/\[ISBN\]/);
   assert.match(text(section(15)), /Amazon.*Thalia\/Awin/);
