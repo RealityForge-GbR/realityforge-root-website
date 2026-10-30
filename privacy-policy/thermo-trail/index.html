@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy for ThermoTrail | RealityForge</title>
+  <meta name="description" content="Privacy policy for the ThermoTrail Android application by RealityForge GbR.">
+  <meta name="theme-color" content="#09090d">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://realityforge.eu/privacy-policy/thermo-trail/">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <script>(()=>{const k='realityforge-theme';let t='dark';try{t=localStorage.getItem(k)||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark')}catch(_){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}document.documentElement.dataset.theme=t})();</script>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script defer src="/assets/theme.js"></script>
+</head>
+<body class="legal-page">
+  <a class="skip-link" href="#legal-content">Skip to content</a>
+  <header class="site-header legal-header">
+    <a class="brand" href="/" aria-label="RealityForge home"><span class="brand-mark" aria-hidden="true">RF</span><span class="brand-name">RealityForge</span></a>
+    <div class="header-tools"><nav class="desktop-nav" aria-label="Legal navigation"><a href="/">Home</a><a href="/legal-notice/">Legal Notice</a><a href="/privacy-policy/">Privacy</a></nav><button class="theme-toggle" type="button" data-theme-toggle aria-labelledby="theme-toggle-label"><span id="theme-toggle-label" hidden>Toggle light and dark mode</span><span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span><span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span></button></div>
+  </header>
+  <main id="legal-content" class="legal-shell">
+    <div class="legal-intro"><h1>PRIVACY POLICY FOR THERMOTRAIL</h1></div>
+    <article class="legal-document">
+      <p class="legal-updated">Last updated: 30 October 2026</p>
+
+      <h2>1. CONTROLLER AND SCOPE</h2>
+
+      <p>ThermoTrail is an Android application for recording indoor temperatures, comparing them with observed outdoor temperatures, and creating temperature reports. This Privacy Policy describes the processing associated with the ThermoTrail application as implemented at the date above.</p>
+
+      <p>The controller, to the extent that processing is subject to the General Data Protection Regulation (GDPR), is:</p>
+
+      <p>RealityForge GbR<br>Biberacher Weg 3<br>12247 Berlin<br>Germany<br>Email: <a href="mailto:realityforgeeu@gmail.com">realityforgeeu@gmail.com</a><br>Website: <a href="https://realityforge.eu/">https://realityforge.eu/</a></p>
+
+      <p>Questions about privacy or requests concerning your personal data may be sent to the email address above. The website's separate privacy notice is available at <a href="https://realityforge.eu/privacy-policy/">https://realityforge.eu/privacy-policy/</a>.</p>
+
+      <h2>2. HOW THERMOTRAIL WORKS</h2>
+
+      <p>ThermoTrail is designed to work without a RealityForge account or a RealityForge cloud database. Its temperature journal and settings are stored primarily in the app's private storage on your Android device. RealityForge does not operate a server that automatically receives your temperature history, sensor identifiers, room descriptions, or exported reports.</p>
+
+      <p>An important exception to entirely local operation is the outdoor weather function. ThermoTrail contacts the independent Bright Sky weather API directly from your device, sending the saved sensor-location coordinates and the requested observation period. The API provider also receives the network information needed to process the request, including your public IP address. See Section 5.</p>
+
+      <p>The current app does not include advertising SDKs, analytics SDKs, third-party behavioural tracking, a login system, or an automatic cloud sync service operated by RealityForge. This statement concerns ThermoTrail's own implementation; Google Play, Android, your device manufacturer, network providers, and any external services you choose to use may process data independently under their own terms.</p>
+
+      <h2>3. INFORMATION STORED ON YOUR DEVICE</h2>
+
+      <p>Depending on the functions you use, ThermoTrail stores the following information locally:</p>
+
+      <ul>
+        <li>Temperature readings from a Bluetooth thermometer or manual entries, including indoor temperature, measurement time, recording or import time, and measurement method.</li>
+        <li>Where available, sensor humidity readings, battery information, sensor identifiers, portions of Bluetooth protocol data, downloaded sensor history, and information used to assess timestamp reliability.</li>
+        <li>The Bluetooth address of the selected thermometer, so the app can reconnect to it. This address is kept in local app settings and is not included in weather API requests.</li>
+        <li>Room names, descriptions of the thermometer's position, and the saved sensor location, including latitude, longitude and, where supplied by Android, location accuracy, provider and acquisition time.</li>
+        <li>Outdoor weather observations, source and station information, observation and retrieval times, and links between indoor readings and outdoor observations.</li>
+        <li>Planned measurement schedules, actual measurement associations, correction histories, deletion and restoration records, and local audit information about changes.</li>
+        <li>App preferences such as language, appearance, recording interval, Bluetooth configuration, and settings relating to optional thermometer clock synchronisation.</li>
+        <li>Local diagnostic information and, where relevant, sensor clock backup and event files used to safeguard historical measurements before a clock adjustment.</li>
+      </ul>
+
+      <p>Room descriptions, manual notes or correction reasons may contain information you choose to enter. Avoid including information about other people unless necessary.</p>
+
+      <p>These records are not automatically transmitted to RealityForge. They remain in the app's private storage unless you explicitly export them or use a function that sends the limited information described below.</p>
+
+      <h2>4. BLUETOOTH, ANDROID PERMISSIONS AND LOCATION</h2>
+
+      <p>ThermoTrail uses Bluetooth scanning and connection permissions to discover a supported thermometer, receive readings, and, where enabled, retrieve its stored history. Certain supported functions may also communicate with the thermometer to check or synchronise its internal clock. A clock adjustment requires the safeguards and authorisation implemented in the app and is not a transfer to an Internet server.</p>
+
+      <p>ThermoTrail requests Android location access in connection with establishing the thermometer's fixed location. On modern Android versions it requests approximate foreground location; older Android versions may require location permission for Bluetooth scanning. The app does not request permission for continuous background device-location tracking. You can also enter coordinates manually instead of using Android's location service.</p>
+
+      <p>The saved location describes the thermometer's position, not necessarily your phone's later position. It remains in the app even when you take the phone elsewhere. Manually entered coordinates can be more precise than Android's approximate location. ThermoTrail currently sends the stored coordinates to Bright Sky as entered or obtained; it does not intentionally round them before the API request.</p>
+
+      <p>Changing the configured location creates a new local location record so earlier readings retain their historical context. Revoking Android location permission does not erase previously saved coordinates. It also does not, by itself, prevent weather requests that use those saved coordinates.</p>
+
+      <p>The app may use an Android foreground service, notifications and scheduled background tasks to capture readings, synchronise available sensor history and retrieve weather observations. If automatic recording is enabled, Android may resume relevant processing after a restart. Weather lookups for already recorded readings may also occur in the background while an Internet connection is available, including when automatic Bluetooth recording is paused. The current version does not provide a separate switch that disables all weather API requests while keeping the stored journal intact.</p>
+
+      <p>Android system permissions control access to the corresponding device functions. Granting an Android permission does not authorise unrelated advertising or profiling; ThermoTrail does not perform such processing.</p>
+
+      <h2>5. OUTDOOR WEATHER DATA: BRIGHT SKY AND DWD</h2>
+
+      <p>For outdoor temperature comparison, ThermoTrail makes HTTPS requests from your Android device to:</p>
+
+      <p><a href="https://api.brightsky.dev/weather">https://api.brightsky.dev/weather</a></p>
+
+      <p>A request contains the saved latitude and longitude, a requested date or date range, and technical weather-query parameters such as time zone and units. Because the connection is made directly from your device, the independent API operator can also receive your public IP address and ordinary HTTP connection metadata, such as the time of the request. The combination of an IP address and location coordinates may constitute personal data and may reveal a home or other fixed location.</p>
+
+      <p>The request does not intentionally include your indoor temperature readings, your Bluetooth address, your name, your email address or a RealityForge user identifier. ThermoTrail receives publicly sourced meteorological observations, including station and observation metadata, and stores the relevant results locally. The underlying meteorological observations originate from the Deutscher Wetterdienst (DWD). ThermoTrail does not make a separate direct request to DWD for this feature.</p>
+
+      <p>Bright Sky is an independently operated service; it is not a RealityForge server. RealityForge does not control the provider's server-side access logs, retention periods or infrastructure locations. Bright Sky's public project website does not provide sufficiently specific information for us to state a verified API-log retention period or guarantee that processing is restricted to the European Economic Area. We therefore make no such representation. For information about the API operator, see <a href="https://brightsky.dev/">https://brightsky.dev/</a>.</p>
+
+      <p>ThermoTrail uses the location data only to request weather observations for the configured sensor location and to associate those observations with readings. No location-based advertising or user profiling is performed by the app.</p>
+
+      <h2>6. PURPOSES AND LEGAL BASES</h2>
+
+      <p>Where the GDPR applies, processing that is necessary to provide the app functions you choose, including local recording and the indoor/outdoor comparison, is based on Article 6(1)(b) GDPR (performance of the app-use relationship). This includes sending the location and time parameters needed to obtain outdoor observations when that functionality is used. You are not under a statutory obligation to provide these data. Without the relevant permissions or a configured location, some Bluetooth or outdoor-weather features may be unavailable; manual indoor temperature entry can still be used.</p>
+
+      <p>Processing required to maintain the technical security and reliable operation of our website and to respond to general enquiries is based on Article 6(1)(f) GDPR. The legitimate interests are providing a secure and usable information service, preventing misuse, and answering communications. Where an enquiry concerns entering into or performing a contract, Article 6(1)(b) GDPR may instead apply.</p>
+
+      <p>The Android app's storage of information that is technically necessary for functions you request, such as saved settings and measurement history, is intended to serve those functions. No optional advertising or analytics identifiers are stored by ThermoTrail.</p>
+
+      <h2>7. EXPORTS, BACKUPS AND SHARING BY YOU</h2>
+
+      <p>You can create PDF temperature reports, CSV files, technical history exports and complete JSON backups, and can import supported backups. These operations take place on your device. Exported files may contain room names, location coordinates, temperature history, timestamps, sensor or weather metadata, and change records. Technical exports and complete backups can contain substantially more detail than ordinary reports.</p>
+
+      <p>You choose where to save or share a file using Android's document or sharing facilities. If you choose a cloud drive, email app, messaging service or another provider, that provider may process the file under its own privacy terms. ThermoTrail does not automatically upload these files to RealityForge.</p>
+
+      <p>ThermoTrail does not add its own password protection or file encryption to exported PDF, CSV or JSON documents. Protect sensitive exports accordingly. Importing a file does not send it to a RealityForge server.</p>
+
+      <h2>8. RETENTION, DELETION AND BACKUPS</h2>
+
+      <p>Local measurements and related records are kept until you choose to remove them, remove the app's data, or uninstall the app; the app does not impose a general automatic deletion period. Changing settings or a sensor location may preserve historical versions for documentation purposes.</p>
+
+      <p>Deleting a measurement first places it in the app's trash, where you can restore it. Confirmed permanent deletion removes the selected measurement and its dependent correction and association records from the active local database. Minimal one-way SHA-256 fingerprints of certain identifiers may remain locally to help prevent an automatically re-imported Bluetooth record from reappearing. These suppression fingerprints are not uploaded to RealityForge and remain until the relevant app data is removed. Permanent deletion does not promise forensic erasure of residual storage blocks.</p>
+
+      <p>An existing exported file, a backup saved elsewhere, and separate sensor clock archive files are not automatically altered when a measurement is permanently deleted. Previously exported files must be deleted separately from their storage location. Some old manually recorded information may also be present in a backup that you later choose to import. The app disables Android-managed cloud backup for its private data; user-created exports remain under your control and under the policies of your chosen storage provider.</p>
+
+      <p>Uninstalling ThermoTrail normally removes its private Android app data, but does not delete externally saved reports and backup files or records that an independent network provider may have retained.</p>
+
+      <p>We do not have a RealityForge cloud copy of your local measurement database that we can access or erase remotely.</p>
+
+      <h2>9. SECURITY</h2>
+
+      <p>ThermoTrail stores its records in Android's app-private storage and uses HTTPS for requests to Bright Sky. The app does not operate its own account or cloud synchronisation service. Android's platform security helps protect app-private data, but the Room/SQLite database and exported files are not represented as separately end-to-end encrypted by ThermoTrail. Security also depends on your device, its updates, screen lock, and the way you store or share exports.</p>
+
+      <h2>10. CONTACTING US</h2>
+
+      <p>If you email RealityForge about ThermoTrail, we process the email address, message and any information you voluntarily provide to respond to your request. Our business email uses Gmail, a service provided by Google. Email content is therefore processed by the relevant email providers and may involve processing outside the European Economic Area in accordance with their applicable arrangements. We retain correspondence as necessary to answer enquiries and, where relevant, comply with legal retention obligations or address legal claims. See <a href="https://realityforge.eu/privacy-policy/">https://realityforge.eu/privacy-policy/</a> for further information about website and business correspondence.</p>
+
+      <p>Please do not send full temperature backups, precise home coordinates or other sensitive records in an ordinary support message unless necessary.</p>
+
+      <h2>11. VISITING THIS PRIVACY POLICY ON THE WEB</h2>
+
+      <p>This policy is published on realityforge.eu, a website hosted using GitHub Pages. When you visit the website, GitHub may process connection and security information, including your IP address. The site's optional light/dark appearance choice uses browser localStorage for that preference; the website does not use its own advertising or analytics trackers at the date of this policy. Processing necessary to provide and secure the website is based on Article 6(1)(f) GDPR.</p>
+
+      <p>Website hosting, GitHub's processing and potential international data transfers are described in the website-wide notice at <a href="https://realityforge.eu/privacy-policy/">https://realityforge.eu/privacy-policy/</a> and in GitHub's privacy statement at <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement</a>. That website processing is separate from the ThermoTrail app's local temperature database.</p>
+
+      <h2>12. YOUR DATA PROTECTION RIGHTS</h2>
+
+      <p>Subject to the conditions of applicable law, you have the right to request access to your personal data (Article 15 GDPR), rectification (Article 16), erasure (Article 17), restriction of processing (Article 18), data portability where applicable (Article 20), and to object to processing based on legitimate interests (Article 21). Where we rely on consent for a particular processing activity, you may withdraw it for the future (Article 7(3)).</p>
+
+      <p>You can manage much of the information stored only on your device directly through ThermoTrail's correction, deletion, export and backup features. Because RealityForge does not receive a copy of that local database, we generally cannot inspect or modify its contents remotely. You can contact <a href="mailto:realityforgeeu@gmail.com">realityforgeeu@gmail.com</a> about your rights or any processing for which RealityForge is responsible.</p>
+
+      <p>You may also lodge a complaint with a supervisory authority, including the Berliner Beauftragte für Datenschutz und Informationsfreiheit, Alt-Moabit 59-61, 10555 Berlin, Germany, <a href="https://www.datenschutz-berlin.de/">https://www.datenschutz-berlin.de/</a>. You may instead contact the competent data protection authority where you live or work or where an alleged infringement occurred.</p>
+
+      <h2>13. AUTOMATED DECISION-MAKING AND CHANGES</h2>
+
+      <p>ThermoTrail does not conduct automated decision-making producing legal or similarly significant effects, or advertising profiling, within the meaning of Article 22 GDPR. Automated matching of temperature readings to nearby-in-time weather observations is used solely to prepare the temperature journal.</p>
+
+      <p>We will update this Privacy Policy if the app's data handling, third-party services or applicable requirements change. The current version will be made available at:</p>
+
+      <p><a href="https://realityforge.eu/privacy-policy/thermo-trail/">https://realityforge.eu/privacy-policy/thermo-trail/</a></p>
+    </article>
+  </main>
+  <footer class="site-footer legal-footer">
+    <div class="footer-bottom"><span>© 2026 RealityForge GbR</span><span><a href="/">Home</a> · <a href="mailto:realityforgeeu@gmail.com">Contact</a> · <a href="/legal-notice/">Legal Notice</a> · <a href="/privacy-policy/">Privacy</a></span></div>
+  </footer>
+</body>
+</html>
