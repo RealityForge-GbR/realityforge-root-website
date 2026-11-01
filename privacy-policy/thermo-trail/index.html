@@ -22,7 +22,7 @@
   <main id="legal-content" class="legal-shell">
     <div class="legal-intro"><h1>PRIVACY POLICY FOR THERMOTRAIL</h1></div>
     <article class="legal-document">
-      <p class="legal-updated">Last updated: 30 October 2026</p>
+      <p class="legal-updated">Last updated: 1 November 2026</p>
 
       <h2>1. CONTROLLER AND SCOPE</h2>
 
@@ -40,7 +40,7 @@
 
       <p>An important exception to entirely local operation is the outdoor weather function. ThermoTrail contacts the independent Bright Sky weather API directly from your device, sending the saved sensor-location coordinates and the requested observation period. The API provider also receives the network information needed to process the request, including your public IP address. See Section 5.</p>
 
-      <p>The current app does not include advertising SDKs, analytics SDKs, third-party behavioural tracking, a login system, or an automatic cloud sync service operated by RealityForge. This statement concerns ThermoTrail's own implementation; Google Play, Android, your device manufacturer, network providers, and any external services you choose to use may process data independently under their own terms.</p>
+      <p>Starting with version 0.2.7, ThermoTrail displays a Google AdMob banner and uses Google's User Messaging Platform (UMP) to manage advertising privacy choices. Advertising involves processing by Google and eligible advertising partners, separately from your local temperature database; see Section 6A. The app has no RealityForge login, automatic RealityForge cloud synchronisation, Firebase Analytics or Crashlytics integration.</p>
 
       <h2>3. INFORMATION STORED ON YOUR DEVICE</h2>
 
@@ -48,7 +48,7 @@
 
       <ul>
         <li>Temperature readings from a Bluetooth thermometer or manual entries, including indoor temperature, measurement time, recording or import time, and measurement method.</li>
-        <li>Where available, sensor humidity readings, battery information, sensor identifiers, portions of Bluetooth protocol data, downloaded sensor history, and information used to assess timestamp reliability.</li>
+        <li>Where available, sensor humidity readings, battery information, sensor identifiers, portions of Bluetooth protocol data, legacy sensor-history records retained from earlier versions, and information used to assess timestamp reliability. Version 0.2.7 no longer imports the thermometer’s internal history as an additional measurement stream.</li>
         <li>The Bluetooth address of the selected thermometer, so the app can reconnect to it. This address is kept in local app settings and is not included in weather API requests.</li>
         <li>Room names, descriptions of the thermometer's position, and the saved sensor location, including latitude, longitude and, where supplied by Android, location accuracy, provider and acquisition time.</li>
         <li>Outdoor weather observations, source and station information, observation and retrieval times, and links between indoor readings and outdoor observations.</li>
@@ -63,7 +63,7 @@
 
       <h2>4. BLUETOOTH, ANDROID PERMISSIONS AND LOCATION</h2>
 
-      <p>ThermoTrail uses Bluetooth scanning and connection permissions to discover a supported thermometer, receive readings, and, where enabled, retrieve its stored history. Certain supported functions may also communicate with the thermometer to check or synchronise its internal clock. A clock adjustment requires the safeguards and authorisation implemented in the app and is not a transfer to an Internet server.</p>
+      <p>ThermoTrail uses Bluetooth scanning and connection permissions to discover a supported thermometer, receive live readings at your configured recording interval or daily schedule, or following an explicit measurement request. Turning off automatic recording stops automatic temperature capture. Stored thermometer history is no longer imported as an additional measurement stream. Certain supported functions may also communicate with the thermometer to check or synchronise its internal clock. A clock adjustment requires the safeguards and authorisation implemented in the app and is not a transfer to an Internet server.</p>
 
       <p>ThermoTrail requests Android location access in connection with establishing the thermometer's fixed location. On modern Android versions it requests approximate foreground location; older Android versions may require location permission for Bluetooth scanning. The app does not request permission for continuous background device-location tracking. You can also enter coordinates manually instead of using Android's location service.</p>
 
@@ -71,9 +71,9 @@
 
       <p>Changing the configured location creates a new local location record so earlier readings retain their historical context. Revoking Android location permission does not erase previously saved coordinates. It also does not, by itself, prevent weather requests that use those saved coordinates.</p>
 
-      <p>The app may use an Android foreground service, notifications and scheduled background tasks to capture readings, synchronise available sensor history and retrieve weather observations. If automatic recording is enabled, Android may resume relevant processing after a restart. Weather lookups for already recorded readings may also occur in the background while an Internet connection is available, including when automatic Bluetooth recording is paused. The current version does not provide a separate switch that disables all weather API requests while keeping the stored journal intact.</p>
+      <p>The app may use an Android foreground service, notifications and scheduled background tasks to capture configured live readings, perform authorised sensor-clock safety checks and retrieve weather observations. Sensor-clock checks may create complete immutable safety archives before an authorised clock adjustment; these separate archives do not populate charts or reports. If automatic recording is enabled, Android may resume relevant processing after a restart. Weather lookups for already recorded readings may also occur in the background while an Internet connection is available, including when automatic Bluetooth recording is paused. The current version does not provide a separate switch that disables all weather API requests while keeping the stored journal intact.</p>
 
-      <p>Android system permissions control access to the corresponding device functions. Granting an Android permission does not authorise unrelated advertising or profiling; ThermoTrail does not perform such processing.</p>
+      <p>Android system permissions control access to the corresponding device functions. Granting an Android permission does not replace the separate advertising privacy choices described in Section 6A.</p>
 
       <h2>5. OUTDOOR WEATHER DATA: BRIGHT SKY AND DWD</h2>
 
@@ -87,7 +87,7 @@
 
       <p>Bright Sky is an independently operated service; it is not a RealityForge server. RealityForge does not control the provider's server-side access logs, retention periods or infrastructure locations. Bright Sky's public project website does not provide sufficiently specific information for us to state a verified API-log retention period or guarantee that processing is restricted to the European Economic Area. We therefore make no such representation. For information about the API operator, see <a href="https://brightsky.dev/">https://brightsky.dev/</a>.</p>
 
-      <p>ThermoTrail uses the location data only to request weather observations for the configured sensor location and to associate those observations with readings. No location-based advertising or user profiling is performed by the app.</p>
+      <p>ThermoTrail uses the location data only to request weather observations for the configured sensor location and to associate those observations with readings. ThermoTrail does not supply saved sensor coordinates, room descriptions, thermometer readings or Bluetooth identifiers to AdMob. The advertising SDK may infer approximate location from the device IP address; see Section 6A.</p>
 
       <h2>6. PURPOSES AND LEGAL BASES</h2>
 
@@ -95,11 +95,31 @@
 
       <p>Processing required to maintain the technical security and reliable operation of our website and to respond to general enquiries is based on Article 6(1)(f) GDPR. The legitimate interests are providing a secure and usable information service, preventing misuse, and answering communications. Where an enquiry concerns entering into or performing a contract, Article 6(1)(b) GDPR may instead apply.</p>
 
-      <p>The Android app's storage of information that is technically necessary for functions you request, such as saved settings and measurement history, is intended to serve those functions. No optional advertising or analytics identifiers are stored by ThermoTrail.</p>
+      <p>The Android app's storage of information that is technically necessary for functions you request, such as saved settings and measurement history, is intended to serve those functions. Advertising identifiers and consent preferences may also be processed by the Google SDKs as described below.</p>
+
+      <h2>6A. GOOGLE ADMOB ADVERTISING AND PRIVACY CHOICES</h2>
+
+      <p>Version 0.2.7 introduces one anchored adaptive banner below the app bar on the Overview, Journal and Settings screens. No interstitial, app-open or rewarded ads are integrated. Google Mobile Ads SDK (AdMob) and Google User Messaging Platform (UMP) are provided by Google. For users in the EEA and Switzerland, the relevant Google entity is Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland; Google’s privacy policy describes the responsible entities for other regions.</p>
+
+      <p>According to Google’s SDK disclosure, Mobile Ads automatically collects and shares IP addresses (which may indicate approximate location), app and ad interactions such as launches, taps and views, performance diagnostics such as launch time, hang rate and energy usage, and device/account identifiers such as Android advertising ID, app set ID and, where applicable, identifiers relating to accounts signed in on the device. These data are processed for advertising, measurement and analytics, service operation and improvement, and fraud prevention, depending on settings and privacy choices. There is no Firebase Analytics or Crashlytics integration, but the advertising SDK itself processes usage and diagnostic information.</p>
+
+      <p>ThermoTrail does not pass temperature histories, saved thermometer coordinates, room names, notes, report or backup contents, Bluetooth addresses or internal sensor IDs to an ad request. No thermometer coordinates or readings are used as ad-targeting parameters. IP-based approximate location processing by the advertising service is separate from the fixed sensor location sent to Bright Sky. Requests contain no RealityForge user ID, developer-supplied keywords or user-created audience.</p>
+
+      <p>At app start, UMP requests current consent information. Where required, including the EEA, UK and Switzerland, it presents the configured privacy message before ad requests are allowed. The message offers consent, non-consent and detailed options, and identifies purposes and advertising partners. Mobile Ads is initialised and ads are requested only when UMP reports that ads may be requested. Unresolved consent does not block temperature functions. Measurement and weather features do not require advertising consent.</p>
+
+      <p>Optional storage/access and personalised advertising processing rely on consent under Article 6(1)(a) GDPR and, where applicable in Germany, Section 25(1) TDDDG. Necessary storage of privacy choices serves the requested consent-management function under Section 25(2) TDDDG. Associated processing relies on compliance with consent obligations (Article 6(1)(c) GDPR) and the legitimate interest in applying and documenting choices (Article 6(1)(f) GDPR). Depending on choices and applicable settings, Google may serve limited or non-personalised ads and process information necessary for delivery, measurement or fraud prevention under the bases and objections described in the message and Google’s policies. Rejecting personalisation does not guarantee that no network, diagnostic or fraud-prevention data are processed.</p>
+
+      <p>When UMP requires a privacy-options entry, Settings contains “Ad privacy options” (“Datenschutzoptionen für Werbung”). Use it to change choices, withdraw consent or object to applicable processing. Withdrawal applies to future processing without affecting earlier lawful processing. Existing ads are discarded when this form opens; later requests use updated UMP signals. You can also manage or delete the advertising ID in Android’s privacy settings. These choices do not erase the local temperature journal.</p>
+
+      <p>Recipients can include Google, service providers and advertising technology providers listed in the consent message, depending on choices and the selected ad. ThermoTrail integrates no additional mediation SDKs. Processing may take place outside the EEA, including the United States. Google describes applicable adequacy decisions and standard contractual clauses in its international-transfer information. We do not guarantee exclusively European processing.</p>
+
+      <p>UMP stores consent status and preferences on the device. Google determines retention of advertising, diagnostic and security records under its own policies; RealityForge does not control or promise a fixed deletion period for those records. Removing app data does not itself delete information already processed by Google or other recipients. Contact RealityForge about our processing; Google’s policies explain its privacy controls and how to request access or deletion from Google.</p>
+
+      <p>Further information: <a href="https://policies.google.com/privacy">Google Privacy Policy</a>, <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from partner sites and apps</a>, <a href="https://policies.google.com/technologies/ads">Google advertising information</a>, <a href="https://policies.google.com/privacy/frameworks">International data transfers</a>, and <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Mobile Ads SDK data disclosure</a>.</p>
 
       <h2>7. EXPORTS, BACKUPS AND SHARING BY YOU</h2>
 
-      <p>You can create PDF temperature reports, CSV files, technical history exports and complete JSON backups, and can import supported backups. These operations take place on your device. Exported files may contain room names, location coordinates, temperature history, timestamps, sensor or weather metadata, and change records. Technical exports and complete backups can contain substantially more detail than ordinary reports.</p>
+      <p>You can create PDF temperature reports, CSV files, complete JSON backups, and can import supported backups. These operations take place on your device. Exported files may contain room names, location coordinates, temperature history, timestamps, sensor or weather metadata, and change records. Complete backups can contain substantially more detail than ordinary reports, including retained legacy sensor-history records. BLE_HISTORY records and their corrections are excluded from ordinary journal views, charts and reports. Existing exported documents are not rewritten.</p>
 
       <p>You choose where to save or share a file using Android's document or sharing facilities. If you choose a cloud drive, email app, messaging service or another provider, that provider may process the file under its own privacy terms. ThermoTrail does not automatically upload these files to RealityForge.</p>
 
@@ -119,7 +139,7 @@
 
       <h2>9. SECURITY</h2>
 
-      <p>ThermoTrail stores its records in Android's app-private storage and uses HTTPS for requests to Bright Sky. The app does not operate its own account or cloud synchronisation service. Android's platform security helps protect app-private data, but the Room/SQLite database and exported files are not represented as separately end-to-end encrypted by ThermoTrail. Security also depends on your device, its updates, screen lock, and the way you store or share exports.</p>
+      <p>ThermoTrail stores its records in Android's app-private storage and uses HTTPS for Bright Sky and Google advertising/consent services. The app does not operate its own account or cloud synchronisation service. Android's platform security helps protect app-private data, but the Room/SQLite database and exported files are not represented as separately end-to-end encrypted by ThermoTrail. Security also depends on your device, its updates, screen lock, and the way you store or share exports.</p>
 
       <h2>10. CONTACTING US</h2>
 
@@ -143,7 +163,7 @@
 
       <h2>13. AUTOMATED DECISION-MAKING AND CHANGES</h2>
 
-      <p>ThermoTrail does not conduct automated decision-making producing legal or similarly significant effects, or advertising profiling, within the meaning of Article 22 GDPR. Automated matching of temperature readings to nearby-in-time weather observations is used solely to prepare the temperature journal.</p>
+      <p>ThermoTrail does not conduct automated decision-making producing legal or similarly significant effects, within the meaning of Article 22 GDPR. Advertising personalisation may involve profiling by Google or partners as explained in Section 6A and the consent message; this is separate from decisions with legal or similarly significant effects. Automated matching of temperature readings to nearby-in-time weather observations is used solely to prepare the temperature journal.</p>
 
       <p>We will update this Privacy Policy if the app's data handling, third-party services or applicable requirements change. The current version will be made available at:</p>
 
