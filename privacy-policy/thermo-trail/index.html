@@ -22,7 +22,7 @@
   <main id="legal-content" class="legal-shell">
     <div class="legal-intro"><h1>PRIVACY POLICY FOR THERMOTRAIL</h1></div>
     <article class="legal-document">
-      <p class="legal-updated">Last updated: 1 November 2026</p>
+      <p class="legal-updated">Last updated: 2 November 2026</p>
 
       <h2>1. CONTROLLER AND SCOPE</h2>
 
@@ -40,7 +40,7 @@
 
       <p>An important exception to entirely local operation is the outdoor weather function. ThermoTrail contacts the independent Bright Sky weather API directly from your device, sending the saved sensor-location coordinates and the requested observation period. The API provider also receives the network information needed to process the request, including your public IP address. See Section 5.</p>
 
-      <p>Starting with version 0.2.7, ThermoTrail displays a Google AdMob banner and uses Google's User Messaging Platform (UMP) to manage advertising privacy choices. Advertising involves processing by Google and eligible advertising partners, separately from your local temperature database; see Section 6A. The app has no RealityForge login, automatic RealityForge cloud synchronisation, Firebase Analytics or Crashlytics integration.</p>
+      <p>Starting with version 0.2.7, ThermoTrail displays a Google AdMob banner and uses Google's User Messaging Platform (UMP) to manage advertising privacy choices. Advertising involves processing by Google and eligible advertising partners, separately from your local temperature database; see Section 6A. The app has no RealityForge login, automatic RealityForge cloud synchronisation or Crashlytics integration. Version 0.2.9 adds optional Google Analytics for Firebase, disabled by default and subject to the separate choices described in Section 6B.</p>
 
       <h2>3. INFORMATION STORED ON YOUR DEVICE</h2>
 
@@ -101,7 +101,7 @@
 
       <p>Version 0.2.7 introduces one anchored adaptive banner below the app bar on the Overview, Journal and Settings screens. No interstitial, app-open or rewarded ads are integrated. Google Mobile Ads SDK (AdMob) and Google User Messaging Platform (UMP) are provided by Google. For users in the EEA and Switzerland, the relevant Google entity is Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland; Google’s privacy policy describes the responsible entities for other regions.</p>
 
-      <p>According to Google’s SDK disclosure, Mobile Ads automatically collects and shares IP addresses (which may indicate approximate location), app and ad interactions such as launches, taps and views, performance diagnostics such as launch time, hang rate and energy usage, and device/account identifiers such as Android advertising ID, app set ID and, where applicable, identifiers relating to accounts signed in on the device. These data are processed for advertising, measurement and analytics, service operation and improvement, and fraud prevention, depending on settings and privacy choices. There is no Firebase Analytics or Crashlytics integration, but the advertising SDK itself processes usage and diagnostic information.</p>
+      <p>According to Google’s SDK disclosure, Mobile Ads automatically collects and shares IP addresses (which may indicate approximate location), app and ad interactions such as launches, taps and views, performance diagnostics such as launch time, hang rate and energy usage, and device/account identifiers such as Android advertising ID, app set ID and, where applicable, identifiers relating to accounts signed in on the device. These data are processed for advertising, measurement and analytics, service operation and improvement, and fraud prevention, depending on settings and privacy choices. The advertising SDK itself processes usage and diagnostic information. Optional Firebase Analytics is described separately in Section 6B; Crashlytics is not integrated.</p>
 
       <p>ThermoTrail does not pass temperature histories, saved thermometer coordinates, room names, notes, report or backup contents, Bluetooth addresses or internal sensor IDs to an ad request. No thermometer coordinates or readings are used as ad-targeting parameters. IP-based approximate location processing by the advertising service is separate from the fixed sensor location sent to Bright Sky. Requests contain no RealityForge user ID, developer-supplied keywords or user-created audience.</p>
 
@@ -109,13 +109,39 @@
 
       <p>Optional storage/access and personalised advertising processing rely on consent under Article 6(1)(a) GDPR and, where applicable in Germany, Section 25(1) TDDDG. Necessary storage of privacy choices serves the requested consent-management function under Section 25(2) TDDDG. Associated processing relies on compliance with consent obligations (Article 6(1)(c) GDPR) and the legitimate interest in applying and documenting choices (Article 6(1)(f) GDPR). Depending on choices and applicable settings, Google may serve limited or non-personalised ads and process information necessary for delivery, measurement or fraud prevention under the bases and objections described in the message and Google’s policies. Rejecting personalisation does not guarantee that no network, diagnostic or fraud-prevention data are processed.</p>
 
-      <p>When UMP requires a privacy-options entry, Settings contains “Ad privacy options” (“Datenschutzoptionen für Werbung”). Use it to change choices, withdraw consent or object to applicable processing. Withdrawal applies to future processing without affecting earlier lawful processing. Existing ads are discarded when this form opens; later requests use updated UMP signals. You can also manage or delete the advertising ID in Android’s privacy settings. These choices do not erase the local temperature journal.</p>
+      <p>When UMP requires a privacy-options entry, Settings contains “Google privacy options” (“Google-Datenschutzoptionen”). Use it to change choices, withdraw consent or object to applicable processing. Withdrawal applies to future processing without affecting earlier lawful processing. Existing ads are discarded when this form opens; later requests use updated UMP signals. You can also manage or delete the advertising ID in Android’s privacy settings. These choices do not erase the local temperature journal.</p>
 
       <p>Recipients can include Google, service providers and advertising technology providers listed in the consent message, depending on choices and the selected ad. ThermoTrail integrates no additional mediation SDKs. Processing may take place outside the EEA, including the United States. Google describes applicable adequacy decisions and standard contractual clauses in its international-transfer information. We do not guarantee exclusively European processing.</p>
 
       <p>UMP stores consent status and preferences on the device. Google determines retention of advertising, diagnostic and security records under its own policies; RealityForge does not control or promise a fixed deletion period for those records. Removing app data does not itself delete information already processed by Google or other recipients. Contact RealityForge about our processing; Google’s policies explain its privacy controls and how to request access or deletion from Google.</p>
 
       <p>Further information: <a href="https://policies.google.com/privacy">Google Privacy Policy</a>, <a href="https://policies.google.com/technologies/partner-sites">How Google uses information from partner sites and apps</a>, <a href="https://policies.google.com/technologies/ads">Google advertising information</a>, <a href="https://policies.google.com/privacy/frameworks">International data transfers</a>, and <a href="https://developers.google.com/admob/android/privacy/play-data-disclosure">Mobile Ads SDK data disclosure</a>.</p>
+
+
+      <h2>6B. OPTIONAL GOOGLE ANALYTICS FOR FIREBASE</h2>
+
+      <p>Starting with version 0.2.9, ThermoTrail offers voluntary usage analytics through Google Analytics for Firebase. It uses a dedicated ThermoTrail Firebase project and Analytics property, separate from other RealityForge apps. Analytics is off by default. It is enabled only after you turn on “Allow usage analytics” (“Nutzungsanalyse erlauben”) in Settings and, where required, give Analytics-storage consent in Google's UMP privacy options. Permission to request advertising is not treated as permission for Analytics. Missing, failed, denied or unconfigured consent keeps Analytics off. Outside UMP's applicable region, the independent explicit in-app opt-in is still required. Measurement functions work without Analytics.</p>
+
+      <p>ThermoTrail defines exactly five custom event types, emitted only after a successful action:</p>
+      <ul>
+        <li><code>sensor_setup_completed</code>: sensor setup completed; no custom parameters.</li>
+        <li><code>auto_capture_changed</code>: automatic recording changed; <code>recording_state</code> is <code>enabled</code> or <code>paused</code>.</li>
+        <li><code>explicit_reading_saved</code>: an explicit reading was saved; <code>reading_method</code> is <code>manual</code> or <code>measure_now</code>.</li>
+        <li><code>export_completed</code>: a file was successfully saved; <code>export_format</code> is <code>pdf</code>, <code>csv</code> or <code>json</code>.</li>
+        <li><code>batch_action_completed</code>: a trash action completed; <code>batch_action</code> is <code>delete</code>, <code>restore</code> or <code>permanent_delete</code>, and <code>selection_size</code> is only <code>1</code>, <code>2-10</code> or <code>11+</code>.</li>
+      </ul>
+
+      <p>These custom events do not contain temperature values, measurement timestamps or exact recording intervals, saved locations or coordinates, room names, sensor IDs, Bluetooth addresses, file names, report or backup contents, or diagnostic contents. Individual automatic or scheduled readings, weather lookups and Bluetooth connection attempts are not custom Analytics events. ThermoTrail does not add custom ad-impression events and does not link AdMob revenue/impression reporting to Firebase.</p>
+
+      <p>After consent, the Firebase SDK also processes its standard technical data: an app-instance identifier, app and operating-system information, event times and app lifecycle/session information. These technical event times are distinct from your temperature measurement timestamps, which the app never supplies to Analytics. Google receives connection information and can derive a coarse country/region from a masked IP address. ThermoTrail disables detailed location/device collection in the property, Google Signals, advertising personalisation and optional account data-sharing features. Automatic screen reporting and advertising-ID collection by Firebase Analytics are disabled. AdMob's separate data processing in Section 6A is unaffected. No developer-supplied user ID is set.</p>
+
+      <p>You can withdraw the independent Analytics choice at any time in Settings; Google's required privacy options also remain available. Basic Consent Mode keeps collection disabled before the required consent. The app stops subsequent events on withdrawal and resets locally queued Analytics data. It does not store a custom event queue or replay actions from a non-consented period after later consent. Resetting local Analytics data does not erase events already received by Google. The local opt-in is excluded from temperature JSON backups and is not restored by importing one.</p>
+
+      <p>The purpose is to understand use of the five app features and improve ThermoTrail. Where the GDPR applies, optional Analytics processing relies on Article 6(1)(a) GDPR and optional device storage/access on Section 25(1) TDDDG where applicable. Withdrawal does not affect earlier lawful processing. Google provides Analytics under its applicable processing terms; processing may take place outside the EEA, including in the United States, under Google's stated transfer safeguards. We do not promise exclusively European processing.</p>
+
+      <p>The ThermoTrail property is configured to retain event-level and user-level data for two months, without extending user retention on new activity. This setting does not impose a two-month limit on aggregated standard reports. You may contact RealityForge about data-protection requests; we do not associate an Analytics app-instance identifier with a name, email account or local temperature record. Firebase databases, Cloud Functions, BigQuery, Crashlytics, Performance Monitoring and Remote Config are not integrated.</p>
+
+      <p>Further information: <a href="https://support.google.com/analytics/answer/11582702?hl=en">Firebase Analytics data disclosure</a>, <a href="https://firebase.google.com/docs/analytics/android/configure-data-collection">Analytics collection controls</a>, <a href="https://developers.google.com/admob/android/privacy/consent-mode">UMP and Consent Mode</a>, and <a href="https://support.google.com/analytics/answer/7667196?hl=en">Analytics retention</a>. Google's privacy and international-transfer information linked in Section 6A also applies.</p>
 
       <h2>7. EXPORTS, BACKUPS AND SHARING BY YOU</h2>
 
